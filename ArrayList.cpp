@@ -9,13 +9,12 @@ class ArrayList
 private:
     // int length = 0;
     int index = 0; //数组下标
-
     string data[MaxSize];
 
 public:
     bool addData(string data);
     string getData(int dext);
-
+    string findData(string value);
     int getLength() const;
 };
 bool ArrayList::addData(string elem)
@@ -23,7 +22,6 @@ bool ArrayList::addData(string elem)
 
     if (index >= MaxSize)
     {
-
         cout << "​The capacity of the list is full.";
         return false;
     }
@@ -43,6 +41,24 @@ string ArrayList::getData(int i)
 
     return data[i];
 }
+
+string ArrayList::findData(string value)
+{
+
+    for (int i = 0; i < index; i++)
+    {
+        string temp = data[i];
+        cout << "\n\n";
+        if (temp.compare(value) == 0)
+        {
+         cout << "\n Data found \n";
+            return temp;
+        }
+    }
+    cout << "\n not found value \n";
+    return "not found";
+}
+
 int ArrayList::getLength() const
 {
 
@@ -57,7 +73,8 @@ int main()
     list.addData("xue");
     list.addData("xue2");
 
-    cout << "test";
+    list.findData("xue");
+
     // int length=list.getLength();
 
     // << list.getData(1) << "\n\n";
