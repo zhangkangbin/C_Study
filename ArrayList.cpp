@@ -16,6 +16,7 @@ public:
     string getData(int dext);
     string findData(string value);
     int getLength() const;
+    bool deleteData(string data);
 };
 bool ArrayList::addData(string elem)
 {
