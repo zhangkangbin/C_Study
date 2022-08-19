@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "start.h"
-
+#include <iostream>
+using namespace std;
 int main()
 {
    //get();

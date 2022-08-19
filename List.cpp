@@ -1,5 +1,6 @@
 #include <stdio.h>
- 
+ #include <iostream>
+using namespace std;
 int getList()
 {
    /* 我的第一个 C 程序 */

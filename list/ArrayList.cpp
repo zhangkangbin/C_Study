@@ -124,7 +124,8 @@ int main()
     // << list.getData(1) << "\n\n";
     cout << "\n"
          << list.getData(1);
-    list.deleteData("xue");
+    list.deleteData("xue2");
+    list.addData("xue4");
     list.printAllData();
     //  cout << "\n"<< list.getData(2).length() << "\n";
     return 0;
