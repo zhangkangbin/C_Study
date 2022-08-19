@@ -1,6 +1,7 @@
 /.vscode
 /test.exe
 /.exe
-.exe
+*.exe
 TestMain.exe
 ArrayList.exe
+
