@@ -15,6 +15,7 @@ public:
    bool pop();
    string getTop();
    void printAllData();
+   void destroyStack();
 };
 
 bool StackList::push(string value)
@@ -37,7 +38,7 @@ bool StackList::pop()
    if (mTop >= 0)
    {
 
-      mData[mTop--] = "NULL";
+      mData[mTop--] = "";
       return true;
    }
 
@@ -67,7 +68,18 @@ void StackList::printAllData()
       }
    }
 }
+//清空数组
+void StackList::destroyStack(){
 
+   for (int i = 0; i < mTop; i++)
+   {
+     mData[i]="";
+   
+   }
+   mTop=-1;
+   //mData
+
+}
 int main()
 {
 
@@ -81,6 +93,7 @@ int main()
    list.pop();
    // list.push("55");
    list.printAllData();
+   list.destroyStack();
    cout << "\ntop:" << list.getTop();
 
    return 0;
