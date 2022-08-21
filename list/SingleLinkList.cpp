@@ -24,8 +24,21 @@ public:
     bool addData(string data);
     bool deleteData(string data);
     void printAllData();
+    void initList();
 };
 
+//不调用这里就是不带头节点。
+void SingleLinkList::initList(){
+
+if(head==NULL){
+
+    head=new Node();
+    //带头节点
+    head->dataNode="head";
+    mLastNext=head;
+}
+
+}
 void SingleLinkList::printAllData()
 {
 
@@ -56,6 +69,7 @@ bool SingleLinkList::addData(string value)
     tempNode->dataNode = value;
     if (head == NULL)
     {
+        //这里如果指向尾部就是双向链表。
         tempNode->dataPre = NULL;
         head = tempNode;
         // mLastNext = head;
@@ -132,11 +146,13 @@ int main()
 
     SingleLinkList list;
 
+    list.initList();
+
     list.addData("1");
     list.addData("2");
     list.addData("3");
     list.addData("4");
-    list.deleteData("1");
+   // list.deleteData("1");
 
     list.printAllData();
 
