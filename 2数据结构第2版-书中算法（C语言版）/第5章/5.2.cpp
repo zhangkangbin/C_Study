@@ -1,39 +1,39 @@
-//Ëã·¨5.2 ÖÐÐò±éÀúµÄ·ÇµÝ¹éËã·¨
+//ï¿½ã·¨5.2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ÇµÝ¹ï¿½ï¿½ã·¨
 #include<iostream>
 using namespace std;
 
-//¶þ²æÊ÷µÄ¶þ²æÁ´±í´æ´¢±íÊ¾
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Ê¾
 typedef struct BiNode
 {				
-	char data;						//½áµãÊý¾ÝÓò
-	struct BiNode *lchild,*rchild;	//×óÓÒº¢×ÓÖ¸Õë
+	char data;						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	struct BiNode *lchild,*rchild;	//ï¿½ï¿½ï¿½Òºï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 }BiTNode,*BiTree;
 
-//Á´Õ»µÄ¶¨Òå
+//ï¿½ï¿½Õ»ï¿½Ä¶ï¿½ï¿½ï¿½
 typedef struct StackNode
 {
 	BiTNode data;
 	struct StackNode *next;
 }StackNode,*LinkStack;
 
-//ÓÃËã·¨5.3 ÏÈÐò±éÀúµÄË³Ðò½¨Á¢¶þ²æÁ´±í
+//ï¿½ï¿½ï¿½ã·¨5.3 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void CreateBiTree(BiTree &T)
 {	
-	//°´ÏÈÐò´ÎÐòÊäÈë¶þ²æÊ÷ÖÐ½áµãµÄÖµ£¨Ò»¸ö×Ö·û£©£¬´´½¨¶þ²æÁ´±í±íÊ¾µÄ¶þ²æÊ÷T
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½T
 	char ch;
 	cin >> ch;
-	if(ch=='#')  T=NULL;			//µÝ¹é½áÊø£¬½¨¿ÕÊ÷
+	if(ch=='#')  T=NULL;			//ï¿½Ý¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	else{							
 		T=new BiTNode;
-		T->data=ch;					//Éú³É¸ù½áµã
-		CreateBiTree(T->lchild);	//µÝ¹é´´½¨×ó×ÓÊ÷
-		CreateBiTree(T->rchild);	//µÝ¹é´´½¨ÓÒ×ÓÊ÷
+		T->data=ch;					//ï¿½ï¿½ï¿½É¸ï¿½ï¿½ï¿½ï¿½
+		CreateBiTree(T->lchild);	//ï¿½Ý¹é´´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		CreateBiTree(T->rchild);	//ï¿½Ý¹é´´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}								//else
 }									//CreateBiTree
 
 void InitStack(LinkStack &S)
 {
-	//¹¹ÔìÒ»¸ö¿ÕÕ»S£¬Õ»¶¥Ö¸ÕëÖÃ¿Õ
+	//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Õ»Sï¿½ï¿½Õ»ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ã¿ï¿½
 	S=NULL;
 }
 
@@ -46,7 +46,7 @@ bool StackEmpty(LinkStack S)
 
 void Push(LinkStack &S,BiTree e)
 {
-	//ÔÚÕ»¶¥²åÈëÔªËØ*e
+	//ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½*e
 	StackNode *p=new StackNode;
 	p->data=*e;
 	p->next=S;
@@ -55,7 +55,7 @@ void Push(LinkStack &S,BiTree e)
 
 void Pop(LinkStack &S,BiTree e)
 {
-	if(S!=NULL)//Ô­ÊéÉÏÐ´µÄÊÇif(S==NULL)return ERROR;
+	if(S!=NULL)//Ô­ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½if(S==NULL)return ERROR;
 	{	
 		*e=S->data;
 		StackNode *p=S;
@@ -66,7 +66,7 @@ void Pop(LinkStack &S,BiTree e)
   
 void InOrderTraverse1(BiTree T)
 { 
-  // ÖÐÐò±éÀú¶þ²æÊ÷TµÄ·ÇµÝ¹éËã·¨
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½Ä·ÇµÝ¹ï¿½ï¿½ã·¨
 	LinkStack S; BiTree p;
 	BiTree q=new BiTNode;
 	InitStack(S); p=T;
@@ -74,12 +74,12 @@ void InOrderTraverse1(BiTree T)
 	{
 		if(p) 
 		{            				
-			Push(S,p);				//p·Ç¿Õ¸ùÖ¸Õë½øÕ»£¬±éÀú×ó×ÓÊ÷
+			Push(S,p);				//pï¿½Ç¿Õ¸ï¿½Ö¸ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			p=p->lchild;
 		}       
 		else
 		{             				
-			Pop(S,q);               //pÎª¿Õ¸ùÖ¸ÕëÍËÕ»£¬·ÃÎÊ¸ù½áµã£¬±éÀúÓÒ×ÓÊ÷
+			Pop(S,q);               //pÎªï¿½Õ¸ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			cout<<q->data;
 			p=q->rchild; 
 		}
@@ -89,9 +89,9 @@ void InOrderTraverse1(BiTree T)
 void main()
 {
 	BiTree tree;
-	cout<<"ÇëÊäÈë½¨Á¢¶þ²æÁ´±íµÄÐòÁÐ£º\n";
+	cout<<"ï¿½ï¿½ï¿½ï¿½ï¿½ë½¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½\n";
 	CreateBiTree(tree);
-	cout<<"ÖÐÐò±éÀúµÄ½á¹ûÎª£º\n";
+	cout<<"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½Îªï¿½ï¿½\n";
 	InOrderTraverse1(tree);
 	cout<<endl;
 }
