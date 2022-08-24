@@ -1,39 +1,39 @@
-//�㷨5.2 ��������ķǵݹ��㷨
+//算法5.2 中序遍历的非递归算法
 #include<iostream>
 using namespace std;
 
-//�������Ķ��������洢��ʾ
+//二叉树的二叉链表存储表示
 typedef struct BiNode
 {				
-	char data;						//���������
-	struct BiNode *lchild,*rchild;	//���Һ���ָ��
+	char data;						//结点数据域
+	struct BiNode *lchild,*rchild;	//左右孩子指针
 }BiTNode,*BiTree;
 
-//��ջ�Ķ���
+//链栈的定义
 typedef struct StackNode
 {
 	BiTNode data;
 	struct StackNode *next;
 }StackNode,*LinkStack;
 
-//���㷨5.3 ���������˳������������
+//用算法5.3 先序遍历的顺序建立二叉链表
 void CreateBiTree(BiTree &T)
 {	
-	//�������������������н���ֵ��һ���ַ�������������������ʾ�Ķ�����T
+	//按先序次序输入二叉树中结点的值（一个字符），创建二叉链表表示的二叉树T
 	char ch;
 	cin >> ch;
-	if(ch=='#')  T=NULL;			//�ݹ������������
+	if(ch=='#')  T=NULL;			//递归结束，建空树
 	else{							
 		T=new BiTNode;
-		T->data=ch;					//���ɸ����
-		CreateBiTree(T->lchild);	//�ݹ鴴��������
-		CreateBiTree(T->rchild);	//�ݹ鴴��������
+		T->data=ch;					//生成根结点
+		CreateBiTree(T->lchild);	//递归创建左子树
+		CreateBiTree(T->rchild);	//递归创建右子树
 	}								//else
 }									//CreateBiTree
 
 void InitStack(LinkStack &S)
 {
-	//����һ����ջS��ջ��ָ���ÿ�
+	//构造一个空栈S，栈顶指针置空
 	S=NULL;
 }
 
@@ -46,7 +46,7 @@ bool StackEmpty(LinkStack S)
 
 void Push(LinkStack &S,BiTree e)
 {
-	//��ջ������Ԫ��*e
+	//在栈顶插入元素*e
 	StackNode *p=new StackNode;
 	p->data=*e;
 	p->next=S;
@@ -55,7 +55,7 @@ void Push(LinkStack &S,BiTree e)
 
 void Pop(LinkStack &S,BiTree e)
 {
-	if(S!=NULL)//ԭ����д����if(S==NULL)return ERROR;
+	if(S!=NULL)//原书上写的是if(S==NULL)return ERROR;
 	{	
 		*e=S->data;
 		StackNode *p=S;
@@ -66,7 +66,7 @@ void Pop(LinkStack &S,BiTree e)
   
 void InOrderTraverse1(BiTree T)
 { 
-  // �������������T�ķǵݹ��㷨
+  // 中序遍历二叉树T的非递归算法
 	LinkStack S; BiTree p;
 	BiTree q=new BiTNode;
 	InitStack(S); p=T;
@@ -74,12 +74,12 @@ void InOrderTraverse1(BiTree T)
 	{
 		if(p) 
 		{            				
-			Push(S,p);				//p�ǿո�ָ���ջ������������
+			Push(S,p);				//p非空根指针进栈，遍历左子树
 			p=p->lchild;
 		}       
 		else
 		{             				
-			Pop(S,q);               //pΪ�ո�ָ����ջ�����ʸ���㣬����������
+			Pop(S,q);               //p为空根指针退栈，访问根结点，遍历右子树
 			cout<<q->data;
 			p=q->rchild; 
 		}
@@ -89,9 +89,9 @@ void InOrderTraverse1(BiTree T)
 void main()
 {
 	BiTree tree;
-	cout<<"�����뽨���������������У�\n";
+	cout<<"请输入建立二叉链表的序列：\n";
 	CreateBiTree(tree);
-	cout<<"��������Ľ��Ϊ��\n";
+	cout<<"中序遍历的结果为：\n";
 	InOrderTraverse1(tree);
 	cout<<endl;
 }

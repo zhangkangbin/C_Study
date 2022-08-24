@@ -1,32 +1,40 @@
-//Ëã·¨5.3 ÏÈĞò±éÀúµÄµÄË³Ğò½¨Á¢¶ş²æÁ´±í
+/*
+ * @Author: zhangkangbin 784908058@qq.com
+ * @Date: 2022-08-23 22:37:58
+ * @LastEditors: zhangkangbin 784908058@qq.com
+ * @LastEditTime: 2022-08-24 19:17:50
+ * @FilePath: \C_Study\2æ•°æ®ç»“æ„ç¬¬2ç‰ˆ-ä¹¦ä¸­ç®—æ³•ï¼ˆCè¯­è¨€ç‰ˆï¼‰\ç¬¬5ç« \5.3.cpp
+ * @Description: è¿™æ˜¯é»˜è®¤è®¾ç½®,è¯·è®¾ç½®`customMade`, æ‰“å¼€koroFileHeaderæŸ¥çœ‹é…ç½® è¿›è¡Œè®¾ç½®: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+//ç®—æ³•5.3 å…ˆåºéå†çš„çš„é¡ºåºå»ºç«‹äºŒå‰é“¾è¡¨
 #include<iostream>
 using namespace std;
 
-//¶ş²æÊ÷µÄ¶ş²æÁ´±í´æ´¢±íÊ¾
+//äºŒå‰æ ‘çš„äºŒå‰é“¾è¡¨å­˜å‚¨è¡¨ç¤º
 typedef struct BiNode
 {				
-	char data;						//½áµãÊı¾İÓò
-	struct BiNode *lchild,*rchild;	//×óÓÒº¢×ÓÖ¸Õë
+	char data;						//ç»“ç‚¹æ•°æ®åŸŸ
+	struct BiNode *lchild,*rchild;	//å·¦å³å­©å­æŒ‡é’ˆ
 }BiTNode,*BiTree;
 
 void CreateBiTree(BiTree &T)
 {	
-	//°´ÏÈĞò´ÎĞòÊäÈë¶ş²æÊ÷ÖĞ½áµãµÄÖµ£¨Ò»¸ö×Ö·û£©£¬´´½¨¶ş²æÁ´±í±íÊ¾µÄ¶ş²æÊ÷T
+	//æŒ‰å…ˆåºæ¬¡åºè¾“å…¥äºŒå‰æ ‘ä¸­ç»“ç‚¹çš„å€¼ï¼ˆä¸€ä¸ªå­—ç¬¦ï¼‰ï¼Œåˆ›å»ºäºŒå‰é“¾è¡¨è¡¨ç¤ºçš„äºŒå‰æ ‘T
 	char ch;
 	cin >> ch;
-	if(ch=='#')  T=NULL;			//µİ¹é½áÊø£¬½¨¿ÕÊ÷
+	if(ch=='#')  T=NULL;			//é€’å½’ç»“æŸï¼Œå»ºç©ºæ ‘
 	else{							
 		T=new BiTNode;
-		T->data=ch;					//Éú³É¸ù½áµã
-		CreateBiTree(T->lchild);	//µİ¹é´´½¨×ó×ÓÊ÷
-		CreateBiTree(T->rchild);	//µİ¹é´´½¨ÓÒ×ÓÊ÷
+		T->data=ch;					//ç”Ÿæˆæ ¹ç»“ç‚¹
+		CreateBiTree(T->lchild);	//é€’å½’åˆ›å»ºå·¦å­æ ‘
+		CreateBiTree(T->rchild);	//é€’å½’åˆ›å»ºå³å­æ ‘
 	}								//else
 }									//CreateBiTree
 
-//ÓÃËã·¨5.1 ÖĞĞò±éÀúµÄµİ¹éËã·¨							
+//ç”¨ç®—æ³•5.1 ä¸­åºéå†çš„é€’å½’ç®—æ³•							
 void InOrderTraverse(BiTree T)
 {  
-	//ÖĞĞò±éÀú¶ş²æÊ÷TµÄµİ¹éËã·¨
+	//ä¸­åºéå†äºŒå‰æ ‘Tçš„é€’å½’ç®—æ³•
 	if(T){
 		InOrderTraverse(T->lchild);
 		cout << T->data;
@@ -36,9 +44,9 @@ void InOrderTraverse(BiTree T)
 void main()
 {
 	BiTree tree;
-	cout<<"ÇëÊäÈë½¨Á¢¶ş²æÁ´±íµÄĞòÁĞ£º\n";
+	cout<<"è¯·è¾“å…¥å»ºç«‹äºŒå‰é“¾è¡¨çš„åºåˆ—ï¼š\n";
 	CreateBiTree(tree);
-	cout<<"Ëù½¨Á¢µÄ¶ş²æÁ´±íÖĞĞòĞòÁĞ£º\n";
+	cout<<"æ‰€å»ºç«‹çš„äºŒå‰é“¾è¡¨ä¸­åºåºåˆ—ï¼š\n";
 	InOrderTraverse(tree);
 	cout<<endl;
 }
