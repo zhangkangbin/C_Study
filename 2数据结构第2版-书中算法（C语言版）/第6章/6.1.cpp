@@ -1,24 +1,25 @@
-//Ëã·¨6.1¡¡²ÉÓÃÁÚ½Ó¾ØÕó±íÊ¾·¨´´½¨ÎŞÏòÍø
+
+//ç®—æ³•6.1ã€€é‡‡ç”¨é‚»æ¥çŸ©é˜µè¡¨ç¤ºæ³•åˆ›å»ºæ— å‘ç½‘
 
 #include <iostream>
 using namespace std;
 
-#define MaxInt 32767                    	//±íÊ¾¼«´óÖµ£¬¼´¡Ş
-#define MVNum 100                       	//×î´ó¶¥µãÊı
+#define MaxInt 32767                    	//è¡¨ç¤ºæå¤§å€¼ï¼Œå³âˆ
+#define MVNum 100                       	//æœ€å¤§é¡¶ç‚¹æ•°
 #define OK 1	
  						
-typedef char VerTexType;              		//¼ÙÉè¶¥µãµÄÊı¾İÀàĞÍÎª×Ö·ûĞÍ 
-typedef int ArcType;                  		//¼ÙÉè±ßµÄÈ¨ÖµÀàĞÍÎªÕûĞÍ 
+typedef char VerTexType;              		//å‡è®¾é¡¶ç‚¹çš„æ•°æ®ç±»å‹ä¸ºå­—ç¬¦å‹ 
+typedef int ArcType;                  		//å‡è®¾è¾¹çš„æƒå€¼ç±»å‹ä¸ºæ•´å‹ 
 
-//- - - - -Í¼µÄÁÚ½Ó¾ØÕó´æ´¢±íÊ¾- - - - -
+//- - - - -å›¾çš„é‚»æ¥çŸ©é˜µå­˜å‚¨è¡¨ç¤º- - - - -
 typedef struct{ 
-	VerTexType vexs[MVNum];            		//¶¥µã±í 
-	ArcType arcs[MVNum][MVNum];      		//ÁÚ½Ó¾ØÕó 
-	int vexnum,arcnum;                		//Í¼µÄµ±Ç°µãÊıºÍ±ßÊı 
+	VerTexType vexs[MVNum];            		//é¡¶ç‚¹è¡¨ 
+	ArcType arcs[MVNum][MVNum];      		//é‚»æ¥çŸ©é˜µ 
+	int vexnum,arcnum;                		//å›¾çš„å½“å‰ç‚¹æ•°å’Œè¾¹æ•° 
 }AMGraph;
 
 int LocateVex(AMGraph G , VerTexType v){
-	//È·¶¨µãvÔÚGÖĞµÄÎ»ÖÃ
+	//ç¡®å®šç‚¹våœ¨Gä¸­çš„ä½ç½®
 	for(int i = 0; i < G.vexnum; ++i)
 		if(G.vexs[i] == v)
 			return i;
@@ -26,42 +27,42 @@ int LocateVex(AMGraph G , VerTexType v){
 }//LocateVex
 
 int CreateUDN(AMGraph &G){ 
-    //²ÉÓÃÁÚ½Ó¾ØÕó±íÊ¾·¨£¬´´½¨ÎŞÏòÍøG 
+    //é‡‡ç”¨é‚»æ¥çŸ©é˜µè¡¨ç¤ºæ³•ï¼Œåˆ›å»ºæ— å‘ç½‘G 
 	int i , j , k;
-	cout <<"ÇëÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı£¬ÒÔ¿Õ¸ñ¸ô¿ª£º";
-    cin >> G.vexnum >> G.arcnum;							//ÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı
+	cout <<"è¯·è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°ï¼Œä»¥ç©ºæ ¼éš”å¼€ï¼š";
+    cin >> G.vexnum >> G.arcnum;							//è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°
 	cout << endl;
 
-	cout << "ÊäÈëµãµÄÃû³Æ£¬Èça" << endl;
+	cout << "è¾“å…¥ç‚¹çš„åç§°ï¼Œå¦‚a" << endl;
 
     for(i = 0; i < G.vexnum; ++i){   
-		cout << "ÇëÊäÈëµÚ" << (i+1) << "¸öµãµÄÃû³Æ:";
-		cin >> G.vexs[i];                        			//ÒÀ´ÎÊäÈëµãµÄĞÅÏ¢ 
+		cout << "è¯·è¾“å…¥ç¬¬" << (i+1) << "ä¸ªç‚¹çš„åç§°:";
+		cin >> G.vexs[i];                        			//ä¾æ¬¡è¾“å…¥ç‚¹çš„ä¿¡æ¯ 
 	}
 	cout << endl;
-    for(i = 0; i < G.vexnum; ++i)                			//³õÊ¼»¯ÁÚ½Ó¾ØÕó£¬±ßµÄÈ¨Öµ¾ùÖÃÎª¼«´óÖµMaxInt 
+    for(i = 0; i < G.vexnum; ++i)                			//åˆå§‹åŒ–é‚»æ¥çŸ©é˜µï¼Œè¾¹çš„æƒå€¼å‡ç½®ä¸ºæå¤§å€¼MaxInt 
 		for(j = 0; j < G.vexnum; ++j)   
 			G.arcs[i][j] = MaxInt;  
-	cout << "ÊäÈë±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ£¬Èç a b 5" << endl;
-	for(k = 0; k < G.arcnum;++k){							//¹¹ÔìÁÚ½Ó¾ØÕó 
+	cout << "è¾“å…¥è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼ï¼Œå¦‚ a b 5" << endl;
+	for(k = 0; k < G.arcnum;++k){							//æ„é€ é‚»æ¥çŸ©é˜µ 
 		VerTexType v1 , v2;
 		ArcType w;
-		cout << "ÇëÊäÈëµÚ" << (k + 1) << "Ìõ±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ:";
-		cin >> v1 >> v2 >> w;								//ÊäÈëÒ»Ìõ±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ
-		i = LocateVex(G, v1);  j = LocateVex(G, v2);		//È·¶¨v1ºÍv2ÔÚGÖĞµÄÎ»ÖÃ£¬¼´¶¥µãÊı×éµÄÏÂ±ê 
-		G.arcs[i][j] = w;									//±ß<v1, v2>µÄÈ¨ÖµÖÃÎªw 
-		G.arcs[j][i] = G.arcs[i][j];						//ÖÃ<v1, v2>µÄ¶Ô³Æ±ß<v2, v1>µÄÈ¨ÖµÎªw 
+		cout << "è¯·è¾“å…¥ç¬¬" << (k + 1) << "æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼:";
+		cin >> v1 >> v2 >> w;								//è¾“å…¥ä¸€æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼
+		i = LocateVex(G, v1);  j = LocateVex(G, v2);		//ç¡®å®šv1å’Œv2åœ¨Gä¸­çš„ä½ç½®ï¼Œå³é¡¶ç‚¹æ•°ç»„çš„ä¸‹æ ‡ 
+		G.arcs[i][j] = w;									//è¾¹<v1, v2>çš„æƒå€¼ç½®ä¸ºw 
+		G.arcs[j][i] = G.arcs[i][j];						//ç½®<v1, v2>çš„å¯¹ç§°è¾¹<v2, v1>çš„æƒå€¼ä¸ºw 
 	}//for	
 	return OK; 
 }//CreateUDN 
 
 int main(){
-	cout << "************Ëã·¨6.1¡¡²ÉÓÃÁÚ½Ó¾ØÕó±íÊ¾·¨´´½¨ÎŞÏòÍø**************" << endl << endl;
+	cout << "************ç®—æ³•6.1ã€€é‡‡ç”¨é‚»æ¥çŸ©é˜µè¡¨ç¤ºæ³•åˆ›å»ºæ— å‘ç½‘**************" << endl << endl;
 	AMGraph G;     int i , j;
 	CreateUDN(G);
 	
 	cout <<endl;
-	cout << "*****ÁÚ½Ó¾ØÕó±íÊ¾·¨´´½¨µÄÎŞÏòÍø*****" << endl;
+	cout << "*****é‚»æ¥çŸ©é˜µè¡¨ç¤ºæ³•åˆ›å»ºçš„æ— å‘ç½‘*****" << endl;
 	
 	for(i = 0 ; i < G.vexnum ; ++i){
 		for(j = 0; j < G.vexnum; ++j){
@@ -69,13 +70,13 @@ int main(){
 				if(G.arcs[i][j] != MaxInt)
 					cout << G.arcs[i][j] << "\t";
 				else
-					cout << "¡Ş" << "\t";
+					cout << "âˆ" << "\t";
 			}
 			else{
 				if(G.arcs[i][j] != MaxInt)
 					cout << G.arcs[i][j] <<endl;
 				else
-					cout << "¡Ş" <<endl;
+					cout << "âˆ" <<endl;
 			}
 		}
 	}//for
