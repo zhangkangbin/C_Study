@@ -1,29 +1,29 @@
-//Ëã·¨6.8¡¡ÆÕÀïÄ·Ëã·¨
+//ç®—æ³•6.8ã€€æ™®é‡Œå§†ç®—æ³•
 #include <iostream>
 using namespace std;
 
 typedef char VerTexType;
 typedef int ArcType;
 #define MVNum 100
-#define MaxInt 32767                    	//±íÊ¾¼«´óÖµ£¬¼´¡Ş
+#define MaxInt 32767                    	//è¡¨ç¤ºæå¤§å€¼ï¼Œå³âˆ
 
-//¸¨ÖúÊı×éµÄ¶¨Òå£¬ÓÃÀ´¼ÇÂ¼´Ó¶¥µã¼¯Uµ½V-UµÄÈ¨Öµ×îĞ¡µÄ±ß
+//è¾…åŠ©æ•°ç»„çš„å®šä¹‰ï¼Œç”¨æ¥è®°å½•ä»é¡¶ç‚¹é›†Uåˆ°V-Uçš„æƒå€¼æœ€å°çš„è¾¹
 struct{
-	VerTexType adjvex;						//×îĞ¡±ßÔÚUÖĞµÄÄÇ¸ö¶¥µã
-	ArcType lowcost;						//×îĞ¡±ßÉÏµÄÈ¨Öµ
+	VerTexType adjvex;						//æœ€å°è¾¹åœ¨Uä¸­çš„é‚£ä¸ªé¡¶ç‚¹
+	ArcType lowcost;						//æœ€å°è¾¹ä¸Šçš„æƒå€¼
 }closedge[MVNum];
 
-//- - - - -Í¼µÄÁÚ½Ó±í´æ´¢±íÊ¾- - - - - 						
-typedef char VerTexType;              		//¼ÙÉè¶¥µãµÄÊı¾İÀàĞÍÎª×Ö·ûĞÍ 
-typedef int ArcType;                  		//¼ÙÉè±ßµÄÈ¨ÖµÀàĞÍÎªÕûĞÍ 
+//- - - - -å›¾çš„é‚»æ¥è¡¨å­˜å‚¨è¡¨ç¤º- - - - - 						
+typedef char VerTexType;              		//å‡è®¾é¡¶ç‚¹çš„æ•°æ®ç±»å‹ä¸ºå­—ç¬¦å‹ 
+typedef int ArcType;                  		//å‡è®¾è¾¹çš„æƒå€¼ç±»å‹ä¸ºæ•´å‹ 
 typedef struct{ 
-	VerTexType vexs[MVNum];            		//¶¥µã±í 
-	ArcType arcs[MVNum][MVNum];      		//ÁÚ½Ó¾ØÕó 
-	int vexnum,arcnum;                		//Í¼µÄµ±Ç°µãÊıºÍ±ßÊı 
+	VerTexType vexs[MVNum];            		//é¡¶ç‚¹è¡¨ 
+	ArcType arcs[MVNum][MVNum];      		//é‚»æ¥çŸ©é˜µ 
+	int vexnum,arcnum;                		//å›¾çš„å½“å‰ç‚¹æ•°å’Œè¾¹æ•° 
 }AMGraph;
 
 int LocateVex(AMGraph G , VerTexType v){
-	//È·¶¨µãvÔÚGÖĞµÄÎ»ÖÃ
+	//ç¡®å®šç‚¹våœ¨Gä¸­çš„ä½ç½®
 	for(int i = 0; i < G.vexnum; ++i)
 		if(G.vexs[i] == v)
 			return i;
@@ -31,36 +31,36 @@ int LocateVex(AMGraph G , VerTexType v){
 }//LocateVex
 
 void CreateUDN(AMGraph &G){ 
-    //²ÉÓÃÁÚ½Ó¾ØÕó±íÊ¾·¨£¬´´½¨ÎŞÏòÍøG 
+    //é‡‡ç”¨é‚»æ¥çŸ©é˜µè¡¨ç¤ºæ³•ï¼Œåˆ›å»ºæ— å‘ç½‘G 
 	int i , j , k;
-	cout <<"ÇëÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı£¬ÒÔ¿Õ¸ñ¸ô¿ª:";
-    cin >> G.vexnum >> G.arcnum;							//ÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı
+	cout <<"è¯·è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°ï¼Œä»¥ç©ºæ ¼éš”å¼€:";
+    cin >> G.vexnum >> G.arcnum;							//è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°
 	cout << endl;
 
-	cout << "ÊäÈëµãµÄÃû³Æ£¬Èça" << endl;
+	cout << "è¾“å…¥ç‚¹çš„åç§°ï¼Œå¦‚a" << endl;
 
     for(i = 0; i < G.vexnum; ++i){   
-		cout << "ÇëÊäÈëµÚ" << (i+1) << "¸öµãµÄÃû³Æ:";
-		cin >> G.vexs[i];                        			//ÒÀ´ÎÊäÈëµãµÄĞÅÏ¢ 
+		cout << "è¯·è¾“å…¥ç¬¬" << (i+1) << "ä¸ªç‚¹çš„åç§°:";
+		cin >> G.vexs[i];                        			//ä¾æ¬¡è¾“å…¥ç‚¹çš„ä¿¡æ¯ 
 	}
 	cout << endl;
-    for(i = 0; i < G.vexnum; ++i)                			//³õÊ¼»¯ÁÚ½Ó¾ØÕó£¬±ßµÄÈ¨Öµ¾ùÖÃÎª¼«´óÖµMaxInt 
+    for(i = 0; i < G.vexnum; ++i)                			//åˆå§‹åŒ–é‚»æ¥çŸ©é˜µï¼Œè¾¹çš„æƒå€¼å‡ç½®ä¸ºæå¤§å€¼MaxInt 
 		for(j = 0; j < G.vexnum; ++j)   
 			G.arcs[i][j] = MaxInt;
-	cout << "ÊäÈë±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ£¬Èça b 5" << endl;
-	for(k = 0; k < G.arcnum;++k){							//¹¹ÔìÁÚ½Ó¾ØÕó 
+	cout << "è¾“å…¥è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼ï¼Œå¦‚a b 5" << endl;
+	for(k = 0; k < G.arcnum;++k){							//æ„é€ é‚»æ¥çŸ©é˜µ 
 		VerTexType v1 , v2;
 		ArcType w;
-		cout << "ÇëÊäÈëµÚ" << (k + 1) << "Ìõ±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ:";
-		cin >> v1 >> v2 >> w;								//ÊäÈëÒ»Ìõ±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ
-		i = LocateVex(G, v1);  j = LocateVex(G, v2);		//È·¶¨v1ºÍv2ÔÚGÖĞµÄÎ»ÖÃ£¬¼´¶¥µãÊı×éµÄÏÂ±ê 
-		G.arcs[i][j] = w;									//±ß<v1, v2>µÄÈ¨ÖµÖÃÎªw 
-		G.arcs[j][i] = G.arcs[i][j];						//ÖÃ<v1, v2>µÄ¶Ô³Æ±ß<v2, v1>µÄÈ¨ÖµÎªw 
+		cout << "è¯·è¾“å…¥ç¬¬" << (k + 1) << "æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼:";
+		cin >> v1 >> v2 >> w;								//è¾“å…¥ä¸€æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼
+		i = LocateVex(G, v1);  j = LocateVex(G, v2);		//ç¡®å®šv1å’Œv2åœ¨Gä¸­çš„ä½ç½®ï¼Œå³é¡¶ç‚¹æ•°ç»„çš„ä¸‹æ ‡ 
+		G.arcs[i][j] = w;									//è¾¹<v1, v2>çš„æƒå€¼ç½®ä¸ºw 
+		G.arcs[j][i] = G.arcs[i][j];						//ç½®<v1, v2>çš„å¯¹ç§°è¾¹<v2, v1>çš„æƒå€¼ä¸ºw 
 	}//for
 }//CreateUDN 
 
 int Min(AMGraph G){
-	//·µ»ØÈ¨Öµ×îĞ¡µÄµã
+	//è¿”å›æƒå€¼æœ€å°çš„ç‚¹
 	int i;
 	int index = -1;
 	int min = MaxInt;
@@ -74,26 +74,26 @@ int Min(AMGraph G){
 }//Min
 
 void MiniSpanTree_Prim(AMGraph G, VerTexType u){ 
-    //ÎŞÏòÍøGÒÔÁÚ½Ó¾ØÕóĞÎÊ½´æ´¢£¬´Ó¶¥µãu³ö·¢¹¹ÔìGµÄ×îĞ¡Éú³ÉÊ÷T£¬Êä³öTµÄ¸÷Ìõ±ß  
+    //æ— å‘ç½‘Gä»¥é‚»æ¥çŸ©é˜µå½¢å¼å­˜å‚¨ï¼Œä»é¡¶ç‚¹uå‡ºå‘æ„é€ Gçš„æœ€å°ç”Ÿæˆæ ‘Tï¼Œè¾“å‡ºTçš„å„æ¡è¾¹  
 	int k , j , i;
 	VerTexType u0 , v0;
-    k =LocateVex(G, u);           										//kÎª¶¥µãuµÄÏÂ±ê 
-    for(j = 0; j < G.vexnum; ++j){     									//¶ÔV-UµÄÃ¿Ò»¸ö¶¥µãvi£¬³õÊ¼»¯closedge[i] 
+    k =LocateVex(G, u);           										//kä¸ºé¡¶ç‚¹uçš„ä¸‹æ ‡ 
+    for(j = 0; j < G.vexnum; ++j){     									//å¯¹V-Uçš„æ¯ä¸€ä¸ªé¡¶ç‚¹viï¼Œåˆå§‹åŒ–closedge[i] 
 		if(j != k){  
 			closedge[j].adjvex = u;
 			closedge[j].lowcost = G.arcs[k][j];							//{adjvex, lowcost}
 		}//if
 	}//for
-	closedge[k].lowcost = 0;        									//³õÊ¼£¬U = {u}
-	for(i = 1; i < G.vexnum; ++i){     									//Ñ¡ÔñÆäÓàn-1¸ö¶¥µã£¬Éú³Én-1Ìõ±ß(n= G.vexnum) 
+	closedge[k].lowcost = 0;        									//åˆå§‹ï¼ŒU = {u}
+	for(i = 1; i < G.vexnum; ++i){     									//é€‰æ‹©å…¶ä½™n-1ä¸ªé¡¶ç‚¹ï¼Œç”Ÿæˆn-1æ¡è¾¹(n= G.vexnum) 
 		k = Min(G);  
-		//Çó³öTµÄÏÂÒ»¸ö½áµã£ºµÚk¸ö¶¥µã£¬closedge[k]ÖĞ´æÓĞµ±Ç°×îĞ¡±ß 
-		u0 = closedge[k].adjvex;     									//u0Îª×îĞ¡±ßµÄÒ»¸ö¶¥µã£¬u0¡ÊU 
-		v0 = G.vexs[k];            										//v0Îª×îĞ¡±ßµÄÁíÒ»¸ö¶¥µã£¬v0¡ÊV-U 
-		cout << "±ß  " <<u0 << "--->" << v0 << endl;           			//Êä³öµ±Ç°µÄ×îĞ¡±ß(u0, v0) 
-		closedge[k].lowcost = 0;   		//µÚk¸ö¶¥µã²¢ÈëU¼¯ 
+		//æ±‚å‡ºTçš„ä¸‹ä¸€ä¸ªç»“ç‚¹ï¼šç¬¬kä¸ªé¡¶ç‚¹ï¼Œclosedge[k]ä¸­å­˜æœ‰å½“å‰æœ€å°è¾¹ 
+		u0 = closedge[k].adjvex;     									//u0ä¸ºæœ€å°è¾¹çš„ä¸€ä¸ªé¡¶ç‚¹ï¼Œu0âˆˆU 
+		v0 = G.vexs[k];            										//v0ä¸ºæœ€å°è¾¹çš„å¦ä¸€ä¸ªé¡¶ç‚¹ï¼Œv0âˆˆV-U 
+		cout << "è¾¹  " <<u0 << "--->" << v0 << endl;           			//è¾“å‡ºå½“å‰çš„æœ€å°è¾¹(u0, v0) 
+		closedge[k].lowcost = 0;   		//ç¬¬kä¸ªé¡¶ç‚¹å¹¶å…¥Ué›† 
 		for(j = 0; j < G.vexnum; ++j) 
-			if(G.arcs[k][j] < closedge[j].lowcost){						//ĞÂ¶¥µã²¢ÈëUºóÖØĞÂÑ¡Ôñ×îĞ¡±ß 
+			if(G.arcs[k][j] < closedge[j].lowcost){						//æ–°é¡¶ç‚¹å¹¶å…¥Uåé‡æ–°é€‰æ‹©æœ€å°è¾¹ 
 				closedge[j].adjvex = G.vexs[k];
 				closedge[j].lowcost = G.arcs[k][j];
 			}//if 
@@ -101,14 +101,14 @@ void MiniSpanTree_Prim(AMGraph G, VerTexType u){
 }//MiniSpanTree_Prim 
 
 int main(){
-	cout << "************Ëã·¨6.8¡¡ÆÕÀïÄ·Ëã·¨**************" << endl << endl;
+	cout << "************ç®—æ³•6.8ã€€æ™®é‡Œå§†ç®—æ³•**************" << endl << endl;
 	AMGraph G;
 	CreateUDN(G);
 	cout << endl;
-	cout << "ÎŞÏòÍ¼G´´½¨Íê³É£¡" << endl;
+	cout << "æ— å‘å›¾Gåˆ›å»ºå®Œæˆï¼" << endl;
 	cout <<endl;
 
-	cout << "******ÀûÓÃÆÕÀïÄ·Ëã·¨¹¹Ôì×îĞ¡Éú³ÉÊ÷½á¹û£º******" << endl;
+	cout << "******åˆ©ç”¨æ™®é‡Œå§†ç®—æ³•æ„é€ æœ€å°ç”Ÿæˆæ ‘ç»“æœï¼š******" << endl;
 	MiniSpanTree_Prim(G , 'a');
 	cout <<endl;
 	return 0;

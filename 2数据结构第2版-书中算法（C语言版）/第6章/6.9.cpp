@@ -1,31 +1,31 @@
-//Ëã·¨6.9¡¡¿ËÂ³Ë¹¿¨¶ûËã·¨
+//ç®—æ³•6.9ã€€å…‹é²æ–¯å¡å°”ç®—æ³•
 
 #include <iostream>
 using namespace std;
 
-typedef char VerTexType;              		//¼ÙÉè¶¥µãµÄÊı¾İÀàĞÍÎª×Ö·ûĞÍ 
+typedef char VerTexType;              		//å‡è®¾é¡¶ç‚¹çš„æ•°æ®ç±»å‹ä¸ºå­—ç¬¦å‹ 
 typedef int ArcType;   
-#define MVNum 100                       	//×î´ó¶¥µãÊı
-#define MaxInt 32767                    	//±íÊ¾¼«´óÖµ£¬¼´¡Ş
+#define MVNum 100                       	//æœ€å¤§é¡¶ç‚¹æ•°
+#define MaxInt 32767                    	//è¡¨ç¤ºæå¤§å€¼ï¼Œå³âˆ
 
-//----------------Í¼µÄÁÚ½Ó¾ØÕó---------------------
+//----------------å›¾çš„é‚»æ¥çŸ©é˜µ---------------------
 typedef struct{ 
-	VerTexType vexs[MVNum];            		//¶¥µã±í 
-	ArcType arcs[MVNum][MVNum];      		//ÁÚ½Ó¾ØÕó 
-	int vexnum,arcnum;                		//Í¼µÄµ±Ç°µãÊıºÍ±ßÊı 
+	VerTexType vexs[MVNum];            		//é¡¶ç‚¹è¡¨ 
+	ArcType arcs[MVNum][MVNum];      		//é‚»æ¥çŸ©é˜µ 
+	int vexnum,arcnum;                		//å›¾çš„å½“å‰ç‚¹æ•°å’Œè¾¹æ•° 
 }AMGraph;
 
-//¸¨ÖúÊı×éEdgesµÄ¶¨Òå
+//è¾…åŠ©æ•°ç»„Edgesçš„å®šä¹‰
 struct{
-	VerTexType Head;						//±ßµÄÊ¼µã
-	VerTexType Tail;						//±ßµÄÖÕµã
-	ArcType lowcost;						//±ßÉÏµÄÈ¨Öµ
+	VerTexType Head;						//è¾¹çš„å§‹ç‚¹
+	VerTexType Tail;						//è¾¹çš„ç»ˆç‚¹
+	ArcType lowcost;						//è¾¹ä¸Šçš„æƒå€¼
 }Edge[(MVNum * (MVNum - 1)) / 2];
 
-int Vexset[MVNum];							//¸¨ÖúÊı×éVexsetµÄ¶¨Òå
+int Vexset[MVNum];							//è¾…åŠ©æ•°ç»„Vexsetçš„å®šä¹‰
 
 int LocateVex(AMGraph G , VerTexType v){
-	//È·¶¨µãvÔÚGÖĞµÄÎ»ÖÃ
+	//ç¡®å®šç‚¹våœ¨Gä¸­çš„ä½ç½®
 	for(int i = 0; i < G.vexnum; ++i)
 		if(G.vexs[i] == v)
 			return i;
@@ -33,38 +33,38 @@ int LocateVex(AMGraph G , VerTexType v){
 }//LocateVex
 
 void CreateUDN(AMGraph &G){ 
-    //²ÉÓÃÁÚ½Ó¾ØÕó±íÊ¾·¨£¬´´½¨ÎŞÏòÍøG 
+    //é‡‡ç”¨é‚»æ¥çŸ©é˜µè¡¨ç¤ºæ³•ï¼Œåˆ›å»ºæ— å‘ç½‘G 
 	int i , j , k;
-	cout <<"ÇëÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı£¬ÒÔ¿Õ¸ñ¸ô¿ª:";
-    cin >> G.vexnum >> G.arcnum;						//ÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı
+	cout <<"è¯·è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°ï¼Œä»¥ç©ºæ ¼éš”å¼€:";
+    cin >> G.vexnum >> G.arcnum;						//è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°
 	cout << endl;
 	
-	cout << "ÊäÈëµãµÄÃû³Æ£¬Èça" << endl;
+	cout << "è¾“å…¥ç‚¹çš„åç§°ï¼Œå¦‚a" << endl;
 
     for(i = 0; i < G.vexnum; ++i){   
-		cout << "ÇëÊäÈëµÚ" << (i+1) << "¸öµãµÄÃû³Æ:";
-		cin >> G.vexs[i];                        		//ÒÀ´ÎÊäÈëµãµÄĞÅÏ¢ 
+		cout << "è¯·è¾“å…¥ç¬¬" << (i+1) << "ä¸ªç‚¹çš„åç§°:";
+		cin >> G.vexs[i];                        		//ä¾æ¬¡è¾“å…¥ç‚¹çš„ä¿¡æ¯ 
 	}
 	cout << endl;
-	for(i = 0; i < G.vexnum; ++i)                		//³õÊ¼»¯ÁÚ½Ó¾ØÕó£¬±ßµÄÈ¨Öµ¾ùÖÃÎª¼«´óÖµMaxInt 
+	for(i = 0; i < G.vexnum; ++i)                		//åˆå§‹åŒ–é‚»æ¥çŸ©é˜µï¼Œè¾¹çš„æƒå€¼å‡ç½®ä¸ºæå¤§å€¼MaxInt 
 		for(j = 0; j < G.vexnum; ++j) 
 			G.arcs[i][j] = MaxInt; 
-	cout << "ÊäÈë±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ£¬Èça b 6" << endl;
-	for(k = 0; k < G.arcnum;++k){						//¹¹ÔìÁÚ½Ó¾ØÕó 
+	cout << "è¾“å…¥è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼ï¼Œå¦‚a b 6" << endl;
+	for(k = 0; k < G.arcnum;++k){						//æ„é€ é‚»æ¥çŸ©é˜µ 
 		VerTexType v1 , v2;
 		ArcType w;
-		cout << "ÇëÊäÈëµÚ" << (k + 1) << "Ìõ±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ:";
-		cin >> v1 >> v2 >> w;                           //ÊäÈëÒ»Ìõ±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ
-		i = LocateVex(G, v1);  j = LocateVex(G, v2);	//È·¶¨v1ºÍv2ÔÚGÖĞµÄÎ»ÖÃ£¬¼´¶¥µãÊı×éµÄÏÂ±ê 
-		G.arcs[i][j] = w;								//±ß<v1, v2>µÄÈ¨ÖµÖÃÎªw 
-		G.arcs[j][i] = G.arcs[i][j];					//ÖÃ<v1, v2>µÄ¶Ô³Æ±ß<v2, v1>µÄÈ¨ÖµÎªw 
+		cout << "è¯·è¾“å…¥ç¬¬" << (k + 1) << "æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼:";
+		cin >> v1 >> v2 >> w;                           //è¾“å…¥ä¸€æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼
+		i = LocateVex(G, v1);  j = LocateVex(G, v2);	//ç¡®å®šv1å’Œv2åœ¨Gä¸­çš„ä½ç½®ï¼Œå³é¡¶ç‚¹æ•°ç»„çš„ä¸‹æ ‡ 
+		G.arcs[i][j] = w;								//è¾¹<v1, v2>çš„æƒå€¼ç½®ä¸ºw 
+		G.arcs[j][i] = G.arcs[i][j];					//ç½®<v1, v2>çš„å¯¹ç§°è¾¹<v2, v1>çš„æƒå€¼ä¸ºw 
 		Edge[k].lowcost = w;
 		Edge[k].Head = v1;
 		Edge[k].Tail = v2;
 	}//for
 }//CreateUDN 
 
-//----------Ã°ÅİÅÅĞò-------------------
+//----------å†’æ³¡æ’åº-------------------
 void Sort(AMGraph G){
 	int m = G.arcnum - 2;
 	int flag = 1;
@@ -93,32 +93,32 @@ void Sort(AMGraph G){
 }//Sort
 
 void MiniSpanTree_Kruskal(AMGraph G){ 
-    //ÎŞÏòÍøGÒÔÁÚ½Ó¾ØÕóĞÎÊ½´æ´¢£¬¹¹ÔìGµÄ×îĞ¡Éú³ÉÊ÷T£¬Êä³öTµÄ¸÷Ìõ±ß     
+    //æ— å‘ç½‘Gä»¥é‚»æ¥çŸ©é˜µå½¢å¼å­˜å‚¨ï¼Œæ„é€ Gçš„æœ€å°ç”Ÿæˆæ ‘Tï¼Œè¾“å‡ºTçš„å„æ¡è¾¹     
     int i , j , v1 , v2 , vs1 , vs2;
-	Sort(G);                 							//½«Êı×éEdgeÖĞµÄÔªËØ°´È¨Öµ´ÓĞ¡µ½´óÅÅĞò 
-	for(i = 0; i < G.vexnum; ++i)     					//¸¨ÖúÊı×é£¬±íÊ¾¸÷¶¥µã×Ô³ÉÒ»¸öÁ¬Í¨·ÖÁ¿ 
+	Sort(G);                 							//å°†æ•°ç»„Edgeä¸­çš„å…ƒç´ æŒ‰æƒå€¼ä»å°åˆ°å¤§æ’åº 
+	for(i = 0; i < G.vexnum; ++i)     					//è¾…åŠ©æ•°ç»„ï¼Œè¡¨ç¤ºå„é¡¶ç‚¹è‡ªæˆä¸€ä¸ªè¿é€šåˆ†é‡ 
         Vexset[i] = i;
     for(i = 0; i < G.arcnum; ++i){      
-		//ÒÀ´Î²é¿´ÅÅºÃĞòµÄÊı×éEdgeÖĞµÄ±ßÊÇ·ñÔÚÍ¬Ò»Á¬Í¨·ÖÁ¿ÉÏ     
-		v1 =LocateVex(G, Edge[i].Head);     			//v1Îª±ßµÄÊ¼µãHeadµÄÏÂ±ê 
-		v2 =LocateVex(G, Edge[i].Tail);     			//v2Îª±ßµÄÖÕµãTailµÄÏÂ±ê 
-		vs1 = Vexset[v1];       						//»ñÈ¡±ßEdge[i]µÄÊ¼µãËùÔÚµÄÁ¬Í¨·ÖÁ¿vs1 
-		vs2 = Vexset[v2];       						//»ñÈ¡±ßEdge[i]µÄÖÕµãËùÔÚµÄÁ¬Í¨·ÖÁ¿vs2 
-		if(vs1 != vs2){         						//±ßµÄÁ½¸ö¶¥µã·ÖÊô²»Í¬µÄÁ¬Í¨·ÖÁ¿ 
-			cout << Edge[i].Head << "-->" << Edge[i].Tail << endl;		//Êä³ö´Ë±ß 
-			for(j = 0; j < G.vexnum; ++j)      			//ºÏ²¢vs1ºÍvs2Á½¸ö·ÖÁ¿£¬¼´Á½¸ö¼¯ºÏÍ³Ò»±àºÅ 
-				if(Vexset[j] == vs2) Vexset[j] = vs1;	//¼¯ºÏ±àºÅÎªvs2µÄ¶¼¸ÄÎªvs1 
+		//ä¾æ¬¡æŸ¥çœ‹æ’å¥½åºçš„æ•°ç»„Edgeä¸­çš„è¾¹æ˜¯å¦åœ¨åŒä¸€è¿é€šåˆ†é‡ä¸Š     
+		v1 =LocateVex(G, Edge[i].Head);     			//v1ä¸ºè¾¹çš„å§‹ç‚¹Headçš„ä¸‹æ ‡ 
+		v2 =LocateVex(G, Edge[i].Tail);     			//v2ä¸ºè¾¹çš„ç»ˆç‚¹Tailçš„ä¸‹æ ‡ 
+		vs1 = Vexset[v1];       						//è·å–è¾¹Edge[i]çš„å§‹ç‚¹æ‰€åœ¨çš„è¿é€šåˆ†é‡vs1 
+		vs2 = Vexset[v2];       						//è·å–è¾¹Edge[i]çš„ç»ˆç‚¹æ‰€åœ¨çš„è¿é€šåˆ†é‡vs2 
+		if(vs1 != vs2){         						//è¾¹çš„ä¸¤ä¸ªé¡¶ç‚¹åˆ†å±ä¸åŒçš„è¿é€šåˆ†é‡ 
+			cout << Edge[i].Head << "-->" << Edge[i].Tail << endl;		//è¾“å‡ºæ­¤è¾¹ 
+			for(j = 0; j < G.vexnum; ++j)      			//åˆå¹¶vs1å’Œvs2ä¸¤ä¸ªåˆ†é‡ï¼Œå³ä¸¤ä¸ªé›†åˆç»Ÿä¸€ç¼–å· 
+				if(Vexset[j] == vs2) Vexset[j] = vs1;	//é›†åˆç¼–å·ä¸ºvs2çš„éƒ½æ”¹ä¸ºvs1 
 		}//if 
     }//for 
 }//MiniSpanTree_Kruskal
 
 void main(){
-	cout << "************Ëã·¨6.9¡¡¿ËÂ³Ë¹¿¨¶ûËã·¨**************" << endl << endl;
+	cout << "************ç®—æ³•6.9ã€€å…‹é²æ–¯å¡å°”ç®—æ³•**************" << endl << endl;
 	AMGraph G;
 	CreateUDN(G);
 	
 	cout <<endl;
-	cout << "*****ÎŞÏòÍøG´´½¨Íê³É£¡*****" << endl;
+	cout << "*****æ— å‘ç½‘Gåˆ›å»ºå®Œæˆï¼*****" << endl;
 
 	cout <<endl;
 	MiniSpanTree_Kruskal(G);

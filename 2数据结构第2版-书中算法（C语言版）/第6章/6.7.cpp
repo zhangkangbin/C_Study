@@ -1,38 +1,38 @@
-//Ëã·¨6.7¡¡¹ã¶ÈÓÅÏÈËÑË÷±éÀúÁ¬Í¨Í¼
+//ç®—æ³•6.7ã€€å¹¿åº¦ä¼˜å…ˆæœç´¢éå†è¿é€šå›¾
 
 #include <iostream>
 using namespace std;
 
-#define MVNum 100                       	//×î´ó¶¥µãÊı
-#define MAXQSIZE 100						//×î´ó¶ÓÁĞ³¤¶È
+#define MVNum 100                       	//æœ€å¤§é¡¶ç‚¹æ•°
+#define MAXQSIZE 100						//æœ€å¤§é˜Ÿåˆ—é•¿åº¦
 						
-typedef char VerTexType;              		//¼ÙÉè¶¥µãµÄÊı¾İÀàĞÍÎª×Ö·ûĞÍ
-typedef int ArcType;                  		//¼ÙÉè±ßµÄÈ¨ÖµÀàĞÍÎªÕûĞÍ
-bool visited[MVNum];           				//·ÃÎÊ±êÖ¾Êı×é£¬Æä³õÖµÎª"false" 
+typedef char VerTexType;              		//å‡è®¾é¡¶ç‚¹çš„æ•°æ®ç±»å‹ä¸ºå­—ç¬¦å‹
+typedef int ArcType;                  		//å‡è®¾è¾¹çš„æƒå€¼ç±»å‹ä¸ºæ•´å‹
+bool visited[MVNum];           				//è®¿é—®æ ‡å¿—æ•°ç»„ï¼Œå…¶åˆå€¼ä¸º"false" 
 
-//-----Í¼µÄÁÚ½Ó¾ØÕó´æ´¢±íÊ¾----- 
+//-----å›¾çš„é‚»æ¥çŸ©é˜µå­˜å‚¨è¡¨ç¤º----- 
 typedef struct{ 
-	VerTexType vexs[MVNum];            		//¶¥µã±í
-	ArcType arcs[MVNum][MVNum];      		//ÁÚ½Ó¾ØÕó
-	int vexnum,arcnum;                		//Í¼µÄµ±Ç°µãÊıºÍ±ßÊı
+	VerTexType vexs[MVNum];            		//é¡¶ç‚¹è¡¨
+	ArcType arcs[MVNum][MVNum];      		//é‚»æ¥çŸ©é˜µ
+	int vexnum,arcnum;                		//å›¾çš„å½“å‰ç‚¹æ•°å’Œè¾¹æ•°
 }Graph;
 
-//----¶ÓÁĞµÄ¶¨Òå¼°²Ù×÷--------
+//----é˜Ÿåˆ—çš„å®šä¹‰åŠæ“ä½œ--------
 typedef struct{
-	ArcType *base;							//³õÊ¼»¯µÄ¶¯Ì¬·ÖÅä´æ´¢¿Õ¼ä
-	int front;								//Í·Ö¸Õë£¬Èô¶ÓÁĞ²»¿Õ£¬Ö¸Ïò¶ÓÍ·ÔªËØ
-	int rear;								//Î²Ö¸Õë£¬Èô¶ÓÁĞ²»¿Õ£¬Ö¸Ïò¶ÓÎ²ÔªËØµÄÏÂÒ»¸öÎ»ÖÃ
+	ArcType *base;							//åˆå§‹åŒ–çš„åŠ¨æ€åˆ†é…å­˜å‚¨ç©ºé—´
+	int front;								//å¤´æŒ‡é’ˆï¼Œè‹¥é˜Ÿåˆ—ä¸ç©ºï¼ŒæŒ‡å‘é˜Ÿå¤´å…ƒç´ 
+	int rear;								//å°¾æŒ‡é’ˆï¼Œè‹¥é˜Ÿåˆ—ä¸ç©ºï¼ŒæŒ‡å‘é˜Ÿå°¾å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®
 }sqQueue;
 
 void InitQueue(sqQueue &Q){
-	//¹¹ÔìÒ»¸ö¿Õ¶ÓÁĞQ
+	//æ„é€ ä¸€ä¸ªç©ºé˜Ÿåˆ—Q
 	Q.base = new ArcType[MAXQSIZE];
-	if(!Q.base)     exit(1);				//´æ´¢·ÖÅäÊ§°Ü
+	if(!Q.base)     exit(1);				//å­˜å‚¨åˆ†é…å¤±è´¥
 	Q.front = Q.rear = 0;
 }//InitQueue
 
 void EnQueue(sqQueue &Q, ArcType e){
-	//²åÈëÔªËØeÎªQµÄĞÂµÄ¶ÓÎ²ÔªËØ
+	//æ’å…¥å…ƒç´ eä¸ºQçš„æ–°çš„é˜Ÿå°¾å…ƒç´ 
 	if((Q.rear + 1) % MAXQSIZE == Q.front)
 		return;
 	Q.base[Q.rear] = e;
@@ -40,21 +40,21 @@ void EnQueue(sqQueue &Q, ArcType e){
 }//EnQueue
 
 bool QueueEmpty(sqQueue Q){
-	//ÅĞ¶ÏÊÇ·ñÎª¿Õ¶Ó
+	//åˆ¤æ–­æ˜¯å¦ä¸ºç©ºé˜Ÿ
 	if(Q.rear == Q.front)
 		return true;
 	return false;
 }//QueueEmpty
 
 void DeQueue(sqQueue &Q, ArcType &u){
-	//¶ÓÍ·ÔªËØ³ö¶Ó²¢ÖÃÎªu 
+	//é˜Ÿå¤´å…ƒç´ å‡ºé˜Ÿå¹¶ç½®ä¸ºu 
 	u = Q.base[Q.front];
 	Q.front = (Q.front + 1) % MAXQSIZE;
 }//DeQueue   								
 //--------------------------------------------------
 
 int LocateVex(Graph G , VerTexType v){
-	//È·¶¨µãvÔÚGÖĞµÄÎ»ÖÃ
+	//ç¡®å®šç‚¹våœ¨Gä¸­çš„ä½ç½®
 	for(int i = 0; i < G.vexnum; ++i)
 		if(G.vexs[i] == v)
 			return i;
@@ -62,33 +62,33 @@ int LocateVex(Graph G , VerTexType v){
 }//LocateVex
 
 void CreateUDN(Graph &G){ 
-    //²ÉÓÃÁÚ½Ó¾ØÕó±íÊ¾·¨£¬´´½¨ÎŞÏòÍøG 
+    //é‡‡ç”¨é‚»æ¥çŸ©é˜µè¡¨ç¤ºæ³•ï¼Œåˆ›å»ºæ— å‘ç½‘G 
 	int i , j , k;
-	cout <<"ÇëÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı£¬ÒÔ¿Õ¸ñ¸ô¿ª:";
-    cin >> G.vexnum >> G.arcnum;							//ÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı
+	cout <<"è¯·è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°ï¼Œä»¥ç©ºæ ¼éš”å¼€:";
+    cin >> G.vexnum >> G.arcnum;							//è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°
 	cout << endl;
-	cout << "ÊäÈëµãµÄÃû³Æ£¬Èça" << endl;
+	cout << "è¾“å…¥ç‚¹çš„åç§°ï¼Œå¦‚a" << endl;
     for(i = 0; i < G.vexnum; ++i){   
-		cout << "ÇëÊäÈëµÚ" << (i+1) << "¸öµãµÄÃû³Æ:";
-		cin >> G.vexs[i];                        			//ÒÀ´ÎÊäÈëµãµÄĞÅÏ¢ 
+		cout << "è¯·è¾“å…¥ç¬¬" << (i+1) << "ä¸ªç‚¹çš„åç§°:";
+		cin >> G.vexs[i];                        			//ä¾æ¬¡è¾“å…¥ç‚¹çš„ä¿¡æ¯ 
 	}
 	cout << endl;
-    for(i = 0; i < G.vexnum; ++i)                			//³õÊ¼»¯ÁÚ½Ó¾ØÕó£¬±ßµÄÈ¨Öµ¾ùÖÃÎª¼«´óÖµMaxInt 
+    for(i = 0; i < G.vexnum; ++i)                			//åˆå§‹åŒ–é‚»æ¥çŸ©é˜µï¼Œè¾¹çš„æƒå€¼å‡ç½®ä¸ºæå¤§å€¼MaxInt 
 		for(j = 0; j < G.vexnum; ++j)   
 			G.arcs[i][j] = 0; 
-	cout << "ÊäÈë±ßÒÀ¸½µÄ¶¥µã£¬Èça b" << endl;
-	for(k = 0; k < G.arcnum;++k){							//¹¹ÔìÁÚ½Ó¾ØÕó 
+	cout << "è¾“å…¥è¾¹ä¾é™„çš„é¡¶ç‚¹ï¼Œå¦‚a b" << endl;
+	for(k = 0; k < G.arcnum;++k){							//æ„é€ é‚»æ¥çŸ©é˜µ 
 		VerTexType v1 , v2;
-		cout << "ÇëÊäÈëµÚ" << (k + 1) << "Ìõ±ßÒÀ¸½µÄ¶¥µã:";
-		cin >> v1 >> v2;									//ÊäÈëÒ»Ìõ±ßÒÀ¸½µÄ¶¥µã
-		i = LocateVex(G, v1);  j = LocateVex(G, v2);		//È·¶¨v1ºÍv2ÔÚGÖĞµÄÎ»ÖÃ£¬¼´¶¥µãÊı×éµÄÏÂ±ê 
-		G.arcs[i][j] = 1;									//±ß<v1, v2>µÄÈ¨ÖµÖÃÎªw 
-		G.arcs[j][i] = G.arcs[i][j];						//ÖÃ<v1, v2>µÄ¶Ô³Æ±ß<v2, v1>µÄÈ¨ÖµÎªw 
+		cout << "è¯·è¾“å…¥ç¬¬" << (k + 1) << "æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹:";
+		cin >> v1 >> v2;									//è¾“å…¥ä¸€æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹
+		i = LocateVex(G, v1);  j = LocateVex(G, v2);		//ç¡®å®šv1å’Œv2åœ¨Gä¸­çš„ä½ç½®ï¼Œå³é¡¶ç‚¹æ•°ç»„çš„ä¸‹æ ‡ 
+		G.arcs[i][j] = 1;									//è¾¹<v1, v2>çš„æƒå€¼ç½®ä¸ºw 
+		G.arcs[j][i] = G.arcs[i][j];						//ç½®<v1, v2>çš„å¯¹ç§°è¾¹<v2, v1>çš„æƒå€¼ä¸ºw 
 	}//for 
 }//CreateUDN
 
 int FirstAdjVex(Graph G , int v){
-	//·µ»ØvµÄµÚÒ»¸öÁÚ½Óµã
+	//è¿”å›vçš„ç¬¬ä¸€ä¸ªé‚»æ¥ç‚¹
 	int i;
 	for(i = 0 ; i < G.vexnum ; ++i){
 		if(G.arcs[v][i] == 1 && visited[i] == false)
@@ -98,7 +98,7 @@ int FirstAdjVex(Graph G , int v){
 }//FirstAdjVex
 
 int NextAdjVex(Graph G , int u , int w){
-	//·µ»ØvÏà¶ÔÓÚwµÄÏÂÒ»¸öÁÚ½Óµã
+	//è¿”å›vç›¸å¯¹äºwçš„ä¸‹ä¸€ä¸ªé‚»æ¥ç‚¹
 	int i;
 	for(i = w ; i < G.vexnum ; ++i){
 		if(G.arcs[u][i] == 1 && visited[i] == false)
@@ -108,35 +108,35 @@ int NextAdjVex(Graph G , int u , int w){
 }//NextAdjVex
 
 void BFS (Graph G, int v){ 
-    //°´¹ã¶ÈÓÅÏÈ·Çµİ¹é±éÀúÁ¬Í¨Í¼G 
+    //æŒ‰å¹¿åº¦ä¼˜å…ˆéé€’å½’éå†è¿é€šå›¾G 
 	sqQueue Q;
 	ArcType u;
 	ArcType w;
 
-    cout << G.vexs[v] << "  ";    visited[v] = true;     						//·ÃÎÊµÚv¸ö¶¥µã£¬²¢ÖÃ·ÃÎÊ±êÖ¾Êı×éÏàÓ¦·ÖÁ¿ÖµÎªtrue 
-    InitQueue(Q);              													//¸¨Öú¶ÓÁĞQ³õÊ¼»¯£¬ÖÃ¿Õ         
-    EnQueue(Q, v);            													//v½ø¶Ó 
-    while(!QueueEmpty(Q)){   													//¶ÓÁĞ·Ç¿Õ 
-		DeQueue(Q, u);       													//¶ÓÍ·ÔªËØ³ö¶Ó²¢ÖÃÎªu
+    cout << G.vexs[v] << "  ";    visited[v] = true;     						//è®¿é—®ç¬¬vä¸ªé¡¶ç‚¹ï¼Œå¹¶ç½®è®¿é—®æ ‡å¿—æ•°ç»„ç›¸åº”åˆ†é‡å€¼ä¸ºtrue 
+    InitQueue(Q);              													//è¾…åŠ©é˜Ÿåˆ—Qåˆå§‹åŒ–ï¼Œç½®ç©º         
+    EnQueue(Q, v);            													//vè¿›é˜Ÿ 
+    while(!QueueEmpty(Q)){   													//é˜Ÿåˆ—éç©º 
+		DeQueue(Q, u);       													//é˜Ÿå¤´å…ƒç´ å‡ºé˜Ÿå¹¶ç½®ä¸ºu
 		for(w = FirstAdjVex(G, u); w >= 0; w = NextAdjVex(G, u, w)){
-			//ÒÀ´Î¼ì²éuµÄËùÓĞÁÚ½Óµãw £¬FirstAdjVex(G, u)±íÊ¾uµÄµÚÒ»¸öÁÚ½Óµã 
-			//NextAdjVex(G, u, w)±íÊ¾uÏà¶ÔÓÚwµÄÏÂÒ»¸öÁÚ½Óµã£¬w¡İ0±íÊ¾´æÔÚÁÚ½Óµã 
-			if(!visited[w]){	           										//wÎªuµÄÉĞÎ´·ÃÎÊµÄÁÚ½Ó¶¥µã 
-				cout << G.vexs[w] << "  ";   visited[w] = true;					//·ÃÎÊw£¬²¢ÖÃ·ÃÎÊ±êÖ¾Êı×éÏàÓ¦·ÖÁ¿ÖµÎªtrue 
-				EnQueue(Q, w);													//w½ø¶Ó 
+			//ä¾æ¬¡æ£€æŸ¥uçš„æ‰€æœ‰é‚»æ¥ç‚¹w ï¼ŒFirstAdjVex(G, u)è¡¨ç¤ºuçš„ç¬¬ä¸€ä¸ªé‚»æ¥ç‚¹ 
+			//NextAdjVex(G, u, w)è¡¨ç¤ºuç›¸å¯¹äºwçš„ä¸‹ä¸€ä¸ªé‚»æ¥ç‚¹ï¼Œwâ‰¥0è¡¨ç¤ºå­˜åœ¨é‚»æ¥ç‚¹ 
+			if(!visited[w]){	           										//wä¸ºuçš„å°šæœªè®¿é—®çš„é‚»æ¥é¡¶ç‚¹ 
+				cout << G.vexs[w] << "  ";   visited[w] = true;					//è®¿é—®wï¼Œå¹¶ç½®è®¿é—®æ ‡å¿—æ•°ç»„ç›¸åº”åˆ†é‡å€¼ä¸ºtrue 
+				EnQueue(Q, w);													//wè¿›é˜Ÿ 
 			}//if 
 		}//for
     }//while 
 }//BFS 
 
 int main(){
-	cout << "************Ëã·¨6.7¡¡¹ã¶ÈÓÅÏÈËÑË÷±éÀúÁ¬Í¨Í¼**************" << endl << endl;
+	cout << "************ç®—æ³•6.7ã€€å¹¿åº¦ä¼˜å…ˆæœç´¢éå†è¿é€šå›¾**************" << endl << endl;
 	Graph G;
 	CreateUDN(G);
 	cout << endl;
-	cout << "ÎŞÏòÁ¬Í¨Í¼G´´½¨Íê³É£¡" << endl << endl;
+	cout << "æ— å‘è¿é€šå›¾Gåˆ›å»ºå®Œæˆï¼" << endl << endl;
 	
-	cout << "ÇëÊäÈë±éÀúÁ¬Í¨Í¼µÄÆğÊ¼µã£º";
+	cout << "è¯·è¾“å…¥éå†è¿é€šå›¾çš„èµ·å§‹ç‚¹ï¼š";
 	VerTexType c;
 	cin >> c;
 	
@@ -147,15 +147,15 @@ int main(){
 	}
 	cout << endl;
 	while(i >= G.vexnum){
-		cout << "¸Ãµã²»´æÔÚ£¬ÇëÖØĞÂÊäÈë£¡" << endl;
-		cout << "ÇëÊäÈë±éÀúÁ¬Í¨Í¼µÄÆğÊ¼µã£º";
+		cout << "è¯¥ç‚¹ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥ï¼" << endl;
+		cout << "è¯·è¾“å…¥éå†è¿é€šå›¾çš„èµ·å§‹ç‚¹ï¼š";
 		cin >> c;
 		for(i = 0 ; i < G.vexnum ; ++i){
 			if(c == G.vexs[i])
 				break;
 		}
 	}
-	cout << "Éî¶ÈÓÅÏÈËÑË÷±éÀúÁ¬Í¨Í¼½á¹û£º" << endl;
+	cout << "æ·±åº¦ä¼˜å…ˆæœç´¢éå†è¿é€šå›¾ç»“æœï¼š" << endl;
 	BFS(G , i);
 	
 	cout <<endl;
