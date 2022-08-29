@@ -2,7 +2,7 @@
  * @Author: zhangkangbin 784908058@qq.com
  * @Date: 2022-08-26 15:25:58
  * @LastEditors: zhangkangbin 784908058@qq.com
- * @LastEditTime: 2022-08-29 10:50:27
+ * @LastEditTime: 2022-08-29 13:01:49
  * @FilePath: \C_Study\chapter4_tree\AdjacencyMatrix.cpp
  * 算法6.2　（邻接矩阵）采用邻接矩阵表示法创建无向图
  */
@@ -95,7 +95,6 @@ void dfsFind(int vertex)
     // firstAdjVex(vIndex);
 }
 
-
 class BfsNode
 {
 
@@ -113,7 +112,7 @@ BfsNode *mRearInsert = mFrontDelete; //队尾 ，插入操作
  *
  * @param vertex
  */
-void enQ(int vertex)
+void enterQueue(int vertex)
 {
 
     BfsNode *node = new BfsNode();
@@ -121,14 +120,14 @@ void enQ(int vertex)
     mRearInsert->nodeNext = node;
     mRearInsert = node;
 
-   // cout << " \n进栈:" + mVexs[vertex]+"  ";
+    // cout << " \n进栈:" + mVexs[vertex]+"  ";
 }
 /**
  * @brief 退栈
- * 
- * @param vertex 
+ *
+ * @param vertex
  */
-int pop()
+int outQueue()
 {
 
     if (mFrontDelete == mRearInsert)
@@ -142,7 +141,7 @@ int pop()
     //出栈的数据
     int index = node->vertexIndex;
 
-   // cout << " 出栈:" + mVexs[index];
+    // cout << " 出栈:" + mVexs[index];
     mFrontDelete->nodeNext = node->nodeNext;
     if (node == mRearInsert)
     {
@@ -161,8 +160,7 @@ int pop()
  */
 void bfsFind(int vertex)
 {
-   cout << "顶点：" << vertex << " " + mVexs[vertex] + "  ";
-    mVisited[vertex] = true;
+
     //  mVisited[vertex]=true;
     int nextIndex = -1; //下一个要访问的节点。
     for (int i = 0; i < MVNum; i++)
@@ -172,28 +170,39 @@ void bfsFind(int vertex)
         {
             cout << "顶点：" << i << " " + mVexs[i] + "  ";
             mVisited[i] = true;
-
-            enQ(i);
+            //进栈
+            enterQueue(i);
         }
     }
-   //遍历剩下的节点。
-   int temp=pop();
-   while(temp!=-1){
-      
-     bfsFind(temp);
-     
-     temp=pop();
-   
-   }
 }
 
-//广度优先
+/**
+ * @brief //广度优先
+ *
+ * @param vertex 从哪个顶点开始遍历。
+ */
 
-void bfsFind(string vertex)
+void bfsFindStart(string vertex)
 {
     //第一步：得到顶点的位置。
     int vIndex = getVex(vertex);
-    bfsFind(vIndex);
+    //第一个顶点入队。
+    enterQueue(vIndex);
+    //遍历剩下的节点。
+
+    cout << "顶点：" << vIndex << " " + mVexs[vIndex] + "  ";
+    mVisited[vIndex] = true;
+
+    int temp = outQueue();
+    while (temp != -1)
+    {
+        //调用遍历。
+        bfsFind(temp);
+
+        temp = outQueue();
+    }
+
+    // bfsFind(vIndex);
 }
 void startDFS(string vertex)
 {
@@ -252,18 +261,31 @@ int main()
     //打印数据
     printAll();
 
-    cout << "\n ---a ---\n";
-    /*
-        startDFS("a");
-        cout << "\n \n---b--- \n";
-        initVisited();
-        startDFS("b");
-        cout << "\n\n---c ---\n";
-        initVisited();
-        startDFS("c"); */
-    //广度优先
-    initVisited();
-    bfsFind("a");
+    cout << "\n -------a顶点深度优先 --------------\n\n";
 
+    startDFS("a");
+    cout << "\n \n-----b顶点深度优先--------------- \n\n";
+    initVisited();
+    startDFS("b");
+    cout << "\n\n------c顶点深度优先 ---------------\n\n";
+    initVisited();
+    startDFS("c");
+    
+
+    cout << "\n -------a广度深度优先 ---------------\n\n";
+    initVisited();
+    //广度优先
+    bfsFindStart("a");
+    //初始化访问状态。
+    cout << "\n -------b广度深度优先 ---------------\n\n";
+    initVisited();
+    bfsFindStart("b");
+    
+    //初始化访问状态。
+    cout << "\n -------d广度深度优先 ---------------\n\n";
+    initVisited();
+    bfsFindStart("d");
+
+    
     return 0;
 }
