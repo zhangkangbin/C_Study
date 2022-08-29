@@ -1,26 +1,26 @@
-//Ëã·¨6.11¡¡¸¥ÂåÒÁµÂËã·¨
+//ç®—æ³•6.11ã€€å¼—æ´›ä¼Šå¾·ç®—æ³•
 
 #include <iostream>
 using namespace std;
 
-#define MaxInt 32767                    	//±íÊ¾¼«´óÖµ£¬¼´¡Ş
-#define MVNum 100                       	//×î´ó¶¥µãÊı
+#define MaxInt 32767                    	//è¡¨ç¤ºæå¤§å€¼ï¼Œå³âˆ
+#define MVNum 100                       	//æœ€å¤§é¡¶ç‚¹æ•°
 
-typedef char VerTexType;              		//¼ÙÉè¶¥µãµÄÊı¾İÀàĞÍÎª×Ö·ûĞÍ 
-typedef int ArcType;                  		//¼ÙÉè±ßµÄÈ¨ÖµÀàĞÍÎªÕûĞÍ 
+typedef char VerTexType;              		//å‡è®¾é¡¶ç‚¹çš„æ•°æ®ç±»å‹ä¸ºå­—ç¬¦å‹ 
+typedef int ArcType;                  		//å‡è®¾è¾¹çš„æƒå€¼ç±»å‹ä¸ºæ•´å‹ 
 
-int Path[MVNum][MVNum];						//×î¶ÌÂ·¾¶ÉÏ¶¥µãvjµÄÇ°Ò»¶¥µãµÄĞòºÅ
-int D[MVNum][MVNum];						//¼ÇÂ¼¶¥µãviºÍvjÖ®¼äµÄ×î¶ÌÂ·¾¶³¤¶È
+int Path[MVNum][MVNum];						//æœ€çŸ­è·¯å¾„ä¸Šé¡¶ç‚¹vjçš„å‰ä¸€é¡¶ç‚¹çš„åºå·
+int D[MVNum][MVNum];						//è®°å½•é¡¶ç‚¹viå’Œvjä¹‹é—´çš„æœ€çŸ­è·¯å¾„é•¿åº¦
 
-//------------Í¼µÄÁÚ½Ó¾ØÕó---------------
+//------------å›¾çš„é‚»æ¥çŸ©é˜µ---------------
 typedef struct{ 
-	VerTexType vexs[MVNum];            		//¶¥µã±í 
-	ArcType arcs[MVNum][MVNum];      		//ÁÚ½Ó¾ØÕó 
-	int vexnum,arcnum;                		//Í¼µÄµ±Ç°µãÊıºÍ±ßÊı 
+	VerTexType vexs[MVNum];            		//é¡¶ç‚¹è¡¨ 
+	ArcType arcs[MVNum][MVNum];      		//é‚»æ¥çŸ©é˜µ 
+	int vexnum,arcnum;                		//å›¾çš„å½“å‰ç‚¹æ•°å’Œè¾¹æ•° 
 }AMGraph;
 
 int LocateVex(AMGraph G , VerTexType v){
-	//È·¶¨µãvÔÚGÖĞµÄÎ»ÖÃ
+	//ç¡®å®šç‚¹våœ¨Gä¸­çš„ä½ç½®
 	for(int i = 0; i < G.vexnum; ++i)
 		if(G.vexs[i] == v)
 			return i;
@@ -28,20 +28,20 @@ int LocateVex(AMGraph G , VerTexType v){
 }//LocateVex
 
 void CreateUDN(AMGraph &G){ 
-    //²ÉÓÃÁÚ½Ó¾ØÕó±íÊ¾·¨£¬´´½¨ÓĞÏòÍøG 
+    //é‡‡ç”¨é‚»æ¥çŸ©é˜µè¡¨ç¤ºæ³•ï¼Œåˆ›å»ºæœ‰å‘ç½‘G 
 	int i , j , k;
-	cout <<"ÇëÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı£¬ÒÔ¿Õ¸ñ¸ô¿ª:";
-    cin >> G.vexnum >> G.arcnum;							//ÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı
+	cout <<"è¯·è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°ï¼Œä»¥ç©ºæ ¼éš”å¼€:";
+    cin >> G.vexnum >> G.arcnum;							//è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°
 	cout << endl;
 
-	cout << "ÊäÈëµãµÄÃû³Æ£¬Èça" << endl;
+	cout << "è¾“å…¥ç‚¹çš„åç§°ï¼Œå¦‚a" << endl;
 
     for(i = 0; i < G.vexnum; ++i){   
-		cout << "ÇëÊäÈëµÚ" << (i+1) << "¸öµãµÄÃû³Æ:";
-		cin >> G.vexs[i];                        			//ÒÀ´ÎÊäÈëµãµÄĞÅÏ¢ 
+		cout << "è¯·è¾“å…¥ç¬¬" << (i+1) << "ä¸ªç‚¹çš„åç§°:";
+		cin >> G.vexs[i];                        			//ä¾æ¬¡è¾“å…¥ç‚¹çš„ä¿¡æ¯ 
 	}
 	cout << endl;
-    for(i = 0; i < G.vexnum; ++i){                			//³õÊ¼»¯ÁÚ½Ó¾ØÕó£¬±ßµÄÈ¨Öµ¾ùÖÃÎª¼«´óÖµMaxInt 
+    for(i = 0; i < G.vexnum; ++i){                			//åˆå§‹åŒ–é‚»æ¥çŸ©é˜µï¼Œè¾¹çš„æƒå€¼å‡ç½®ä¸ºæå¤§å€¼MaxInt 
 		for(j = 0; j < G.vexnum; ++j){  
 			if(j != i)
 				G.arcs[i][j] = MaxInt;  
@@ -50,37 +50,37 @@ void CreateUDN(AMGraph &G){
 		}//for
 	}//for
 
-	cout << "ÊäÈë±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ£¬Èça b 3" << endl;
-	for(k = 0; k < G.arcnum;++k){						//¹¹ÔìÁÚ½Ó¾ØÕó 
+	cout << "è¾“å…¥è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼ï¼Œå¦‚a b 3" << endl;
+	for(k = 0; k < G.arcnum;++k){						//æ„é€ é‚»æ¥çŸ©é˜µ 
 		VerTexType v1 , v2;
 		ArcType w;
-		cout << "ÇëÊäÈëµÚ" << (k + 1) << "Ìõ±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ:";
-		cin >> v1 >> v2 >> w;                           //ÊäÈëÒ»Ìõ±ßÒÀ¸½µÄ¶¥µã¼°È¨Öµ
-		i = LocateVex(G, v1);  j = LocateVex(G, v2);	//È·¶¨v1ºÍv2ÔÚGÖĞµÄÎ»ÖÃ£¬¼´¶¥µãÊı×éµÄÏÂ±ê 
-		G.arcs[i][j] = w;								//±ß<v1, v2>µÄÈ¨ÖµÖÃÎªw 
+		cout << "è¯·è¾“å…¥ç¬¬" << (k + 1) << "æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼:";
+		cin >> v1 >> v2 >> w;                           //è¾“å…¥ä¸€æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹åŠæƒå€¼
+		i = LocateVex(G, v1);  j = LocateVex(G, v2);	//ç¡®å®šv1å’Œv2åœ¨Gä¸­çš„ä½ç½®ï¼Œå³é¡¶ç‚¹æ•°ç»„çš„ä¸‹æ ‡ 
+		G.arcs[i][j] = w;								//è¾¹<v1, v2>çš„æƒå€¼ç½®ä¸ºw 
 	}//for
 }//CreateUDN 
 
 void ShortestPath_Floyed(AMGraph G){ 
-    //ÓÃFloydËã·¨ÇóÓĞÏòÍøGÖĞ¸÷¶Ô¶¥µãiºÍjÖ®¼äµÄ×î¶ÌÂ·¾¶ 
+    //ç”¨Floydç®—æ³•æ±‚æœ‰å‘ç½‘Gä¸­å„å¯¹é¡¶ç‚¹iå’Œjä¹‹é—´çš„æœ€çŸ­è·¯å¾„ 
 	int i , j , k ;
-    for (i = 0; i < G.vexnum; ++i)          		//¸÷¶Ô½áµãÖ®¼ä³õÊ¼ÒÑÖªÂ·¾¶¼°¾àÀë 
+    for (i = 0; i < G.vexnum; ++i)          		//å„å¯¹ç»“ç‚¹ä¹‹é—´åˆå§‹å·²çŸ¥è·¯å¾„åŠè·ç¦» 
         for(j = 0; j < G.vexnum; ++j){ 
             D[i][j] = G.arcs[i][j]; 
-            if(D[i][j] < MaxInt && i != j)  Path[i][j]=i;  	//Èç¹ûiºÍjÖ®¼äÓĞ»¡£¬Ôò½«jµÄÇ°ÇıÖÃÎªi 
-            else Path [i][j] = -1;              		//Èç¹ûiºÍjÖ®¼äÎŞ»¡£¬Ôò½«jµÄÇ°ÇıÖÃÎª-1 
+            if(D[i][j] < MaxInt && i != j)  Path[i][j]=i;  	//å¦‚æœiå’Œjä¹‹é—´æœ‰å¼§ï¼Œåˆ™å°†jçš„å‰é©±ç½®ä¸ºi 
+            else Path [i][j] = -1;              		//å¦‚æœiå’Œjä¹‹é—´æ— å¼§ï¼Œåˆ™å°†jçš„å‰é©±ç½®ä¸º-1 
 		}//for
 		for(k = 0; k < G.vexnum; ++k) 
 			for(i = 0; i < G.vexnum; ++i) 
 				for(j = 0; j < G.vexnum; ++j)
-					if(D[i][k] + D[k][j] < D[i][j]){   		//´Ói¾­kµ½jµÄÒ»ÌõÂ·¾¶¸ü¶Ì 
-						D[i][j] = D[i][k]+D[k][j];    		//¸üĞÂD[i][j] 
-						Path[i][j] = Path[k][j];       			//¸ü¸ÄjµÄÇ°ÇıÎªk 
+					if(D[i][k] + D[k][j] < D[i][j]){   		//ä»iç»kåˆ°jçš„ä¸€æ¡è·¯å¾„æ›´çŸ­ 
+						D[i][j] = D[i][k]+D[k][j];    		//æ›´æ–°D[i][j] 
+						Path[i][j] = Path[k][j];       			//æ›´æ”¹jçš„å‰é©±ä¸ºk 
 					}//if 
 }//ShortestPath_Floyed
 
 void DisplayPath(AMGraph G , int begin ,int temp ){
-	//ÏÔÊ¾×î¶ÌÂ·¾¶
+	//æ˜¾ç¤ºæœ€çŸ­è·¯å¾„
 	if(Path[begin][temp] != -1){
 		DisplayPath(G , begin ,Path[begin][temp]);
 		cout << G.vexs[Path[begin][temp]] << "-->";
@@ -88,7 +88,7 @@ void DisplayPath(AMGraph G , int begin ,int temp ){
 }//DisplayPath
 
 void main(){
-	cout << "************Ëã·¨6.11¡¡¸¥ÂåÒÁµÂËã·¨**************" << endl << endl;
+	cout << "************ç®—æ³•6.11ã€€å¼—æ´›ä¼Šå¾·ç®—æ³•**************" << endl << endl;
 	AMGraph G;
 	char start , destination;
 	int num_start , num_destination;
@@ -96,16 +96,16 @@ void main(){
 	CreateUDN(G);
 	
 	cout <<endl;
-	cout << "ÓĞÏòÍøG´´½¨Íê³É£¡" << endl;
+	cout << "æœ‰å‘ç½‘Gåˆ›å»ºå®Œæˆï¼" << endl;
 	ShortestPath_Floyed(G);
 
-	cout << "ÇëÒÀ´ÎÊäÈëÂ·¾¶µÄÆğµãÓëÖÕµãµÄÃû³Æ£º";
+	cout << "è¯·ä¾æ¬¡è¾“å…¥è·¯å¾„çš„èµ·ç‚¹ä¸ç»ˆç‚¹çš„åç§°ï¼š";
 	cin >> start >> destination;
 	num_start = LocateVex(G , start);
 	num_destination = LocateVex(G , destination);
 
 	DisplayPath(G , num_start , num_destination);
 	cout << G.vexs[num_destination] << endl;
-	cout << "×î¶ÌÂ·¾¶µÄ³¤¶ÈÎª£º" << D[num_start][num_destination] << endl;
+	cout << "æœ€çŸ­è·¯å¾„çš„é•¿åº¦ä¸ºï¼š" << D[num_start][num_destination] << endl;
 	cout <<endl;
 }//main

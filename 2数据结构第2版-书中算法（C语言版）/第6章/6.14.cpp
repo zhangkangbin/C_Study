@@ -42,15 +42,15 @@ int n,m;
 #define Mod 10
 #define N 10010
 #define M 1000010
-struct Edge{		//´æ´¢±ßµÄ½á¹¹Ìå
+struct Edge{		//å­˜å‚¨è¾¹çš„ç»“æ„ä½“
 	int to;
 	int next;
 };
-struct Node{		//´æ´¢µãµÄ½á¹¹Ìå
+struct Node{		//å­˜å‚¨ç‚¹çš„ç»“æ„ä½“
 	int id;
 	int step;
 };
-struct sqQueue{		//¶ÓÁĞµÄ½á¹¹Ìå
+struct sqQueue{		//é˜Ÿåˆ—çš„ç»“æ„ä½“
 	Node *base;
 	int front;
 	int rear;
@@ -64,38 +64,38 @@ void Init(){
 	memset(head,-1,sizeof head);
 	cnt=0;
 }
-void addEdge(int u,int v){	//Ìí¼Ó±ß
+void addEdge(int u,int v){	//æ·»åŠ è¾¹
 	edge[cnt].to = v;
 	edge[cnt].next = head[u];
 	head[u] = cnt++;
 }
-void InitQueue(sqQueue &Q){	//³õÊ¼»¯¶ÓÁĞ
+void InitQueue(sqQueue &Q){	//åˆå§‹åŒ–é˜Ÿåˆ—
 	Q.base = new Node[M];
 	if(!Q.base)
 		exit(OVERFLOW);
 	Q.front = Q.rear = 0;
 	return;
 }
-int QueueLength(sqQueue Q){		//Çó¶ÓÁĞµÄ³¤¶È
+int QueueLength(sqQueue Q){		//æ±‚é˜Ÿåˆ—çš„é•¿åº¦
 	return(Q.rear-Q.front+M)%M;
 }
-int EnQueue(sqQueue &Q,Node e){	//Èë¶Ó
+int EnQueue(sqQueue &Q,Node e){	//å…¥é˜Ÿ
 	if((Q.rear+1)%M == Q.front)
 		return 0;
 	Q.base[Q.rear] = e;
 	Q.rear = (Q.rear+1)%M;
 	return 1;
 }
-int DeQueue(sqQueue &Q){		//³ö¶Ó
+int DeQueue(sqQueue &Q){		//å‡ºé˜Ÿ
 	if(Q.front == Q.rear)
 		return 0;
 	Q.front = (Q.front+1)%M;
 	return 1;
 }
-Node getHead(sqQueue Q){	//µÃµ½¶ÓÁĞÍ·²¿µÄÔªËØ
+Node getHead(sqQueue Q){	//å¾—åˆ°é˜Ÿåˆ—å¤´éƒ¨çš„å…ƒç´ 
 	return Q.base[Q.front];
 }
-void bfs(){				//ÓÃbfsÀ´ËÑË÷Óë³õÊ¼µã¾àÀë²»³¬¹ı7µÄµãµÄ¸öÊıÕ¼×ÜÊıµÄ°Ù·Ö±È
+void bfs(){				//ç”¨bfsæ¥æœç´¢ä¸åˆå§‹ç‚¹è·ç¦»ä¸è¶…è¿‡7çš„ç‚¹çš„ä¸ªæ•°å æ€»æ•°çš„ç™¾åˆ†æ¯”
 	memset(vis,0,sizeof vis);
 	InitQueue(Q);
 	Node cur,next;
@@ -129,13 +129,13 @@ int main(){
     freopen("in.txt","r",stdin);
 //  freopen("out.txt","w",stdout);
 #endif
-    while(sfd(n,m)!=EOF){		//nÎª¶¥µãµÄÊıÁ¿£¬mÎª±ßµÄÊıÁ¿,µãµÄ±àºÅ´Ó0-n-1
-    	Init();			//³õÊ¼»¯
+    while(sfd(n,m)!=EOF){		//nä¸ºé¡¶ç‚¹çš„æ•°é‡ï¼Œmä¸ºè¾¹çš„æ•°é‡,ç‚¹çš„ç¼–å·ä»0-n-1
+    	Init();			//åˆå§‹åŒ–
     	int u,v;
     	for(int i=0;i<m;i++){
-    		scanf("%d%d",&u,&v);		//ÊäÈëÁ½¸öÏàÁÚµÄµã
+    		scanf("%d%d",&u,&v);		//è¾“å…¥ä¸¤ä¸ªç›¸é‚»çš„ç‚¹
     		addEdge(u,v);
-    		addEdge(v,u);		//ÎŞÏò±ß
+    		addEdge(v,u);		//æ— å‘è¾¹
     	}
     	bfs();
     }

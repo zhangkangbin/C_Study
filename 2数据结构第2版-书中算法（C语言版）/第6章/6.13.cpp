@@ -1,35 +1,35 @@
-//Ëã·¨6.13¡¡¹Ø¼üÂ·¾¶Ëã·¨
+//ç®—æ³•6.13ã€€å…³é”®è·¯å¾„ç®—æ³•
 
 #include <iostream>
 using namespace std;
 
-#define MVNum 100                       	//×î´ó¶¥µãÊı
-#define BDNum MVNum * (MVNum - 1)			//×î´ó±ßÊı
+#define MVNum 100                       	//æœ€å¤§é¡¶ç‚¹æ•°
+#define BDNum MVNum * (MVNum - 1)			//æœ€å¤§è¾¹æ•°
 #define OK 1	
 #define ERROR 0 
 
 typedef char VerTexType;
 
-//- - - - -Í¼µÄÁÚ½Ó±í´æ´¢±íÊ¾- - - - - 
-typedef struct ArcNode{                		//±ß½áµã 
-    int adjvex;                          	//¸Ã±ßËùÖ¸ÏòµÄ¶¥µãµÄÎ»ÖÃ
-	int weight;								//È¨Öµ
-    struct ArcNode *nextarc;          		//Ö¸ÏòÏÂÒ»Ìõ±ßµÄÖ¸Õë 
+//- - - - -å›¾çš„é‚»æ¥è¡¨å­˜å‚¨è¡¨ç¤º- - - - - 
+typedef struct ArcNode{                		//è¾¹ç»“ç‚¹ 
+    int adjvex;                          	//è¯¥è¾¹æ‰€æŒ‡å‘çš„é¡¶ç‚¹çš„ä½ç½®
+	int weight;								//æƒå€¼
+    struct ArcNode *nextarc;          		//æŒ‡å‘ä¸‹ä¸€æ¡è¾¹çš„æŒ‡é’ˆ 
 }ArcNode; 
 
 typedef struct VNode{ 
-    VerTexType data;                    	//¶¥µãĞÅÏ¢
-    ArcNode *firstarc;                		//Ö¸ÏòµÚÒ»ÌõÒÀ¸½¸Ã¶¥µãµÄ±ßµÄÖ¸Õë 
-}VNode, AdjList[MVNum];               		//AdjList±íÊ¾ÁÚ½Ó±íÀàĞÍ 
+    VerTexType data;                    	//é¡¶ç‚¹ä¿¡æ¯
+    ArcNode *firstarc;                		//æŒ‡å‘ç¬¬ä¸€æ¡ä¾é™„è¯¥é¡¶ç‚¹çš„è¾¹çš„æŒ‡é’ˆ 
+}VNode, AdjList[MVNum];               		//AdjListè¡¨ç¤ºé‚»æ¥è¡¨ç±»å‹ 
 
 typedef struct{ 
-    AdjList vertices;                 		//ÁÚ½Ó±í 
-	AdjList converse_vertices;				//ÄæÁÚ½Ó±í
-    int vexnum, arcnum;              		//Í¼µÄµ±Ç°¶¥µãÊıºÍ±ßÊı 
+    AdjList vertices;                 		//é‚»æ¥è¡¨ 
+	AdjList converse_vertices;				//é€†é‚»æ¥è¡¨
+    int vexnum, arcnum;              		//å›¾çš„å½“å‰é¡¶ç‚¹æ•°å’Œè¾¹æ•° 
 }ALGraph;
 //- - - - - - - - - - - - - - - -
 
-//- - - - -Ë³ĞòÕ»µÄ¶¨Òå- - - - -
+//- - - - -é¡ºåºæ ˆçš„å®šä¹‰- - - - -
 typedef struct{
 	int *base;
 	int *top;
@@ -37,15 +37,15 @@ typedef struct{
 }spStack;
 //- - - - - - - - - - - - - - - -
 
-int indegree[MVNum];						//Êı×éindegree´æ·Å¸ö¶¥µãµÄÈë¶È
-int ve[BDNum];								//ÊÂ¼şviµÄ×îÔç·¢ÉúÊ±¼ä
-int vl[BDNum];								//ÊÂ¼şviµÄ×î³Ù·¢ÉúÊ±¼ä
-int topo[MVNum];							//¼ÇÂ¼ÍØÆËĞòÁĞµÄ¶¥µãĞòºÅ
+int indegree[MVNum];						//æ•°ç»„indegreeå­˜æ”¾ä¸ªé¡¶ç‚¹çš„å…¥åº¦
+int ve[BDNum];								//äº‹ä»¶viçš„æœ€æ—©å‘ç”Ÿæ—¶é—´
+int vl[BDNum];								//äº‹ä»¶viçš„æœ€è¿Ÿå‘ç”Ÿæ—¶é—´
+int topo[MVNum];							//è®°å½•æ‹“æ‰‘åºåˆ—çš„é¡¶ç‚¹åºå·
 spStack S;
 
-//----------------Õ»µÄ²Ù×÷--------------------
+//----------------æ ˆçš„æ“ä½œ--------------------
 void InitStack(spStack &S){
-	//Õ»µÄ³õÊ¼»¯
+	//æ ˆçš„åˆå§‹åŒ–
 	S.base = new int[MVNum];
 	if(!S.base)
 		exit(1);
@@ -54,21 +54,21 @@ void InitStack(spStack &S){
 }//InitStack
 
 void Push(spStack &S , int i){
-	//ÈëÕ»
+	//å…¥æ ˆ
 	if(S.top - S.base == S.stacksize)
 		return;
 	*S.top++ = i;
 }//Push
 
 void Pop(spStack &S , int &i){
-	//³öÕ»
+	//å‡ºæ ˆ
 	if(S.top == S.base)
 		return;
 	i = *--S.top;
 }//Pop
 
 bool StackEmpty(spStack S){
-	//ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ
+	//åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©º
 	if(S.top == S.base)
 		return true;
 	return false;
@@ -76,7 +76,7 @@ bool StackEmpty(spStack S){
 //---------------------------------------
 
 int LocateVex(ALGraph G , VerTexType v){
-	//È·¶¨µãvÔÚGÖĞµÄÎ»ÖÃ
+	//ç¡®å®šç‚¹våœ¨Gä¸­çš„ä½ç½®
 	for(int i = 0; i < G.vexnum; ++i)
 		if(G.vertices[i].data == v)
 			return i;
@@ -84,52 +84,52 @@ int LocateVex(ALGraph G , VerTexType v){
 }//LocateVex
 
 int CreateUDG(ALGraph &G){ 
-	//´´½¨ÓĞÏòÍ¼GµÄÁÚ½Ó±í¡¢ÄæÁÚ½Ó±í
+	//åˆ›å»ºæœ‰å‘å›¾Gçš„é‚»æ¥è¡¨ã€é€†é‚»æ¥è¡¨
 	int i , k;
 	
-	cout <<"ÇëÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı£¬ÒÔ¿Õ¸ñ¸ô¿ª:";
-	cin >> G.vexnum >> G.arcnum;				//ÊäÈë×Ü¶¥µãÊı£¬×Ü±ßÊı 
+	cout <<"è¯·è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•°ï¼Œä»¥ç©ºæ ¼éš”å¼€:";
+	cin >> G.vexnum >> G.arcnum;				//è¾“å…¥æ€»é¡¶ç‚¹æ•°ï¼Œæ€»è¾¹æ•° 
     cout << endl;
 
-	cout << "ÊäÈëµãµÄÃû³Æ£¬Èça" << endl;
+	cout << "è¾“å…¥ç‚¹çš„åç§°ï¼Œå¦‚a" << endl;
 	
-	for(i = 0; i < G.vexnum; ++i){          		//ÊäÈë¸÷µã£¬¹¹Ôì±íÍ·½áµã±í
-		cout << "ÇëÊäÈëµÚ" << (i+1) << "¸öµãµÄÃû³Æ:";
-		cin >> G.vertices[i].data;           		//ÊäÈë¶¥µãÖµ
+	for(i = 0; i < G.vexnum; ++i){          		//è¾“å…¥å„ç‚¹ï¼Œæ„é€ è¡¨å¤´ç»“ç‚¹è¡¨
+		cout << "è¯·è¾“å…¥ç¬¬" << (i+1) << "ä¸ªç‚¹çš„åç§°:";
+		cin >> G.vertices[i].data;           		//è¾“å…¥é¡¶ç‚¹å€¼
 		G.converse_vertices[i].data = G.vertices[i].data;
-		//³õÊ¼»¯±íÍ·½áµãµÄÖ¸ÕëÓòÎªNULL 
+		//åˆå§‹åŒ–è¡¨å¤´ç»“ç‚¹çš„æŒ‡é’ˆåŸŸä¸ºNULL 
 		G.vertices[i].firstarc=NULL;			
 		G.converse_vertices[i].firstarc=NULL;
     }//for
 	cout << endl;
 
-	cout << "ÊäÈë±ßÒÀ¸½µÄ¶¥µã¼°ÆäÈ¨Öµ£¬Èça b 3" << endl;
+	cout << "è¾“å…¥è¾¹ä¾é™„çš„é¡¶ç‚¹åŠå…¶æƒå€¼ï¼Œå¦‚a b 3" << endl;
 
-	for(k = 0; k < G.arcnum;++k){        			//ÊäÈë¸÷±ß£¬¹¹ÔìÁÚ½Ó±í
+	for(k = 0; k < G.arcnum;++k){        			//è¾“å…¥å„è¾¹ï¼Œæ„é€ é‚»æ¥è¡¨
 		VerTexType v1 , v2;
 		int i , j , w;
-		cout << "ÇëÊäÈëµÚ" << (k + 1) << "Ìõ±ßÒÀ¸½µÄ¶¥µã¼°ÆäÈ¨Öµ:";
-		cin >> v1 >> v2 >> w;                		//ÊäÈëÒ»Ìõ±ßÒÀ¸½µÄÁ½¸ö¶¥µã
+		cout << "è¯·è¾“å…¥ç¬¬" << (k + 1) << "æ¡è¾¹ä¾é™„çš„é¡¶ç‚¹åŠå…¶æƒå€¼:";
+		cin >> v1 >> v2 >> w;                		//è¾“å…¥ä¸€æ¡è¾¹ä¾é™„çš„ä¸¤ä¸ªé¡¶ç‚¹
 		i = LocateVex(G, v1);  j = LocateVex(G, v2);
-		//È·¶¨v1ºÍv2ÔÚGÖĞÎ»ÖÃ£¬¼´¶¥µãÔÚG.verticesÖĞµÄĞòºÅ 
+		//ç¡®å®šv1å’Œv2åœ¨Gä¸­ä½ç½®ï¼Œå³é¡¶ç‚¹åœ¨G.verticesä¸­çš„åºå· 
 
-		ArcNode *p1=new ArcNode;               		//Éú³ÉÒ»¸öĞÂµÄ±ß½áµã*p1 
-		p1->adjvex=j;                   			//ÁÚ½ÓµãĞòºÅÎªj
+		ArcNode *p1=new ArcNode;               		//ç”Ÿæˆä¸€ä¸ªæ–°çš„è¾¹ç»“ç‚¹*p1 
+		p1->adjvex=j;                   			//é‚»æ¥ç‚¹åºå·ä¸ºj
 		p1->nextarc = G.vertices[i].firstarc;  G.vertices[i].firstarc=p1;
 		p1->weight = w;
-		//½«ĞÂ½áµã*p1²åÈë¶¥µãviµÄ±ß±íÍ·²¿
+		//å°†æ–°ç»“ç‚¹*p1æ’å…¥é¡¶ç‚¹viçš„è¾¹è¡¨å¤´éƒ¨
 
-		ArcNode *p2=new ArcNode;               		//Éú³ÉÒ»¸öĞÂµÄ±ß½áµã*p1 
-		p2->adjvex=i;                   			//ÄæÁÚ½ÓµãĞòºÅÎªi
+		ArcNode *p2=new ArcNode;               		//ç”Ÿæˆä¸€ä¸ªæ–°çš„è¾¹ç»“ç‚¹*p1 
+		p2->adjvex=i;                   			//é€†é‚»æ¥ç‚¹åºå·ä¸ºi
 		p2->nextarc = G.converse_vertices[j].firstarc;  G.converse_vertices[j].firstarc=p2;
 		p2->weight = w;
-		//½«ĞÂ½áµã*p1²åÈë¶¥µãviµÄ±ß±íÍ·²¿
+		//å°†æ–°ç»“ç‚¹*p1æ’å…¥é¡¶ç‚¹viçš„è¾¹è¡¨å¤´éƒ¨
     }//for 
     return OK; 
 }//CreateUDG
 
 void FindInDegree(ALGraph G){
-	//Çó³ö¸÷¶¥µãµÄÈë¶È´æÈëÊı×éindegreeÖĞ 
+	//æ±‚å‡ºå„é¡¶ç‚¹çš„å…¥åº¦å­˜å…¥æ•°ç»„indegreeä¸­ 
 	int i , count;
 
 	for(i = 0 ; i < G.vexnum ; i++){
@@ -146,96 +146,96 @@ void FindInDegree(ALGraph G){
 }//FindInDegree
 
 int TopologicalOrder(ALGraph G , int topo[]){ 
-    //ÓĞÏòÍ¼G²ÉÓÃÁÚ½Ó±í´æ´¢½á¹¹ 
-    //ÈôGÎŞ»ØÂ·£¬ÔòÉú³ÉGµÄÒ»¸öÍØÆËĞòÁĞtopo[]²¢·µ»ØOK£¬·ñÔòERROR 
+    //æœ‰å‘å›¾Gé‡‡ç”¨é‚»æ¥è¡¨å­˜å‚¨ç»“æ„ 
+    //è‹¥Gæ— å›è·¯ï¼Œåˆ™ç”ŸæˆGçš„ä¸€ä¸ªæ‹“æ‰‘åºåˆ—topo[]å¹¶è¿”å›OKï¼Œå¦åˆ™ERROR 
 	int i , m;
-    FindInDegree(G);              				//Çó³ö¸÷¶¥µãµÄÈë¶È´æÈëÊı×éindegreeÖĞ 
-    InitStack(S);                          		//Õ»S³õÊ¼»¯Îª¿Õ 
+    FindInDegree(G);              				//æ±‚å‡ºå„é¡¶ç‚¹çš„å…¥åº¦å­˜å…¥æ•°ç»„indegreeä¸­ 
+    InitStack(S);                          		//æ ˆSåˆå§‹åŒ–ä¸ºç©º 
     for(i = 0; i < G.vexnum; ++i)
-		if(!indegree[i]) Push(S, i);     		//Èë¶ÈÎª0Õß½øÕ» 
-	m = 0;                               		//¶ÔÊä³ö¶¥µã¼ÆÊı£¬³õÊ¼Îª0 
-	while(!StackEmpty(S)){                		//Õ»S·Ç¿Õ 
-		Pop(S, i);                          	//½«Õ»¶¥¶¥µãvi³öÕ»
-		topo[m]=i;                         		//½«vi±£´æÔÚÍØÆËĞòÁĞÊı×étopoÖĞ 
-		++m;                             		//¶ÔÊä³ö¶¥µã¼ÆÊı 
-		ArcNode *p = G.vertices[i].firstarc;    //pÖ¸ÏòviµÄµÚÒ»¸öÁÚ½Óµã 
+		if(!indegree[i]) Push(S, i);     		//å…¥åº¦ä¸º0è€…è¿›æ ˆ 
+	m = 0;                               		//å¯¹è¾“å‡ºé¡¶ç‚¹è®¡æ•°ï¼Œåˆå§‹ä¸º0 
+	while(!StackEmpty(S)){                		//æ ˆSéç©º 
+		Pop(S, i);                          	//å°†æ ˆé¡¶é¡¶ç‚¹viå‡ºæ ˆ
+		topo[m]=i;                         		//å°†viä¿å­˜åœ¨æ‹“æ‰‘åºåˆ—æ•°ç»„topoä¸­ 
+		++m;                             		//å¯¹è¾“å‡ºé¡¶ç‚¹è®¡æ•° 
+		ArcNode *p = G.vertices[i].firstarc;    //pæŒ‡å‘viçš„ç¬¬ä¸€ä¸ªé‚»æ¥ç‚¹ 
 		while(p){
-			int k = p->adjvex;					//vkÎªviµÄÁÚ½Óµã   
-			--indegree[k];                   	//viµÄÃ¿¸öÁÚ½ÓµãµÄÈë¶È¼õ1 
-			if(indegree[k] ==0)  Push(S, k);	//ÈôÈë¶È¼õÎª0£¬ÔòÈëÕ» 
-			p = p->nextarc;                		//pÖ¸Ïò¶¥µãviÏÂÒ»¸öÁÚ½Ó½áµã 
+			int k = p->adjvex;					//vkä¸ºviçš„é‚»æ¥ç‚¹   
+			--indegree[k];                   	//viçš„æ¯ä¸ªé‚»æ¥ç‚¹çš„å…¥åº¦å‡1 
+			if(indegree[k] ==0)  Push(S, k);	//è‹¥å…¥åº¦å‡ä¸º0ï¼Œåˆ™å…¥æ ˆ 
+			p = p->nextarc;                		//pæŒ‡å‘é¡¶ç‚¹viä¸‹ä¸€ä¸ªé‚»æ¥ç»“ç‚¹ 
 		}//while 
 	}//while
 	
-	if(m < G.vexnum)  return ERROR;    			//¸ÃÓĞÏòÍ¼ÓĞ»ØÂ· 
+	if(m < G.vexnum)  return ERROR;    			//è¯¥æœ‰å‘å›¾æœ‰å›è·¯ 
 	else return OK;
 }//TopologicalOrder
 
 int CriticalPath(ALGraph G){ 
-    //GÎªÁÚ½Ó±í´æ´¢µÄÓĞÏòÍø£¬Êä³öGµÄ¸÷Ïî¹Ø¼ü»î¶¯
+    //Gä¸ºé‚»æ¥è¡¨å­˜å‚¨çš„æœ‰å‘ç½‘ï¼Œè¾“å‡ºGçš„å„é¡¹å…³é”®æ´»åŠ¨
 	int n , i , k , j , e , l;
     if (!TopologicalOrder(G, topo))  return ERROR; 
-    //µ÷ÓÃÍØÆËÅÅĞòËã·¨£¬Ê¹ÍØÆËĞòÁĞ±£´æÔÚtopoÖĞ£¬Èôµ÷ÓÃÊ§°Ü£¬Ôò´æÔÚÓĞÏò»·£¬·µ»ØERROR 
-    n = G.vexnum;                  				//nÎª¶¥µã¸öÊı 
-    for(i = 0; i < n; i++)               		//¸øÃ¿¸öÊÂ¼şµÄ×îÔç·¢ÉúÊ±¼äÖÃ³õÖµ0 
+    //è°ƒç”¨æ‹“æ‰‘æ’åºç®—æ³•ï¼Œä½¿æ‹“æ‰‘åºåˆ—ä¿å­˜åœ¨topoä¸­ï¼Œè‹¥è°ƒç”¨å¤±è´¥ï¼Œåˆ™å­˜åœ¨æœ‰å‘ç¯ï¼Œè¿”å›ERROR 
+    n = G.vexnum;                  				//nä¸ºé¡¶ç‚¹ä¸ªæ•° 
+    for(i = 0; i < n; i++)               		//ç»™æ¯ä¸ªäº‹ä»¶çš„æœ€æ—©å‘ç”Ÿæ—¶é—´ç½®åˆå€¼0 
 		ve[i] = 0; 
 
 
-    /*¨D¨D¨D¨D¨D¨D¨D¨D¨D¨D°´ÍØÆË´ÎĞòÇóÃ¿¸öÊÂ¼şµÄ×îÔç·¢ÉúÊ±¼ä£­¨D¨D¨D¨D£­¨D¨D¨D¨D¨D*/ 
+    /*â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•æŒ‰æ‹“æ‰‘æ¬¡åºæ±‚æ¯ä¸ªäº‹ä»¶çš„æœ€æ—©å‘ç”Ÿæ—¶é—´ï¼â€•â€•â€•â€•ï¼â€•â€•â€•â€•â€•*/ 
     for(i = 0;i < n; i++){                 
-		k = topo[i];                   			//È¡µÃÍØÆËĞòÁĞÖĞµÄ¶¥µãĞòºÅk             
-		ArcNode *p = G.vertices[k].firstarc;    //pÖ¸ÏòkµÄµÚÒ»¸öÁÚ½Ó¶¥µã  
-		while(p != NULL){            			//ÒÀ´Î¸üĞÂkµÄËùÓĞÁÚ½Ó¶¥µãµÄ×îÔç·¢ÉúÊ±¼ä   
-			j = p->adjvex;               		//jÎªÁÚ½Ó¶¥µãµÄĞòºÅ                   
-			if(ve[j] < ve[k] + p->weight)    	//¸üĞÂ¶¥µãjµÄ×îÔç·¢ÉúÊ±¼äve[j] 
+		k = topo[i];                   			//å–å¾—æ‹“æ‰‘åºåˆ—ä¸­çš„é¡¶ç‚¹åºå·k             
+		ArcNode *p = G.vertices[k].firstarc;    //pæŒ‡å‘kçš„ç¬¬ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹  
+		while(p != NULL){            			//ä¾æ¬¡æ›´æ–°kçš„æ‰€æœ‰é‚»æ¥é¡¶ç‚¹çš„æœ€æ—©å‘ç”Ÿæ—¶é—´   
+			j = p->adjvex;               		//jä¸ºé‚»æ¥é¡¶ç‚¹çš„åºå·                   
+			if(ve[j] < ve[k] + p->weight)    	//æ›´æ–°é¡¶ç‚¹jçš„æœ€æ—©å‘ç”Ÿæ—¶é—´ve[j] 
 				ve[j] = ve[k] + p->weight;     
-			p = p->nextarc;              		//pÖ¸ÏòkµÄÏÂÒ»¸öÁÚ½Ó¶¥µã  
+			p = p->nextarc;              		//pæŒ‡å‘kçš„ä¸‹ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹  
 		} //while 
     } //for 
 
-    for(i=0;i<n;i++)                 			//¸øÃ¿¸öÊÂ¼şµÄ×î³Ù·¢ÉúÊ±¼äÖÃ³õÖµve[n-1] 
+    for(i=0;i<n;i++)                 			//ç»™æ¯ä¸ªäº‹ä»¶çš„æœ€è¿Ÿå‘ç”Ÿæ—¶é—´ç½®åˆå€¼ve[n-1] 
 		vl[i]=ve[n-1];
 	
-    /*¨D¨D¨D¨D¨D¨D¨D¨D¨D¨D°´ÄæÍØÆË´ÎĞòÇóÃ¿¸öÊÂ¼şµÄ×î³Ù·¢ÉúÊ±¼ä£­¨D¨D¨D¨D£­¨D¨D¨D¨D¨D*/ 
+    /*â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•æŒ‰é€†æ‹“æ‰‘æ¬¡åºæ±‚æ¯ä¸ªäº‹ä»¶çš„æœ€è¿Ÿå‘ç”Ÿæ—¶é—´ï¼â€•â€•â€•â€•ï¼â€•â€•â€•â€•â€•*/ 
     for(i = n - 1;i >= 0; i--){               
-		k = topo[i];                   			//È¡µÃÍØÆËĞòÁĞÖĞµÄ¶¥µãĞòºÅk             
-		ArcNode *p = G.vertices[k].firstarc;    //pÖ¸ÏòkµÄµÚÒ»¸öÁÚ½Ó¶¥µã  
-		while(p != NULL){            			//¸ù¾İkµÄÁÚ½Óµã£¬¸üĞÂkµÄ×î³Ù·¢ÉúÊ±¼ä   
-			j = p->adjvex;              		//jÎªÁÚ½Ó¶¥µãµÄĞòºÅ                   
-			if(vl[k] > vl[j] - p->weight)    	//¸üĞÂ¶¥µãkµÄ×î³Ù·¢ÉúÊ±¼ävl[k] 
+		k = topo[i];                   			//å–å¾—æ‹“æ‰‘åºåˆ—ä¸­çš„é¡¶ç‚¹åºå·k             
+		ArcNode *p = G.vertices[k].firstarc;    //pæŒ‡å‘kçš„ç¬¬ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹  
+		while(p != NULL){            			//æ ¹æ®kçš„é‚»æ¥ç‚¹ï¼Œæ›´æ–°kçš„æœ€è¿Ÿå‘ç”Ÿæ—¶é—´   
+			j = p->adjvex;              		//jä¸ºé‚»æ¥é¡¶ç‚¹çš„åºå·                   
+			if(vl[k] > vl[j] - p->weight)    	//æ›´æ–°é¡¶ç‚¹kçš„æœ€è¿Ÿå‘ç”Ÿæ—¶é—´vl[k] 
 				vl[k] = vl[j] - p->weight;       
-			p = p->nextarc;              		//pÖ¸ÏòkµÄÏÂÒ»¸öÁÚ½Ó¶¥µã  
+			p = p->nextarc;              		//pæŒ‡å‘kçš„ä¸‹ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹  
 		}//while 
     }//for 
 
-    /*¨D¨D¨D¨D¨D¨D¨D¨D¨D¨D¨D¨DÅĞ¶ÏÃ¿Ò»»î¶¯ÊÇ·ñÎª¹Ø¼ü»î¶¯£­¨D¨D¨D¨D¨D¨D£­¨D¨D¨D¨D¨D*/
+    /*â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•åˆ¤æ–­æ¯ä¸€æ´»åŠ¨æ˜¯å¦ä¸ºå…³é”®æ´»åŠ¨ï¼â€•â€•â€•â€•â€•â€•ï¼â€•â€•â€•â€•â€•*/
 	cout << endl;
-	cout << "¹Ø¼ü»î¶¯Â·¾¶Îª:";
-    for(i = 0;i < n; i++){                		//Ã¿´ÎÑ­»·Õë¶ÔviÎª»î¶¯¿ªÊ¼µãµÄËùÓĞ»î¶¯ 
-        ArcNode *p = G.vertices[i].firstarc;    //pÖ¸ÏòiµÄµÚÒ»¸öÁÚ½Ó¶¥µã  
+	cout << "å…³é”®æ´»åŠ¨è·¯å¾„ä¸º:";
+    for(i = 0;i < n; i++){                		//æ¯æ¬¡å¾ªç¯é’ˆå¯¹viä¸ºæ´»åŠ¨å¼€å§‹ç‚¹çš„æ‰€æœ‰æ´»åŠ¨ 
+        ArcNode *p = G.vertices[i].firstarc;    //pæŒ‡å‘içš„ç¬¬ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹  
         while(p != NULL) {    
-			j = p->adjvex;             			//jÎªiµÄÁÚ½Ó¶¥µãµÄĞòºÅ    
-			e = ve[i];                 			//¼ÆËã»î¶¯<vi, vj>µÄ×îÔç¿ªÊ¼Ê±¼ä 
-			l = vl[j] - p->weight;      		//¼ÆËã»î¶¯<vi, vj>µÄ×î³Ù¿ªÊ¼Ê±¼ä 
-			if(e == l)               			//ÈôÎª¹Ø¼ü»î¶¯£¬ÔòÊä³ö<vi, vj> 
+			j = p->adjvex;             			//jä¸ºiçš„é‚»æ¥é¡¶ç‚¹çš„åºå·    
+			e = ve[i];                 			//è®¡ç®—æ´»åŠ¨<vi, vj>çš„æœ€æ—©å¼€å§‹æ—¶é—´ 
+			l = vl[j] - p->weight;      		//è®¡ç®—æ´»åŠ¨<vi, vj>çš„æœ€è¿Ÿå¼€å§‹æ—¶é—´ 
+			if(e == l)               			//è‹¥ä¸ºå…³é”®æ´»åŠ¨ï¼Œåˆ™è¾“å‡º<vi, vj> 
 				cout << G.vertices[i].data << "-->" << G.vertices[j].data << " ";
-			p = p->nextarc;              		//pÖ¸ÏòiµÄÏÂÒ»¸öÁÚ½Ó¶¥µã  
+			p = p->nextarc;              		//pæŒ‡å‘içš„ä¸‹ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹  
 		} //while 
 	} //for  
 	return OK;
 }//CriticalPath
 
 int main(){
-	cout << "************Ëã·¨6.13¡¡¹Ø¼üÂ·¾¶Ëã·¨**************" << endl << endl;
+	cout << "************ç®—æ³•6.13ã€€å…³é”®è·¯å¾„ç®—æ³•**************" << endl << endl;
 	ALGraph G;
 	CreateUDG(G);
 	int *topo = new int [G.vexnum];
 	
 	cout << endl;
-	cout << "ÓĞÏòÍ¼´´½¨Íê³É!" << endl << endl;
+	cout << "æœ‰å‘å›¾åˆ›å»ºå®Œæˆ!" << endl << endl;
 	
 	if(!CriticalPath(G))
-		cout << "ÍøÖĞ´æÔÚ»·£¬ÎŞ·¨½øĞĞÍØÆËÅÅĞò£¡" <<endl << endl;
+		cout << "ç½‘ä¸­å­˜åœ¨ç¯ï¼Œæ— æ³•è¿›è¡Œæ‹“æ‰‘æ’åºï¼" <<endl << endl;
 	cout << endl;
 	return OK;
 }//main

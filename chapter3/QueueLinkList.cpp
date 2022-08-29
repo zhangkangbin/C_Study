@@ -7,7 +7,7 @@ using namespace std;
  * @Author: zhangkangbin 784908058@qq.com
  * @Date: 2022-08-21 10:53:40
  * @LastEditors: zhangkangbin 784908058@qq.com
- * @LastEditTime: 2022-08-21 21:19:01
+ * @LastEditTime: 2022-08-29 10:12:07
  * @FilePath: \C_Study\chapter3\QueueLinkList.cpp
  *队列
  *队列是一种特殊的线性表，特殊之处在于它只允许在表的前端（front）进行删除操作，
@@ -83,7 +83,9 @@ string QueueLinkList::deQueue()
         return "empty";
     }
     Node *temp=mFront->mNodeNext;
+
     string  data=temp->mNodeData;
+    
      mFront->mNodeNext=temp->mNodeNext;
     //判断是否出队到最后一个。
      if(mRear==temp){
@@ -91,7 +93,7 @@ string QueueLinkList::deQueue()
         mRear=mFront;
      }
      free(temp);
-    return "\n"+data+"\n";
+    return "\n退栈："+data+"";
 }
 void QueueLinkList::printAllData()
 {
@@ -120,11 +122,11 @@ int main()
     cout << list.deQueue();
     cout << list.deQueue();
     cout << list.deQueue();
-    list.enQueue("e");
+/*     list.enQueue("e");
     list.enQueue("f");
     list.enQueue("g");
     list.deQueue();
-
+ */
     list.printAllData();
    
 
