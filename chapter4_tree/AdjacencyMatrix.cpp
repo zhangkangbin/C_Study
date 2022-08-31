@@ -1,10 +1,12 @@
 /*
  * @Author: zhangkangbin 784908058@qq.com
  * @Date: 2022-08-26 15:25:58
- * @LastEditors: zhangkangbin 784908058@qq.com
- * @LastEditTime: 2022-08-29 13:01:49
+ * @LastEditors: zhangkangbin
+ * @LastEditTime: 2022-08-31 18:16:33
  * @FilePath: \C_Study\chapter4_tree\AdjacencyMatrix.cpp
  * 算法6.2　（邻接矩阵）采用邻接矩阵表示法创建无向图
+ * 
+ * 邻接矩阵 ，如果在已有的矩阵下，添加删除都要修改数组。效率很低。
  */
 #include <stdio.h>
 #include <iostream>
@@ -14,6 +16,7 @@ using namespace std;
 string mVexs[MVNum] = {"a", "b", "c", "d"}; //存储顶点数组
 //存放顶点的是否访问过的布尔值。
 bool mVisited[MVNum];
+//修改成有向图,只需要动矩阵。
 int mArc[MVNum][MVNum] = {
     //_____a  b  c  d
     /*a*/ {0, 0, 0, 0},
@@ -155,6 +158,10 @@ int outQueue()
 /**
  * @brief 广度优先
  * 需要辅助链表，进行退栈进栈。
+ * 队形如下：
+ *   -------
+ * a  b c     d
+ *   -------
  *
  * @param vertex
  */
@@ -198,7 +205,7 @@ void bfsFindStart(string vertex)
     {
         //调用遍历。
         bfsFind(temp);
-
+        //出队。
         temp = outQueue();
     }
 
@@ -253,7 +260,7 @@ int main()
     mArc[b][c] = mArc[c][b] = 1;
 
     //  mArc[a][c] = mArc[c][a] = 1;
-    mArc[a][d] = mArc[d][a] = 1;
+   // mArc[a][d] = mArc[d][a] = 1;
 
     //判断a 和c 是否连通
     isConnected("a", "c");
