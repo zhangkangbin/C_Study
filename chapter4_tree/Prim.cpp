@@ -8,20 +8,22 @@ using namespace std;
 #define NodeSize 3
 //最大顶点数
 #define MVNum 4
-//默认为空的权值。
-#define _WEIGHT 0
+//默认为空的权值,默认32767吧。。32767 //表示极大值，即∞
+#define _WEIGHT 32767
 class DataInfo
 {
 
 public:
-    //权值 默认-1吧。
+    //权值
     int weight = _WEIGHT;
+    string name = "";
     //是否被访问过。
     bool isVisited;
-   
-   // string name; //顶点名称
+
+    // string name; //顶点名称
 };
 DataInfo *mArc[MVNum][MVNum];
+DataInfo minWeightArray[MVNum];
 string mVexs[MVNum] = {"a", "b", "c", "d"}; //存储顶点数组
 
 /**
@@ -45,6 +47,29 @@ int getVex(string v)
 
     return -1;
 }
+/**
+ * @brief 返回最小权值的下标。
+ * 
+ * @return int 
+ */
+int findMinWeight()
+{
+
+    int minWeight = _WEIGHT;
+    int index = -1;
+    for (int i = 0; i < MVNum; i++)
+    {
+
+        if (minWeightArray[i].weight < minWeight && !minWeightArray[i].isVisited)
+        {
+
+            minWeight = minWeightArray[i].weight;
+            index=i;
+        }
+    }
+
+    return index;
+}
 void printAll()
 {
     cout << "\n ";
@@ -65,13 +90,11 @@ void initData()
     {
         for (int j = 0; j < MVNum; j++)
         {
-            DataInfo *data=new DataInfo() ;
+            DataInfo *data = new DataInfo();
 
-            data->weight=_WEIGHT;
-          
-            mArc[i][j]=data;
+            data->weight = _WEIGHT;
 
-           
+            mArc[i][j] = data;
         }
     }
 }
@@ -80,40 +103,66 @@ int mLowCast[MVNum];
  * @brief 最小生成树
  * @v 顶点 从哪个顶点开始。
  */
-void createMinTree(string v){
+void createMinTree(string v)
+{
 
+    int startVex = getVex(v);
 
-    int startVex= getVex(v);
+    cout << "\n\n第一个顶点的权值："+v;
+    for (int i = 0; i < MVNum; i++)
+    {
 
-    cout <<"\n\n第一个顶点的权值：";
-    for(int i=0;i<MVNum;i++){
+        //初始化最小权值的集合。
+        minWeightArray[i].weight = mArc[startVex][i]->weight;
+        minWeightArray[i].name = v;
 
-        int weight=mArc[startVex][i]->weight;
-        mLowCast[i]=weight;
-        cout<<weight;
+        /*    int weight=mArc[startVex][i]->weight;
+           mLowCast[i]=weight;
+           cout<<weight; */
     }
 
+    minWeightArray[startVex].weight = 0;
+    minWeightArray[startVex].isVisited = true;
 
+    for (int i = 1; i < MVNum; i++)
+    {
+        //找出最小的权值。
+        int min = findMinWeight();
+        cout << "\n\n边：" << minWeightArray[min].name+"--"<<minWeightArray[min].weight<<"--"<<mVexs[min];
+
+       minWeightArray[min].weight = 0;
+        minWeightArray[min].isVisited = true;
+
+       //再把最小值的边的权值添加进来。
+        for (int j = 0; j < MVNum; j++)
+        {
+            if (minWeightArray[j].weight > mArc[min][j]->weight)
+        {
+            minWeightArray[j].weight = mArc[min][j]->weight;
+            minWeightArray[j].name = mVexs[min];
+        }
+        }
+
+        
+    }
 }
 int main()
 {
-   initData();
-   
+    initData();
+
     printAll();
 
+    int a = getVex("a");
+    int b = getVex("b");
+    int c = getVex("c");
+    int d = getVex("d");
 
-    int a=getVex("a");
-    int b=getVex("b");
-    int c=getVex("c");
-    int d=getVex("d");
+    mArc[a][b]->weight = mArc[b][a]->weight = 2;
+    mArc[b][c]->weight = mArc[c][b]->weight = 5;
+    mArc[c][d]->weight = mArc[d][c]->weight = 3;
+    mArc[a][d]->weight = mArc[d][a]->weight = 1;
 
-     mArc[a][b]->weight=mArc[b][a]->weight=2;
-     mArc[b][c]->weight=mArc[c][b]->weight=5;
-     mArc[c][d]->weight=mArc[d][c]->weight=3;
-     mArc[a][d]->weight=mArc[d][a]->weight=1;
-
-
-  //  mArc[0][0]->weight=3;
+    //  mArc[0][0]->weight=3;
     cout << "\n ";
     printAll();
     createMinTree("a");
