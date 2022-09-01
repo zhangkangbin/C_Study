@@ -17,8 +17,8 @@ public:
     //权值
     int weight = _WEIGHT;
     string name = "";
-    //是否被访问过。
-    bool isVisited;
+    //是否连接了。
+    bool isConnected;
 
     // string name; //顶点名称
 };
@@ -60,7 +60,7 @@ int findMinWeight()
     for (int i = 0; i < MVNum; i++)
     {
 
-        if (minWeightArray[i].weight < minWeight && !minWeightArray[i].isVisited)
+        if (minWeightArray[i].weight < minWeight && !minWeightArray[i].isConnected)
         {
 
             minWeight = minWeightArray[i].weight;
@@ -121,8 +121,8 @@ void createMinTree(string v)
            cout<<weight; */
     }
 
-    minWeightArray[startVex].weight = 0;
-    minWeightArray[startVex].isVisited = true;
+   // minWeightArray[startVex].weight = 0;
+    minWeightArray[startVex].isConnected = true;
 
     for (int i = 1; i < MVNum; i++)
     {
@@ -130,21 +130,24 @@ void createMinTree(string v)
         int min = findMinWeight();
         cout << "\n\n边：" << minWeightArray[min].name+"--"<<minWeightArray[min].weight<<"--"<<mVexs[min];
 
-       minWeightArray[min].weight = 0;
-        minWeightArray[min].isVisited = true;
+     //  minWeightArray[min].weight = 0;
+       //设置为已经连接。
+       minWeightArray[min].isConnected = true;
 
        //再把最小值的边的权值添加进来。
         for (int j = 0; j < MVNum; j++)
         {
-            if (minWeightArray[j].weight > mArc[min][j]->weight)
+            if (!minWeightArray[j].isConnected&&minWeightArray[j].weight > mArc[min][j]->weight)
         {
             minWeightArray[j].weight = mArc[min][j]->weight;
             minWeightArray[j].name = mVexs[min];
+            //cout << "\n "<<mVexs[min];
         }
         }
 
         
     }
+       cout << "\n ";
 }
 int main()
 {
