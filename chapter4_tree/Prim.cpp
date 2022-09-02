@@ -131,7 +131,7 @@ void createMinTree(string v)
         cout << "\n\n边：" << minWeightArray[min].name+"--"<<minWeightArray[min].weight<<"--"<<mVexs[min];
 
      //  minWeightArray[min].weight = 0;
-       //设置为已经连接。
+       //设置为已经连接。这样下次扫描就直接跳过这个节点了。
        minWeightArray[min].isConnected = true;
 
        //再把最小值的边的权值添加进来。
@@ -161,7 +161,7 @@ int main()
     int d = getVex("d");
 
     mArc[a][b]->weight = mArc[b][a]->weight = 2;
-    mArc[b][c]->weight = mArc[c][b]->weight = 5;
+    mArc[b][c]->weight = mArc[c][b]->weight = 1;
     mArc[c][d]->weight = mArc[d][c]->weight = 3;
     mArc[a][d]->weight = mArc[d][a]->weight = 1;
 
