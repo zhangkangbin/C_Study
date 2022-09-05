@@ -37,7 +37,7 @@ int getVex(string v)
 
     for (int i = 0; i < MVNum; i++)
     {
-        //如果相等则输出为0，不等则输出为-1。
+        //compare如果相等则输出为0，不等则输出为-1。
         if (v.compare(mVexs[i]) == 0)
         {
 
