@@ -135,7 +135,7 @@ void Sort(AMGraph G){
 				
 				ArcType temp_lowcost = Edge[j].lowcost;
 				Edge[j].lowcost = Edge[j+ 1].lowcost;
-				Edge[j + 1].lowcost = temp_lowcost;
+				Edge[j + 1].lowcost = temp_lowcost; 
 
 			
 			}//if
