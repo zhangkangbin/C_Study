@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-05 13:50:00
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-05 16:56:25
+ * @LastEditTime: 2022-09-05 17:22:23
  * @FilePath: \C_Study\chapter4_tree\Kruskal.cpp
  * @Description:
  */
@@ -174,6 +174,8 @@ void kruskal()
 
     for (int j = 0; j < MAX_SIZE; j++)
     {   //找到和尾部连接的顶点。
+       // 0 1 1 0  --0 0 和 1 1分别是两组顶点。
+       // 0 0 0 0  把所以1 改成 0 就是代表把他们都连接起来了。
         if(mVertexSet[j]==vs2Tail){
           //都连接起来。
           mVertexSet[j]=vs1Head;
