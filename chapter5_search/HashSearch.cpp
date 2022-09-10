@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-10 21:11:10
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-10 22:04:29
+ * @LastEditTime: 2022-09-10 23:52:40
  * @FilePath: \C_Study\chapter5_search\HashSearch.cpp
  * @Description:
  * 哈希表的查找
@@ -74,7 +74,18 @@ bool addData(int value)
 }
 int main()
 {
-    searchKey(0);
+
+    int data;
+    
+
+     while (data!=-1)
+     {
+         cout<<"\n输入你要查找的数值\n";
+         cin >> data;  
+         searchKey(data);
+     }
+     
+  
    // searchKey(27);
    // searchKey(13);
    // getKey(4);
