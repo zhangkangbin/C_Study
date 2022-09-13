@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-12 16:11:23
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-13 23:00:05
+ * @LastEditTime: 2022-09-13 23:29:55
  * @FilePath: \C_Study\chapter6_sort\InsertSort.cpp
  * 插入排序
  */
@@ -14,7 +14,8 @@ using namespace std;
 void printData(int list[])
 {
     cout << " \n";
-    for (int i = 0; i < 9; i++)
+  
+    for (int i = 0; i < 8; i++)
     {
 
         cout << " " << list[i];
@@ -87,8 +88,8 @@ void sort()
  */
 void shellSort(){ 
 
-   const int length=9 ;
-   int listData[length] = {0,2, 3, 7, 9, 5, 6,1,4};
+   const int length=8 ;
+   int listData[length] = {5, 3, 7, 9, 2, 6,1,4};
 
    int gap;
    int i;
@@ -98,9 +99,8 @@ void shellSort(){
    for(gap=length/2;gap>=1;gap=gap/2){
      
      //从第二元素开始，即gap。
-    for(i=gap+1;i<length;i++){
-
-        //不断交叉切换子表，下一趟是另一个子表的数据比较。
+    //不断交叉切换子表，下一趟是另一个子表的数据比较。
+    for(i=gap;i<length;i++){
 
         if(listData[i]<listData[i-gap])//i-gap前面的数据
         {
@@ -109,16 +109,16 @@ void shellSort(){
 
          
             //从间隔子表中找到对应位置。
-            for(j=i-gap;j>0&&tempData<listData[j];){
+            for(j=i-gap;j>=0&&listData[j]>tempData;){
 
                  //listData[i]=listData[i-gap];
                  listData[j+gap]=listData[j];
                 
-                //后挪。这里跟直接插入很像，只是i--;变减gap.
-                 gap=j-gap;
+                //后挪。这里跟直接插入是一样，只是i--;变减gap.
+                 j=j-gap;
                 
             }
-               //这里跟直接插入很像，只是i+1;变加gap.
+               //这里跟直接插入是一样的，只是i+1;变加gap.
                //找到数据填充数据。
                listData[j+gap]=tempData;
         }
@@ -138,7 +138,7 @@ void shellSort(){
 int main()
 {
 
-    //insertSort();
+   // insertSort();
 
    // sort();
 
