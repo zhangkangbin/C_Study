@@ -1,3 +1,11 @@
+<!--
+ * @Author: zhangkangbin
+ * @Date: 2022-09-14 11:18:07
+ * @LastEditors: zhangkangbin
+ * @LastEditTime: 2022-09-14 12:17:46
+ * @FilePath: \C_Study\2outline\ExaminationOutline.md
+ * @Description: 
+-->
 ### 一、主要考核内容
 
 ####  考试内容主要包括以下三个部分：
