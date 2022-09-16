@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-15 14:37:53
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-16 22:41:41
+ * @LastEditTime: 2022-09-16 23:46:27
  * @FilePath: \C_Study\chapter6_sort\ExchangeSort.cpp
  * 交换排序：
  * 1，冒泡
@@ -12,15 +12,17 @@
 #include <iostream>
 using namespace std;
 
-void printData(int list[])
+void printData(int list[],int length)
 {
     cout << " \n";
 
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < length; i++)
     {
 
         cout << " " << list[i];
     }
+
+      cout << " \n";
 }
 
 /**
@@ -68,7 +70,7 @@ int getPartition(int list[], int low, int high)
 
     while (low < high)
     {
-
+        //high 开始
         while (low < high && list[high] >= partition)
         {
             high--;
@@ -76,12 +78,25 @@ int getPartition(int list[], int low, int high)
         //直到找到中值小的。
         list[low] = list[high];
 
+         cout << "  \n--------high----------\n";
+
+        printData(list,6);
+        
+         cout << "  \n----------low--------\n";
         while (low < high && list[low] <= partition)
         {
             low++;
         }
         //中值存放的位置。
         list[high] = list[low];
+
+        if(list[high] == list[low]){
+               cout << "  \n-----------<<"<<list[low]<<"-------\n";
+        }
+
+        printData(list,6);
+
+       cout << "  \n------------------\n";
     }
 
     list[low] = partition;
@@ -95,12 +110,13 @@ int getPartition(int list[], int low, int high)
  */
 void quickSort(int list[], int low, int high)
 {
-
+    //把数组分成两半。
     int partition = getPartition(list, low, high);
 
     if (low < high)
     {
-
+         
+        //递归
         quickSort(list, low, partition - 1); //左子表递归排序。（low,partition-1）
 
         quickSort(list, partition + 1, high); //右子表递归排序
@@ -110,8 +126,8 @@ void quickSort(int list[], int low, int high)
 void testQuickSort()
 {
 
-    const int length = 5;
-    int listData[length] = {3, 5, 1, 6, 2};
+    const int length = 6;
+    int listData[length] = {7, 8, 5, 6, 10,9};
 
     quickSort(listData, 0, (length - 1));
 
@@ -128,5 +144,7 @@ int main()
    
    //快速排序
     testQuickSort();
+    
+  
     return 0;
 }
