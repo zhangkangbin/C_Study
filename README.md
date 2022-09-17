@@ -2,7 +2,7 @@
  * @Author: zhangkangbin 
  * @Date: 2022-08-18 18:31:13
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-14 12:26:05
+ * @LastEditTime: 2022-09-16 23:50:21
  * @FilePath: \C_Study\README.md
 -->
 # C_Study
@@ -37,8 +37,8 @@ Get start
 
 ###   交换排序
 
-#### 冒泡排序 掌握
-#### 快速排序 ☆
+#### 冒泡排序 掌握 ✓ 9.14
+#### 快速排序 ☆  ✓ 9.16
 
 
 ###   选择排序
