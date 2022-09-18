@@ -129,8 +129,9 @@ bool SingleLinkList::deleteData(string value)
                 tempData->datanext->dataPre = tempData->dataPre;
             }
 
-            tempData = NULL; //删除节点.
+          
             free(tempData);
+            tempData = NULL; //删除节点.
             cout << "\ndelete success!\n";
             return true;
         }
@@ -152,7 +153,7 @@ int main()
     list.addData("2");
     list.addData("3");
     list.addData("4");
-   // list.deleteData("1");
+    list.deleteData("1");
 
     list.printAllData();
 
