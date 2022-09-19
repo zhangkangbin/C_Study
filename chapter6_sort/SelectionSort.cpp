@@ -2,11 +2,11 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-17 08:01:30
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-17 19:51:57
+ * @LastEditTime: 2022-09-19 22:08:02
  * @FilePath: \C_Study\chapter6_sort\SelectionSort.cpp
  * 选择排序
  * 1，简单选择排序 ，不稳定。
- * 2，堆排序。
+ * 2，堆排序。 不稳定
  */
 
 #include <iostream>
@@ -70,7 +70,7 @@ void headAdjust(int list[], int k, int length)
     //根节点赋值。
     list[k] = list[0];
 
-    cout << "\n--------堆排序，数组直观不是有序的。得转换成二叉树--------- \n";
+   
     printData(list, length);
 }
 
@@ -94,6 +94,19 @@ void heapSort()
     {
         //反复调整堆。
         headAdjust(list, i, length);
+    }
+
+   cout << "\n---------------- \n";
+   
+    for(int i=length-1;i>1;i--){
+          //这一步是为了把最大的数，放到数组结尾。
+          int temp=list[1];
+          list[1]=list[i];
+          list[i]=temp;
+          
+          //再次调整，把最大的调整到list[1],
+          headAdjust(list, 1, i-1);//i-1 ，不再调整结尾了。
+
     }
 
     printData(list, length);
