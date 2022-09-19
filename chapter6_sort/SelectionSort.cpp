@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-17 08:01:30
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-19 22:08:02
+ * @LastEditTime: 2022-09-19 22:36:22
  * @FilePath: \C_Study\chapter6_sort\SelectionSort.cpp
  * 选择排序
  * 1，简单选择排序 ，不稳定。
@@ -12,11 +12,13 @@
 #include <iostream>
 using namespace std;
 
-void printData(int list[], int length)
+
+
+void printData(int list[], int start,int length)
 {
     cout << " \n";
 
-    for (int i = 0; i < length; i++)
+    for (int i = start; i < length; i++)
     {
 
         cout << " " << list[i];
@@ -71,7 +73,7 @@ void headAdjust(int list[], int k, int length)
     list[k] = list[0];
 
    
-    printData(list, length);
+    printData(list, 0,length);
 }
 
 /**
@@ -103,13 +105,13 @@ void heapSort()
           int temp=list[1];
           list[1]=list[i];
           list[i]=temp;
-          
+             cout << "\n------iiiiiiiiiiiiiiiiiiiiiiiiiiiiii----------"<<i<<" \n";
           //再次调整，把最大的调整到list[1],
           headAdjust(list, 1, i-1);//i-1 ，不再调整结尾了。
 
     }
-
-    printData(list, length);
+   //0是存储位，不输出0了。
+    printData(list,1, length);
 }
 
 void simpleSelectionSort()
@@ -150,7 +152,7 @@ void simpleSelectionSort()
         }
     }
 
-    printData(list, length);
+    printData(list, 0,length);
 }
 
 int main()
