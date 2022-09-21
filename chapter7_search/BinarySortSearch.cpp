@@ -4,7 +4,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-20 20:30:39
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-21 10:48:35
+ * @LastEditTime: 2022-09-21 11:51:21
  * @FilePath: \C_Study\chapter7_search\BinarySortSearch.cpp
  * 二叉排序树,又称二叉查找树。
  */
@@ -163,16 +163,7 @@ int main()
        // search.addData(list[i]);
         search.addDataHead(list[i]);
     }
-    /*     int key = 0;
-        Node *mHead=new Node();
-        mHead=NULL;
-        while (key != -1)
-        {
-            cin >> key;
-            cout << " ----please enter value------\n";
-            cout << "n ----add value------" << key;
-            addData(mHead, key);
-        } */
+
 
     return 0;
 }
