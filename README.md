@@ -2,7 +2,7 @@
  * @Author: zhangkangbin 
  * @Date: 2022-08-18 18:31:13
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-16 23:50:21
+ * @LastEditTime: 2022-09-21 11:49:56
  * @FilePath: \C_Study\README.md
 -->
 # C_Study
@@ -24,6 +24,7 @@ Get start
 ###   [顺序查找](chapter5_search/SequentialSearch.cpp) 重点
 ###   [二分查找查找](chapter5_search/BinarySearch.cpp)  重点
 ###   [分块查找]() 没写
+###   [二叉排序树](chapter7_search/BinarySortSearch.cpp) get
 ###   [B树查找]() 暂时没写
 ###   [哈希表(散列)的查找](chapter5_search/HashSearch.cpp) 9.10
 
