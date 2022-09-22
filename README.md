@@ -25,6 +25,7 @@ Get start
 ###   [二分查找查找](chapter5_search/BinarySearch.cpp)  重点
 ###   [分块查找]() 没写
 ###   [二叉排序树](chapter7_search/BinarySortSearch.cpp) get
+###   [平衡二叉树AVL（红黑树）](chapter7_search/BinarySortSearch.cpp) get
 ###   [B树查找]() 暂时没写
 ###   [哈希表(散列)的查找](chapter5_search/HashSearch.cpp) 9.10
 
