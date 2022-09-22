@@ -4,7 +4,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-20 20:30:39
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-21 11:51:21
+ * @LastEditTime: 2022-09-22 13:36:57
  * @FilePath: \C_Study\chapter7_search\BinarySortSearch.cpp
  * 二叉排序树,又称二叉查找树。
  */
@@ -27,18 +27,21 @@ class Search
 {
 
 private:
-    Node *mHead = NULL;
+   // Node *mHead = NULL;
 
 public:
+    Node *mHead = NULL;
+    bool searchData(int value);
+    bool recursionSearchData(Node* node,int value);
     void addData(int value);
-    bool addData(Node*& node, int value);
+    bool addData(Node *&node, int value);
     bool addDataHead(int value);
 };
 
+bool Search::addDataHead(int value)
+{
 
-bool Search::addDataHead(int value){
-
-   if (mHead == NULL)
+    if (mHead == NULL)
     {
         mHead = new Node();
         mHead->data = value;
@@ -46,20 +49,17 @@ bool Search::addDataHead(int value){
         return true;
     }
 
-
-return addData(mHead,value);
-
+    return addData(mHead, value);
 }
 
 /**
- * 这个递归方式还是有些问题。
- * 
- * @param node 
- * @param value 
- * @return true 
- * @return false 
+ * 递归查找到，添加数据的位置。
+ *
+ * @param node
+ * @param value
+ * @return bool
  */
-bool Search::addData(Node*& node, int value)
+bool Search::addData(Node *&node, int value)
 {
 
     if (node == NULL)
@@ -95,8 +95,8 @@ bool Search::addData(Node*& node, int value)
 }
 /**
  * 非递归方式实现
- * 
- * @param value 
+ *
+ * @param value
  */
 void Search::addData(int value)
 
@@ -109,7 +109,7 @@ void Search::addData(int value)
         return;
     }
 
-    Node *p=mHead;
+    Node *p = mHead;
 
     while (p)
     {
@@ -128,7 +128,7 @@ void Search::addData(int value)
 
                 return;
             }
-             p=p->left;
+            p = p->left;
         }
         else
         { //往右查找插入位置。
@@ -140,17 +140,83 @@ void Search::addData(int value)
                 child->left = child->right = NULL;
 
                 p->right = child;
-              
+
                 return;
             }
 
-            p=p->right;
+            p = p->right;
         }
-
-      
     }
 }
+/**
+ * 查找
+ *
+ * @param key
+ * @return boo
+ */
+bool Search::searchData(int key)
+{
 
+    if (mHead == NULL)
+    {
+        return false;
+    }
+
+    Node *p = mHead;
+
+    while (p)
+    {
+        if (p->data == key)
+        { 
+            cout<<"\n  find data: "<<key<<"\n";
+
+            return true;
+        }
+
+        //如果顶点大于key,那么key在左边。
+        if (p->data > key)
+        {
+            p = p->left;
+        }
+        else
+        {
+            p = p->right;
+        }
+    }
+    cout<<"\n  not find data: "<<key<<"\n";
+    return false;
+}
+/**
+ * 用递归，查找数据
+ * 
+ * @param key 
+ * @return true 
+ * @return false 
+ */
+bool Search::recursionSearchData(Node* node,int key){
+
+    if(node==NULL){
+        cout<<"\n  not find data: "<<key<<"\n";
+        return false;
+    }
+
+    if(node->data==key){
+       cout<<"\n  find data: "<<key<<"\n";
+
+       return true;
+    }
+
+    if(node->data>key){
+
+       return recursionSearchData(node->left,key);
+    }else{
+
+       return recursionSearchData(node->right,key);
+    }
+
+
+    
+}
 int main()
 {
 
@@ -160,9 +226,23 @@ int main()
     for (int i = 0; i < 5; i++)
     {
 
-       // search.addData(list[i]);
+        // search.addData(list[i]);
+        //插入数据
         search.addDataHead(list[i]);
     }
+
+/*     search.searchData(7);
+    search.searchData(6);
+    search.searchData(1);
+    search.searchData(8); */
+
+
+    //递归查找数据
+    search.recursionSearchData(search.mHead,7);
+    search.recursionSearchData(search.mHead,6);
+    search.recursionSearchData(search.mHead,1);
+    search.recursionSearchData(search.mHead,8);
+    search.recursionSearchData(search.mHead,0);
 
 
     return 0;
