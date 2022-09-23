@@ -2,7 +2,7 @@
  * @Author: zhangkangbin 
  * @Date: 2022-08-18 18:31:13
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-21 11:49:56
+ * @LastEditTime: 2022-09-23 22:18:21
  * @FilePath: \C_Study\README.md
 -->
 # C_Study
@@ -25,7 +25,7 @@ Get start
 ###   [二分查找查找](chapter5_search/BinarySearch.cpp)  重点
 ###   [分块查找]() 没写
 ###   [二叉排序树](chapter7_search/BinarySortSearch.cpp) get
-###   [平衡二叉树AVL（红黑树）](chapter7_search/BinarySortSearch.cpp) get
+###   [平衡二叉树AVL（红黑树）]书上代码都没有。高分笔记也没有。
 ###   [B树查找]() 暂时没写
 ###   [哈希表(散列)的查找](chapter5_search/HashSearch.cpp) 9.10
 
@@ -51,7 +51,11 @@ Get start
 ###   归并排序
 
 
-## 文件操作 to do
+## 文件操作 9.22
+#### 数据类型	描述
+#### ofstream	该数据类型表示输出文件流，用于创建文件并向文件写入信息。
+#### ifstream	该数据类型表示输入文件流，用于从文件读取信息。
+#### fstream	该数据类型通常表示文件流，且同时具有 ofstream 和 ifstream 两种功能，这意味着它可以创建文件，向文件写入信息，从文件读取信息。
 
 ## 动态规划和静态规划
 

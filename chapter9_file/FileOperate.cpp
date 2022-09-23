@@ -11,9 +11,6 @@
 #include <iostream>
 using namespace std;
 #include <string>
-void openFile()
-{
-}
 
 /**
 数据类型	描述
