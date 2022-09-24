@@ -2,34 +2,32 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-19 22:21:42
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-19 22:26:42
- * @FilePath: \C_Study\baseClass\Base.cpp
+ * @LastEditTime: 2022-09-24 11:19:04
+ * @FilePath: \C_Study\baseClass\Base.h
  * @Description:
  */
+
+#ifndef LABEL
+#define LABEL
 #include <iostream>
 using namespace std;
-class Base
+void printDataS(int list[], int start, int length)
 {
-private:
-    /* data */
-public:
-    Base(/* args */);
-    ~Base();
-    void printData(int list[], int length)
+    cout << " \n";
+
+    for (int i = start; i < length; i++)
     {
-       printData(list,0,length); 
+
+        cout << " " << list[i];
     }
-    void printData(int list[], int start, int length)
-    {
-        cout << " \n";
 
-        for (int i = start; i < length; i++)
-        {
+    cout << " \n";
+}
 
-            cout << " " << list[i];
-        }
+void printData(int list[], int length)
+{
+    printDataS(list, 0, length);
+}
 
-        cout << " \n";
-    }
-};
 
+#endif
