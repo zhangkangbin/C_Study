@@ -2,12 +2,16 @@
  * @Author: zhangkangbin 
  * @Date: 2022-08-18 18:31:13
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-23 22:18:21
+ * @LastEditTime: 2022-09-26 17:40:57
  * @FilePath: \C_Study\README.md
 -->
 # C_Study
 Get start
 8.24, 学习到二叉树尾声了。 
+
+## 5，树和二叉树
+### 二叉树叶节点统计
+### 二叉树深度统计
 
 
 ## 6，图
@@ -25,8 +29,10 @@ Get start
 ###   [二分查找查找](chapter5_search/BinarySearch.cpp)  重点
 ###   [分块查找]() 没写
 ###   [二叉排序树](chapter7_search/BinarySortSearch.cpp) get
+#### 二叉排序树插入数据。
+#### 二叉排序树删除数据，没写。代码贼多。
 ###   [平衡二叉树AVL（红黑树）]书上代码都没有。高分笔记也没有。
-###   [B树查找]() 暂时没写
+###   [B树查找]() 暂时没写 ，一般只考查找（重点）和插入。
 ###   [哈希表(散列)的查找](chapter5_search/HashSearch.cpp) 9.10
 
 ## 8 排序
