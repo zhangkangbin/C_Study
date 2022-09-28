@@ -2,10 +2,15 @@
  * @Author: zhangkangbin 
  * @Date: 2022-08-18 18:31:13
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-26 17:40:57
+ * @LastEditTime: 2022-09-28 16:25:51
  * @FilePath: \C_Study\README.md
 -->
 # C_Study
+
+###
+###   [数据结构可视化网站☆ ](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html) 
+
+
 Get start
 8.24, 学习到二叉树尾声了。 
 
@@ -32,6 +37,8 @@ Get start
 #### 二叉排序树插入数据。
 #### 二叉排序树删除数据，没写。代码贼多。
 ###   [平衡二叉树AVL（红黑树）]书上代码都没有。高分笔记也没有。
+ 用插入的成本，来弥补查找的效率。因为插入时候，如果树不平衡，就需要调整树的结构。有额外的开销。
+ 适合插入少，查询多的时候。
 ###   [B树查找]() 暂时没写 ，一般只考查找（重点）和插入。
 ###   [哈希表(散列)的查找](chapter5_search/HashSearch.cpp) 9.10
 
