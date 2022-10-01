@@ -2,7 +2,7 @@
  * @Author: zhangkangbin 
  * @Date: 2022-08-18 18:31:13
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-28 16:25:51
+ * @LastEditTime: 2022-10-01 22:49:23
  * @FilePath: \C_Study\README.md
 -->
 # C_Study
@@ -70,8 +70,15 @@ Get start
 #### ifstream	该数据类型表示输入文件流，用于从文件读取信息。
 #### fstream	该数据类型通常表示文件流，且同时具有 ofstream 和 ifstream 两种功能，这意味着它可以创建文件，向文件写入信息，从文件读取信息。
 
-## 动态规划和静态规划
 
+
+### 字符串相关的库函数
+
+String.h
+
+### 动态规划和静态规划
+#### 1. 递归与分治策略、回溯法
+#### 2. 贪心算法、分支限界法、动态规划
 
 
 ###   算法性质比较
