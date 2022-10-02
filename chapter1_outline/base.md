@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangkangbin
  * @Date: 2022-10-02 23:26:16
- * @LastEditTime: 2022-10-02 23:54:32
+ * @LastEditTime: 2022-10-03 00:01:03
  * @FilePath: \C_Study\chapter1_outline\base.md
 -->
 
@@ -29,3 +29,11 @@
 
 
 ### 算法空间复杂度
+
+####  O(1)
+
+##### 只记录一个变量。
+
+####  O(n)
+
+##### 记录一个大小为n的数组。
