@@ -123,6 +123,9 @@ bool SingleLinkList::deleteData(string value)
                 //把头节点给下个。
                 head = tempData->datanext;
             }
+
+
+            
             if (tempData->datanext != NULL)
             {
 
@@ -153,7 +156,7 @@ int main()
     list.addData("2");
     list.addData("3");
     list.addData("4");
-    list.deleteData("1");
+    list.deleteData("2");
 
     list.printAllData();
 
