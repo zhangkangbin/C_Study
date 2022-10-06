@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangkangbin
  * @Date: 2022-10-03 10:31:56
- * @LastEditTime: 2022-10-05 17:05:01
+ * @LastEditTime: 2022-10-06 23:06:20
  * @FilePath: \C_Study\chapter2_linear_list\2Linear.md
  * 
 -->
@@ -54,7 +54,8 @@ class Node{
 - 由于单链表只有一个指向后继的指针，使得单链表只能从头到尾遍历。要访问某个节点的前驱节点时（插入删除时），只能再次从头开始遍历。访问节点的后继节点时间复杂度 O(1),访问节点前驱节点时间复杂度 o(n).
 
 - 为了克服单链表的缺点，所以引入双链表。
-- 这里一般重点考插入数据的代码片段。
+
+- <font color=#dd0000>这里一般重点考插入数据的代码片段。</font>
 
 ```C++
 class{
@@ -75,15 +76,21 @@ temp->prior=node;
 node->next->prior=temp;
 node->next=temp;//这步必须在最后。
 
-
 ```
 
 ```C++
-
 node->prior->next=node->next;
-
 node->next->prior=node->prior;
-
-
 ```
 
+
+
+### 循环双链表
+
+- 在循环双链表中，尾节点p,p->next==head(头节点)，循环双链表为空时，p->next和p->prior都等于head。
+
+
+
+### 顺序表和链表的比较
+
+- 
