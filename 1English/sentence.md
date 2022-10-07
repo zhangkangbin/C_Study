@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-25 10:56:10
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-25 11:38:29
+ * @LastEditTime: 2022-10-07 10:44:10
  * @FilePath: \C_Study\1English\sentence.md
  * @Description: 
 -->
@@ -33,3 +33,7 @@ the debate is to be held in our school from 9:00 a.m to 11:00 a.m on july 18.
 a hot topic of discussion.
 
 it is closely related to our daily life.
+
+I will cover all the expenses involved.
+
+- Do you have any questions or concerns?  If you have, don't hesitate to let me know. 
