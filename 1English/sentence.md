@@ -25,9 +25,7 @@
 
 - _活动__is to be held in_学校_from_9:a.m__to_11 a.m__on_july 18__
 
-  - 比如：
-
-  - the debate is to be held in our school from 9:00 a.m to 11:00 a.m on july 18.
+  - 比如：the debate is to be held in our school from 9:00 a.m to 11:00 a.m on july 18.
 
 - a hot topic of discussion.
 
