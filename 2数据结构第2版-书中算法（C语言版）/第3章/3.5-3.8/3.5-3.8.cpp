@@ -1,4 +1,4 @@
-/***Á´Õ»µÄÊµÏÖ***/
+/***é“¾æ ˆçš„å®ç°***/
 #include<iostream>
 #include<fstream>
 using namespace std;
@@ -14,71 +14,71 @@ typedef struct StackNode {
 	struct StackNode *next;
 } StackNode, *LinkStack;
 
-//Ëã·¨3.5¡¡Á´Õ»µÄ³õÊ¼»¯
-Status InitStack(LinkStack &S) { // ¹¹ÔìÒ»¸ö¿ÕÕ» S£¬Õ»¶¥Ö¸ÕëÖÃ¿Õ
+//ç®—æ³•3.5ã€€é“¾æ ˆçš„åˆå§‹åŒ–
+Status InitStack(LinkStack &S) { // æ„é€ ä¸€ä¸ªç©ºæ ˆ Sï¼Œæ ˆé¡¶æŒ‡é’ˆç½®ç©º
 	S = NULL;
 	return OK;
 }
 
-//Ëã·¨3.6¡¡Á´Õ»µÄÈëÕ»
-Status Push(LinkStack &S, SElemType e) {//ÔÚÕ»¶¥²åÈëÔªËØe
+//ç®—æ³•3.6ã€€é“¾æ ˆçš„å…¥æ ˆ
+Status Push(LinkStack &S, SElemType e) {//åœ¨æ ˆé¡¶æ’å…¥å…ƒç´ e
 	LinkStack p;
-	p = new StackNode; //Éú³ÉĞÂ½áµã
-	p->data = e; //½«ĞÂ½áµãÊı¾İÓòÖÃÎªe
-	p->next = S; //½«ĞÂ½áµã²åÈëÕ»¶¥
-	S = p; //ĞŞ¸ÄÕ»¶¥Ö¸ÕëÎªp
+	p = new StackNode; //ç”Ÿæˆæ–°ç»“ç‚¹
+	p->data = e; //å°†æ–°ç»“ç‚¹æ•°æ®åŸŸç½®ä¸ºe
+	p->next = S; //å°†æ–°ç»“ç‚¹æ’å…¥æ ˆé¡¶
+	S = p; //ä¿®æ”¹æ ˆé¡¶æŒ‡é’ˆä¸ºp
 	return OK;
 }
 
-//Ëã·¨3.7¡¡Á´Õ»µÄ³öÕ»
-Status Pop(LinkStack &S, SElemType &e) {//É¾³ıSµÄÕ»¶¥ÔªËØ£¬ÓÃe·µ»ØÆäÖµ
+//ç®—æ³•3.7ã€€é“¾æ ˆçš„å‡ºæ ˆ
+Status Pop(LinkStack &S, SElemType &e) {//åˆ é™¤Sçš„æ ˆé¡¶å…ƒç´ ï¼Œç”¨eè¿”å›å…¶å€¼
 	LinkStack p;
 	if (S == NULL)
-		return ERROR; //Õ»¿Õ
-	e = S->data; //½«Õ»¶¥ÔªËØ¸³¸øe
-	p = S; //ÓÃpÁÙÊ±±£´æÕ»¶¥ÔªËØ¿Õ¼ä£¬ÒÔ±¸ÊÍ·Å
-	S = S->next; //ĞŞ¸ÄÕ»¶¥Ö¸Õë
-	delete p; //ÊÍ·ÅÔ­Õ»¶¥ÔªËØµÄ¿Õ¼ä
+		return ERROR; //æ ˆç©º
+	e = S->data; //å°†æ ˆé¡¶å…ƒç´ èµ‹ç»™e
+	p = S; //ç”¨pä¸´æ—¶ä¿å­˜æ ˆé¡¶å…ƒç´ ç©ºé—´ï¼Œä»¥å¤‡é‡Šæ”¾
+	S = S->next; //ä¿®æ”¹æ ˆé¡¶æŒ‡é’ˆ
+	delete p; //é‡Šæ”¾åŸæ ˆé¡¶å…ƒç´ çš„ç©ºé—´
 	return OK;
 }
-//Ëã·¨3.8¡¡È¡Á´Õ»µÄÕ»¶¥ÔªËØ
-SElemType GetTop(LinkStack S) {//·µ»ØSµÄÕ»¶¥ÔªËØ£¬²»ĞŞ¸ÄÕ»¶¥Ö¸Õë
-	if (S != NULL) //Õ»·Ç¿Õ
-		return S->data; //·µ»ØÕ»¶¥ÔªËØµÄÖµ£¬Õ»¶¥Ö¸Õë²»±ä
+//ç®—æ³•3.8ã€€å–é“¾æ ˆçš„æ ˆé¡¶å…ƒç´ 
+SElemType GetTop(LinkStack S) {//è¿”å›Sçš„æ ˆé¡¶å…ƒç´ ï¼Œä¸ä¿®æ”¹æ ˆé¡¶æŒ‡é’ˆ
+	if (S != NULL) //æ ˆéç©º
+		return S->data; //è¿”å›æ ˆé¡¶å…ƒç´ çš„å€¼ï¼Œæ ˆé¡¶æŒ‡é’ˆä¸å˜
 }
 
 int main() {
 	LinkStack s;
 	int choose, flag = 0;
 	SElemType j, t;
-	cout << "1.³õÊ¼»¯\n";
-	cout << "2.ÈëÕ»\n";
-	cout << "3.¶ÁÕ»¶¥ÔªËØ\n";
-	cout << "4.³öÕ»\n";
-	cout << "0.ÍË³ö\n\n";
+	cout << "1.åˆå§‹åŒ–\n";
+	cout << "2.å…¥æ ˆ\n";
+	cout << "3.è¯»æ ˆé¡¶å…ƒç´ \n";
+	cout << "4.å‡ºæ ˆ\n";
+	cout << "0.é€€å‡º\n\n";
 
 	choose = -1;
 	while (choose != 0) {
-		cout << "ÇëÑ¡Ôñ:";
+		cout << "è¯·é€‰æ‹©:";
 		cin >> choose;
 		switch (choose) {
-		case 1://Ëã·¨3.5¡¡Á´Õ»µÄ³õÊ¼»¯
+		case 1://ç®—æ³•3.5ã€€é“¾æ ˆçš„åˆå§‹åŒ–
 			if (InitStack(s)) {
 				flag = 1;
-				cout << "³É¹¦¶ÔÕ»½øĞĞ³õÊ¼»¯\n\n";
+				cout << "æˆåŠŸå¯¹æ ˆè¿›è¡Œåˆå§‹åŒ–\n\n";
 			} else
-				cout << "³õÊ¼»¯Õ»Ê§°Ü\n\n";
+				cout << "åˆå§‹åŒ–æ ˆå¤±è´¥\n\n";
 			break;
-		case 2: {//Ëã·¨3.6¡¡Á´Õ»µÄÈëÕ»
+		case 2: {//ç®—æ³•3.6ã€€é“¾æ ˆçš„å…¥æ ˆ
 			fstream file;
 			file.open("SqStack.txt");
 			if (!file) {
-				cout << "´íÎó£¡Î´ÕÒµ½ÎÄ¼ş£¡\n\n" << endl;
+				cout << "é”™è¯¯ï¼æœªæ‰¾åˆ°æ–‡ä»¶ï¼\n\n" << endl;
 				exit(ERROR);
 			}
 			if (flag) {
 				flag = 1;
-				cout << "½øÕ»ÔªËØÒÀ´ÎÎª£º\n";
+				cout << "è¿›æ ˆå…ƒç´ ä¾æ¬¡ä¸ºï¼š\n";
 				while (!file.eof()) {
 					file >> j;
 					if (file.fail())
@@ -90,24 +90,24 @@ int main() {
 				}
 				cout << endl << endl;
 			} else
-				cout << "Õ»Î´½¨Á¢£¬ÇëÖØĞÂÑ¡Ôñ\n\n";
+				cout << "æ ˆæœªå»ºç«‹ï¼Œè¯·é‡æ–°é€‰æ‹©\n\n";
 			file.close();
 		}
 			break;
-		case 3://Ëã·¨3.8¡¡È¡Á´Õ»µÄÕ»¶¥ÔªËØ
+		case 3://ç®—æ³•3.8ã€€å–é“¾æ ˆçš„æ ˆé¡¶å…ƒç´ 
 			if (flag != -1 && flag != 0)
-				cout << "Õ»¶¥ÔªËØÎª£º\n" << GetTop(s) << endl << endl;
+				cout << "æ ˆé¡¶å…ƒç´ ä¸ºï¼š\n" << GetTop(s) << endl << endl;
 			else
-				cout << "Õ»ÖĞÎŞÔªËØ£¬ÇëÖØĞÂÑ¡Ôñ\n" << endl;
+				cout << "æ ˆä¸­æ— å…ƒç´ ï¼Œè¯·é‡æ–°é€‰æ‹©\n" << endl;
 			break;
-		case 4://Ëã·¨3.7¡¡Á´Õ»µÄ³öÕ»
+		case 4://ç®—æ³•3.7ã€€é“¾æ ˆçš„å‡ºæ ˆ
 			if (flag) {
-				cout << "ÒÀ´Îµ¯³öµÄÕ»¶¥ÔªËØÎª:\n";
+				cout << "ä¾æ¬¡å¼¹å‡ºçš„æ ˆé¡¶å…ƒç´ ä¸º:\n";
 				while (Pop(s, t))
 					cout << t << "  ";
 				cout << endl << endl;
 			} else
-				cout << "Õ»Î´½¨Á¢£¬ÇëÖØĞÂÑ¡Ôñ\n\n";
+				cout << "æ ˆæœªå»ºç«‹ï¼Œè¯·é‡æ–°é€‰æ‹©\n\n";
 			break;
 		}
 	}

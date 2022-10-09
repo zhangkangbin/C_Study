@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-06 23:10:29
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-07 23:58:41
+ * @LastEditTime: 2022-10-09 10:52:29
  * @FilePath: \C_Study\chapter3_stack_queue\stack_queue.md
  * @Description: 
 -->
@@ -94,3 +94,74 @@ if(isEmpty()){
 return mStack.data[mStack.top];
 }
 ```
+
+
+### 栈的链式存储结构
+
+- 采用链式存储结构，适合容量大小未知情况下。
+- 全部代码具体实现看 StackLinkNode
+- 结构定义
+
+```C++
+class StackLinkNode{
+  int data;
+  StackLinkNode *next;
+
+};
+```
+
+- 初始化
+```C++
+//初始化。mStack全局变量。
+void initStackLinkNode()
+{
+    mRoot = NULL;
+}
+
+```
+
+- 进栈
+
+```C++
+
+bool push(int value)
+{
+    StackLinkNode *node = new StackLinkNode();
+    node->data = value;
+    node->next=mRoot; //这个设计很巧妙。把数据都填充给当前节点的 next;
+    mRoot = node;//mRoot 根节点
+    return true;
+}
+
+```
+
+- 出栈
+
+```C++
+int pop()
+{
+    StackLinkNode *top = mRoot;
+    int data=top->data;
+    mRoot=top->next;
+
+    delete top;
+    return data;
+}
+
+
+```
+
+
+- 得到栈顶
+
+```C++
+int getTop(){
+
+  if(!mRoot){ return -1; }
+
+   return mRoot->data;
+}
+
+```
+
+
