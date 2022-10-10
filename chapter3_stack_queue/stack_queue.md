@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-06 23:10:29
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-09 10:52:29
+ * @LastEditTime: 2022-10-10 14:36:33
  * @FilePath: \C_Study\chapter3_stack_queue\stack_queue.md
  * @Description: 
 -->
@@ -165,3 +165,76 @@ int getTop(){
 ```
 
 
+
+### 队列
+
+#### 队列的基本定义
+- 队列（queue）,简称队，是一种操作受限制的线性表，只允许在一端插入，另一端删除。向队列插入元素叫入队，删除元素叫出队。其操作特性是先进先出。
+
+#### 队列的基本操作
+
+1. initQueue(); 初始化
+2. isEmpty(); 判空。front==rear=0.
+3. enQueue();入队。
+4. deQueue(); 出队。
+5. getHead(); 得到队头
+
+-----------------------------
+
+#### 队列的顺序存储（数组实现）
+
+- 不同的教材，对于队头队尾的定义可能不一致。
+
+- 队列的顺序存储类型
+
+```C++
+class ArrayQueue{
+ int data[MaxSize];//存储数组。
+ int front; //队头
+ int rear; //队尾
+};
+
+```
+
+- 初始化 
+
+```C++
+void initQueue(){
+   //设置为空
+  mQueue.front=mQueue.rear=0;
+}
+```
+
+
+- 判空
+
+```C++
+bool isEmpty(){
+  if(mQueue.front==mQueue.rear){
+    return true;
+  }
+  return false;
+}
+```
+
+- 入队，队尾插入数据。
+
+```C++
+
+bool enQueue(int value){
+  
+  bool isFull=(mQueue.rear+1)%MaxSize==mQueue.front;
+
+  if(isFull){
+    return false;
+  }
+
+  mQueue.data[mQueue.rear]=value;
+
+  mQueue.rear=(mQueue.rear+1)%MaxSize;
+
+  return true;
+
+}
+
+```
