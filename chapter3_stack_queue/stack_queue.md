@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-06 23:10:29
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-10 14:36:33
+ * @LastEditTime: 2022-10-10 14:43:32
  * @FilePath: \C_Study\chapter3_stack_queue\stack_queue.md
  * @Description: 
 -->
@@ -232,6 +232,28 @@ bool enQueue(int value){
   mQueue.data[mQueue.rear]=value;
 
   mQueue.rear=(mQueue.rear+1)%MaxSize;
+
+  return true;
+
+}
+
+```
+
+
+
+- 出队，队头删除数据。
+
+```C++
+
+bool deQueue(){
+  
+  if(isEmpty()){
+    return false;
+  }
+ //这一步可以不设置，也没有事，是否空是靠队头队尾指针指向的位置。
+  mQueue.data[mQueue.front]=-1;//设置为-1，代表空
+  //队头加 1。
+  mQueue.front=(mQueue.front-1)%MaxSize;
 
   return true;
 
