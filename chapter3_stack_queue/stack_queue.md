@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-06 23:10:29
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-10 14:43:32
+ * @LastEditTime: 2022-10-11 17:30:48
  * @FilePath: \C_Study\chapter3_stack_queue\stack_queue.md
  * @Description: 
 -->
@@ -163,7 +163,9 @@ int getTop(){
 }
 
 ```
+ 
 
+-------------------------------------
 
 
 ### 队列
@@ -179,7 +181,7 @@ int getTop(){
 4. deQueue(); 出队。
 5. getHead(); 得到队头
 
------------------------------
+
 
 #### 队列的顺序存储（数组实现）
 
@@ -260,3 +262,98 @@ bool deQueue(){
 }
 
 ```
+
+
+#### 队列的链式存储
+
+- 链式存储结构类型 （完整代码QueueLinkList.cpp）
+
+```C++
+class LinkNode{
+
+  int data;
+  LinkNode *next;//单链表
+
+};
+
+class LinkQueue{
+
+LinkNode *front,rear;
+
+};
+
+
+```
+
+- 初始化
+
+```C++
+
+void initQueue(){
+
+  mQueue->front=mQueue->rear=new LinkNode();//指向同一个单链表
+  mQueue->front->next=NULL;
+
+}
+```
+
+- 判空
+
+```C++
+bool isEmpty(){
+  //如果空，二者指向同一个地址。
+return mQueue->front==mQueue->rear;
+}
+
+```
+
+
+- 入队
+
+```C++
+void enQueue(int value){
+
+LinkNode *temp=new LinkNode();
+temp->data=value;
+temp->next=NULL;
+
+//插到队尾
+mQueue->rear->next=temp;
+mQueue->rear=temp;
+
+}
+
+```
+
+
+- 出队
+
+```C++
+
+int deQueue()
+{
+    int value = -1; //待返回的数据
+    if (isEmpty())
+    {
+        return value;
+    }
+
+    LinkNode *data = mQueue->front.next;
+    value = data->data;
+
+    mQueue->front.next = data->next;
+
+    if (mQueue.rear == data)
+    {
+        //只有一个节点情况，尾节点=data;
+        mQueue.rear = mQueue.front;
+    }
+
+    free(data);
+
+    return value;
+}
+
+
+```
+

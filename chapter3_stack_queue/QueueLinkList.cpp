@@ -6,9 +6,9 @@ using namespace std;
 /*
  * @Author: zhangkangbin 784908058@qq.com
  * @Date: 2022-08-21 10:53:40
- * @LastEditors: zhangkangbin 784908058@qq.com
- * @LastEditTime: 2022-08-29 10:12:07
- * @FilePath: \C_Study\chapter3\QueueLinkList.cpp
+ * @LastEditors: zhangkangbin
+ * @LastEditTime: 2022-10-11 17:46:15
+ * @FilePath: \C_Study\chapter3_stack_queue\QueueLinkList.cpp
  *队列
  *队列是一种特殊的线性表，特殊之处在于它只允许在表的前端（front）进行删除操作，
  而在表的后端（rear）进行插入操作，和栈一样，队列是一种操作受限制的线性表。
@@ -20,22 +20,20 @@ using namespace std;
  */
 #define MaxSize 5
 
-class Node{
- public:
-
- string mNodeData;
- Node *mNodeNext;
-
+class Node
+{
+public:
+    string mNodeData;
+    Node *mNodeNext;
 };
 
 class QueueLinkList
 {
 
 private:
+    Node *mFront; //队头，删除操作
 
-    Node *mFront ; //队头，删除操作
-
-    Node *mRear ; //队尾 ，插入操作
+    Node *mRear; //队尾 ，插入操作
 
 public:
     void initQueue();
@@ -47,10 +45,11 @@ public:
     void initQueueList();
     void printAllData();
 };
-void QueueLinkList::initQueueList(){
+void QueueLinkList::initQueueList()
+{
 
-    mFront=mRear=new Node();
-  //  mFront->mNodeNext=NULL;
+    mFront = mRear = new Node();
+    //  mFront->mNodeNext=NULL;
 }
 bool QueueLinkList::isEmpty()
 {
@@ -61,14 +60,19 @@ bool QueueLinkList::isEmpty()
 
     return false;
 }
-
+/**
+ * 入队
+ * @param value
+ * @return true
+ * @return false
+ */
 bool QueueLinkList::enQueue(string value)
 {
-    Node *node=new Node();
-    node->mNodeData=value;
-    mRear->mNodeNext=node;
+    Node *node = new Node();
+    node->mNodeData = value;
+    mRear->mNodeNext = node;
     //指针指向node地址。.和front脱离。
-    mRear=node;
+    mRear = node;
 
     return false;
 }
@@ -82,38 +86,45 @@ string QueueLinkList::deQueue()
 
         return "empty";
     }
-    Node *temp=mFront->mNodeNext;
+    Node *temp = mFront->mNodeNext;
 
-    string  data=temp->mNodeData;
-    
-     mFront->mNodeNext=temp->mNodeNext;
+    string data = temp->mNodeData;
+   
+    mFront->mNodeNext = temp->mNodeNext;
     //判断是否出队到最后一个。
-     if(mRear==temp){
+    if (mRear == temp)
+    {
         //重新赋值为空队列条件。
-        mRear=mFront;
-     }
-     free(temp);
-    return "\n退栈："+data+"";
+        mRear = mFront;//如果是最后一个是指向NULL;
+    }
+
+    free(temp);
+ 
+    return "\n退栈：" + data + "";
 }
 void QueueLinkList::printAllData()
 {
 
-    Node *node=mFront;
-    while(node!=NULL){
+    Node *node = mFront;
+    while (node != NULL)
+    {
 
-        cout<<node->mNodeData;
+        cout << node->mNodeData;
 
-        node=node->mNodeNext;
+        node = node->mNodeNext;
     }
-    
 }
 int main()
 {
     QueueLinkList list;
     list.initQueueList();
-    cout << list.isEmpty()+"\n";
-     list.enQueue("a");
-    list.enQueue("b");
+    cout << list.isEmpty() + "\n";
+    list.enQueue("a");
+  //  list.enQueue("b");
+   //  list.enQueue("c");
+   cout << list.deQueue();
+
+/*     list.enQueue("b");
     list.enQueue("c");
     list.enQueue("d");
 
@@ -121,14 +132,13 @@ int main()
     cout << list.deQueue();
     cout << list.deQueue();
     cout << list.deQueue();
-    cout << list.deQueue();
-/*     list.enQueue("e");
-    list.enQueue("f");
-    list.enQueue("g");
-    list.deQueue();
- */
+    cout << list.deQueue(); */
+    /*     list.enQueue("e");
+        list.enQueue("f");
+        list.enQueue("g");
+        list.deQueue();
+     */
     list.printAllData();
-   
 
     return 0;
 }
