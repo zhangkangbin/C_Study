@@ -2,7 +2,7 @@
  * @Author: zhangkangbin 
  * @Date: 2022-08-18 18:31:13
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-12 11:55:50
+ * @LastEditTime: 2022-10-12 11:59:43
  * @FilePath: \C_Study\README.md
 -->
 # C_Study
@@ -14,8 +14,12 @@
 Get start
 8.24, 学习到二叉树尾声了。 
 
-### 特性矩阵的压缩存储，
-- 稀疏矩阵
+### 特性矩阵的压缩存储
+
+- 对称矩阵
+
+#### 稀疏矩阵
+- 画图
 
 
 ### 5，树和二叉树
