@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-14 11:18:07
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-01 23:12:42
+ * @LastEditTime: 2022-10-13 18:25:19
  * @FilePath: \C_Study\2outline\ExaminationOutline.md
  * @Description: 
 -->
@@ -42,6 +42,6 @@
 
 ### 二、主要参考范围
 （以下书籍仅供参考）
-1．C 语言程序设计，谭浩强主编，清华大学出版社
-2．数据结构（C 语言版），严蔚敏主编，清华大学出版社
-3．计算机算法设计与分析，王晓东主编，电子工业出版社
+1. C 语言程序设计，谭浩强主编，清华大学出版社
+2. 数据结构（C 语言版），严蔚敏主编，清华大学出版社
+3. 计算机算法设计与分析，王晓东主编，电子工业出版社

@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-12 12:05:04
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-13 10:40:56
+ * @LastEditTime: 2022-10-13 21:27:53
  * @FilePath: \C_Study\chapter5_tree\tree.md
  * @Description: 
 -->
@@ -58,6 +58,7 @@
 #### 4个特殊的二叉树
 
 1. $ 满二叉树：一棵高度为h,且 2^h-1个结点的二叉树，称为满二叉树。 $ 
+<img src="res/满二叉树.jpg" width="50%">
 
 2. 完全二叉树：高度为 h 有n个结点的二叉树，
 

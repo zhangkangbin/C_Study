@@ -1,9 +1,9 @@
 /*
  * @Author: zhangkangbin 784908058@qq.com
  * @Date: 2022-08-26 18:22:04
- * @LastEditors: zhangkangbin 784908058@qq.com
- * @LastEditTime: 2022-08-27 10:42:38
- * @FilePath: \C_Study\chapter4_tree\AdjacencyList.cpp
+ * @LastEditors: zhangkangbin
+ * @LastEditTime: 2022-10-13 22:19:49
+ * @FilePath: \C_Study\chapter6_graph\AdjacencyList.cpp
  * 算法6.2　(邻接表)采用邻接表表示法创建无向图\
  * 就是数组套链表。
 *****邻接表表示法创建的无向图*****
@@ -24,7 +24,7 @@ class Node{
 };
 class Adjacency{
    public:
-   Node nodeList[NodeSize];
+   Node nodeList[NodeSize];//数组
    int getVex(string v);
    void  printfList();
 
