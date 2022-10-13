@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-12 12:05:04
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-12 14:10:19
+ * @LastEditTime: 2022-10-12 14:37:23
  * @FilePath: \C_Study\chapter5_tree\tree.md
  * @Description: 
 -->
@@ -43,7 +43,7 @@
 
 11. 堂兄弟：同一层的结点互为堂兄弟，例如 第三层的 D 与E F 。
 
-12. 树的深度：树中结点的最大层次称为深度或者高度。和层次类似。
+12. 树的深度：树中结点的最大层次称为深度或者高度。和层次类似。图中为4.
 
 
 
