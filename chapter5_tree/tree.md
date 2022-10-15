@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-12 12:05:04
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-13 21:27:53
+ * @LastEditTime: 2022-10-15 14:43:36
  * @FilePath: \C_Study\chapter5_tree\tree.md
  * @Description: 
 -->
@@ -79,3 +79,16 @@
 2. 深度为K的二叉树，最多有$ 2^k - 1 个结点，k≥1. $ 
 
 3. $ 2i 为该结点的左结点，2i+1为该结点的右孩子。$
+
+
+
+### 二叉树与森林之间的转换
+
+- 森林转二叉树
+技巧：森林转二叉树，顺时针旋转45°度。
+
+- 二叉树转森林
+技巧：二叉树转森林，逆时针旋转45°度。
+
+
+<img src="res/森林和二叉树之间的转换.jpg" width="60%">
