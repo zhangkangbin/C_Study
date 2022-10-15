@@ -173,7 +173,11 @@ TreeNode *deNode()
 
    return mList[front];
 }
-
+/**
+ * 进栈
+ * 
+ * @param node 
+ */
 void enNode(TreeNode *node)
 {
 
