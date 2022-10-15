@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-12 12:05:04
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-15 17:51:19
+ * @LastEditTime: 2022-10-15 17:52:25
  * @FilePath: \C_Study\chapter5_tree\tree.md
  * @Description: 
 -->
@@ -74,9 +74,9 @@
 
 ### 二叉树的性质（重点）
 
-1. 二叉树第i层上最多有$ 2^{i-1} 个结点，i≥1. $ 
+1. 二叉树第i层上最多有$2^{i-1}$ 个结点，i≥1. 
 
-2. 深度为K的二叉树，最多有$ 2^k - 1 个结点，k≥1. $ 
+2. 深度为K的二叉树，最多有$2^k - 1$ 个结点，k≥1. 
 
 3. $ 2i 为该结点的左结点，2i+1为该结点的右孩子。$
 
