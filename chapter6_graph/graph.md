@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangkangbin
  * @Date: 2022-10-16 13:17:06
- * @LastEditTime: 2022-10-17 23:08:50
+ * @LastEditTime: 2022-10-17 23:39:33
  * @FilePath: \C_Study\chapter6_graph\graph.md
 -->
 ### 图
@@ -26,4 +26,20 @@ int mArc[4][4] = {
 
 };
 ```
-2. 邻接表法 （数组套链表）
+2. 邻接表法 （链表形的数组）
+
+- 结构如下
+```C++
+class Node{
+    public:
+    string name;//顶点名称
+    int nameIndex;//顶点下标位置
+    Node *nextNode;
+};
+class Adjacency{
+   public:
+   Node nodeList[NodeSize];//链表数组
+};
+
+```
+<img src="res/邻接表法.jpg" width="100%">
