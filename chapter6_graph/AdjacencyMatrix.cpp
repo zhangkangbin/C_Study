@@ -2,11 +2,12 @@
  * @Author: zhangkangbin 784908058@qq.com
  * @Date: 2022-08-26 15:25:58
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-08-31 18:16:33
- * @FilePath: \C_Study\chapter4_tree\AdjacencyMatrix.cpp
+ * @LastEditTime: 2022-10-16 13:41:48
+ * @FilePath: \C_Study\chapter6_graph\AdjacencyMatrix.cpp
  * 算法6.2　（邻接矩阵）采用邻接矩阵表示法创建无向图
  * 
  * 邻接矩阵 ，如果在已有的矩阵下，添加删除都要修改数组。效率很低。
+ * 优势是：判断二个顶点是否有边的效率高。
  */
 #include <stdio.h>
 #include <iostream>
