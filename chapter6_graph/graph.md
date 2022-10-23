@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangkangbin
  * @Date: 2022-10-16 13:17:06
- * @LastEditTime: 2022-10-19 18:52:27
+ * @LastEditTime: 2022-10-19 19:06:22
  * @FilePath: \C_Study\chapter6_graph\graph.md
 -->
 ### 图
@@ -65,4 +65,22 @@ class Adjacency{
 2. 广度优先遍历 (BFS)
 - 优先访问自己连通的结点。
 
+ * 需要辅助链表，进行退栈进栈。
+ * 队形如下：
+ -----------
+ * a  b c                d
+ -----------
+
 <img src="res/图的遍历.jpg" width="100%" >
+
+
+
+
+#### 图的应用
+
+##### 最小生成树
+
+
+1. Prim算法
+
+1. Kruskal算法

@@ -280,17 +280,17 @@ int main()
     startDFS("c");
     
 
-    cout << "\n -------a广度深度优先 ---------------\n\n";
+    cout << "\n -------a顶点广度深度优先 ---------------\n\n";
     initVisited();
     //广度优先
     bfsFindStart("a");
     //初始化访问状态。
-    cout << "\n -------b广度深度优先 ---------------\n\n";
+    cout << "\n -------b顶点广度深度优先 ---------------\n\n";
     initVisited();
     bfsFindStart("b");
     
     //初始化访问状态。
-    cout << "\n -------d广度深度优先 ---------------\n\n";
+    cout << "\n -------d顶点广度深度优先 ---------------\n\n";
     initVisited();
     bfsFindStart("d");
 
