@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-25 10:56:10
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-08 10:29:54
+ * @LastEditTime: 2022-10-23 12:35:35
  * @FilePath: \C_Study\1English\sentence.md
  * @Description: 
 -->
@@ -31,6 +31,31 @@
 
 - it is closely related to our daily life.
 
-- I will cover all the expenses involved.
+- I will cover all the expenses involved. 
 
 - Do you have any questions or concerns?  If you have, don't hesitate to let me know. 
+
+- It is my pleasure to.....
+
+- I am looking forward to your reply and hope the advice is useful to you.
+
+- Here is my advice.
+1. Here are the reasons.
+2. Here are the reasons why I recommend the book.
+
+--------------------------------------------------------------
+
+- It is well known that .......is very important( popular and trendy)
+in our live.As a matter of fact .....is good for us in many ways.
+Some people like doing some thing and other people like doing
+some thing. In my opinion,I like....回答作文主题。
+Here are the reasons why I like....
+
+- First and foremost,it is obvious that....
+
+- What is more,there are no doubt that....
+
+- most important of all,....
+- As a result, as far as I am concerned, I like..点题.......
+
+--------------------------------------------------------------
