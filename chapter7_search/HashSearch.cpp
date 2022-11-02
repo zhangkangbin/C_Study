@@ -2,17 +2,27 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-10 21:11:10
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-10 23:52:40
- * @FilePath: \C_Study\chapter5_search\HashSearch.cpp
+ * @LastEditTime: 2022-11-01 20:37:50
+ * @FilePath: \C_Study\chapter7_search\HashSearch.cpp
  * @Description:
  * 哈希表的查找
  * 采用线性探测法处理冲突。
+ * 
+ * 2,链地址法，就是散列地址加链表。
  */
 
 #include <iostream>
 using namespace std;
 
 #define SIZE 7
+
+
+struct Node{
+  int data;
+  Node *next;
+};
+
+Node mTableNode[SIZE] ;
 
 class HashTable
 {
@@ -29,7 +39,12 @@ int getKey(int key)
          << result;
     return result;
 }
-
+/**
+ *  线性探测法
+ * 
+ * @param value 
+ * @return int 
+ */
 int searchKey(int value)
 {
    
