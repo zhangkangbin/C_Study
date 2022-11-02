@@ -2,8 +2,8 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-25 13:34:09
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-25 17:01:53
- * @FilePath: \C_Study\3Test\test.c
+ * @LastEditTime: 2022-11-02 23:19:01
+ * @FilePath: \C_Study\3Test\test.cpp
  * @Description: 
  */
 
@@ -27,14 +27,14 @@ typedef struct Student{
 
 }test,*Stu;
 
-void  sort(int list[]){
+/* void  sort(int list[]){
 
  Student student;
  student.age=12318;
 
  printf("\n age:%d",student.age);
 
- }
+ } 
 
 
 int main()
@@ -45,3 +45,4 @@ int main()
 
     return 0;
 }
+*/
