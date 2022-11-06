@@ -2,14 +2,17 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-25 13:34:09
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-25 19:06:34
+ * @LastEditTime: 2022-11-04 22:05:32
  * @FilePath: \C_Study\3Test\Test833_2012.c
  * @Description: 
  */
 
 #include <stdio.h> 
 
-
+typedef struct Book{
+   int data;
+   Books *book;
+}Books;
 
 /**
  * 2012，第一题，N项和。

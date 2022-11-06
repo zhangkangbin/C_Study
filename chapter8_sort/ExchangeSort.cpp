@@ -2,8 +2,8 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-15 14:37:53
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-16 23:46:27
- * @FilePath: \C_Study\chapter6_sort\ExchangeSort.cpp
+ * @LastEditTime: 2022-11-06 22:25:06
+ * @FilePath: \C_Study\chapter8_sort\ExchangeSort.cpp
  * 交换排序：
  * 1，冒泡
  * 2，快速
@@ -63,6 +63,8 @@ void bubbleSort()
         index++;
     }
 }
+
+//快速排序。
 int getPartition(int list[], int low, int high)
 {
 

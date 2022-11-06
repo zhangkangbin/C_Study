@@ -4,10 +4,10 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-20 20:30:39
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-28 13:35:17
+ * @LastEditTime: 2022-11-06 15:13:46
  * @FilePath: \C_Study\chapter7_search\BinarySortSearch.cpp
  * 二叉排序树,又称二叉查找树。
- 
+
  */
 
 #include <stdio.h>
@@ -28,12 +28,12 @@ class Search
 {
 
 private:
-   // Node *mHead = NULL;
+    // Node *mHead = NULL;
 
 public:
     Node *mHead = NULL;
     bool searchData(int value);
-    bool recursionSearchData(Node* node,int value);
+    bool recursionSearchData(Node *node, int value);
     void addData(int value);
     bool addData(Node *&node, int value);
     bool addDataHead(int value);
@@ -100,11 +100,14 @@ bool Search::addData(Node *&node, int value)
  * @param value
  */
 void Search::addData(int value)
-
 {
+
+    Node *child = new Node();
+    child->data = value;
+
     if (mHead == NULL)
     {
-        mHead = new Node();
+        mHead = child;
         mHead->data = value;
         mHead->left = mHead->right = NULL;
         return;
@@ -121,8 +124,6 @@ void Search::addData(int value)
             if (p->left == NULL)
             {
 
-                Node *child = new Node();
-                child->data = value;
                 child->left = child->right = NULL;
 
                 p->left = child;
@@ -136,8 +137,6 @@ void Search::addData(int value)
             if (p->right == NULL)
             {
 
-                Node *child = new Node();
-                child->data = value;
                 child->left = child->right = NULL;
 
                 p->right = child;
@@ -168,8 +167,8 @@ bool Search::searchData(int key)
     while (p)
     {
         if (p->data == key)
-        { 
-            cout<<"\n  find data: "<<key<<"\n";
+        {
+            cout << "\n  find data: " << key << "\n";
 
             return true;
         }
@@ -184,39 +183,42 @@ bool Search::searchData(int key)
             p = p->right;
         }
     }
-    cout<<"\n  not find data: "<<key<<"\n";
+    cout << "\n  not find data: " << key << "\n";
     return false;
 }
 /**
  * 用递归，查找数据
- * 
- * @param key 
- * @return true 
- * @return false 
+ *
+ * @param key
+ * @return true
+ * @return false
  */
-bool Search::recursionSearchData(Node* node,int key){
+bool Search::recursionSearchData(Node *node, int key)
+{
 
-    if(node==NULL){
-        cout<<"\n  not find data: "<<key<<"\n";
+    if (node == NULL)
+    {
+        cout << "\n  not find data: " << key << "\n";
         return false;
     }
 
-    if(node->data==key){
-       cout<<"\n  find data: "<<key<<"\n";
+    if (node->data == key)
+    {
+        cout << "\n  find data: " << key << "\n";
 
-       return true;
+        return true;
     }
 
-    if(node->data>key){
+    if (node->data > key)
+    {
 
-       return recursionSearchData(node->left,key);
-    }else{
-
-       return recursionSearchData(node->right,key);
+        return recursionSearchData(node->left, key);
     }
+    else
+    {
 
-
-    
+        return recursionSearchData(node->right, key);
+    }
 }
 int main()
 {
@@ -232,19 +234,17 @@ int main()
         search.addDataHead(list[i]);
     }
 
-/*     search.searchData(7);
-    search.searchData(6);
-    search.searchData(1);
-    search.searchData(8); */
-
+    /*     search.searchData(7);
+        search.searchData(6);
+        search.searchData(1);
+        search.searchData(8); */
 
     //递归查找数据
-    search.recursionSearchData(search.mHead,7);
-    search.recursionSearchData(search.mHead,6);
-    search.recursionSearchData(search.mHead,1);
-    search.recursionSearchData(search.mHead,8);
-    search.recursionSearchData(search.mHead,0);
-
+    search.recursionSearchData(search.mHead, 7);
+    search.recursionSearchData(search.mHead, 6);
+    search.recursionSearchData(search.mHead, 1);
+    search.recursionSearchData(search.mHead, 8);
+    search.recursionSearchData(search.mHead, 0);
 
     return 0;
 }

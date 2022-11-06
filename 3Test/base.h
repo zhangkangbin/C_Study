@@ -1,16 +1,17 @@
 /*
  * @Author: zhangkangbin
  * @Date: 2022-11-02 23:19:43
- * @LastEditTime: 2022-11-02 23:23:14
+ * @LastEditTime: 2022-11-06 13:07:35
  * @FilePath: \C_Study\3Test\base.h
  * 公共类。方便测试使用。
  */
 
 #ifndef LABEL
 #define LABEL
-//代码部分
 #include <stdio.h>
-
+#include <iostream>
+using namespace std;
+// 二叉树
 struct Node
 {
     int data;
@@ -18,21 +19,56 @@ struct Node
     Node *right;
 };
 
+//单链表
 struct SingleLinkNode
 {
     int data;
-    Node *next;
+    SingleLinkNode *next;
 };
+
+SingleLinkNode* getSingleLinkNode()
+{
+
+    SingleLinkNode *head = new SingleLinkNode();
+    SingleLinkNode *last = head;
+
+    for (int i = 2; i <= 10; i = i + 2)
+    {
+
+        SingleLinkNode *node = new SingleLinkNode();
+        node->data = i;
+        last->next = node;
+        last = node;
+    }
+
+    return head;
+}
+void printSingleLinkNode(SingleLinkNode *node)
+{
+
+    if (node == NULL)
+    {
+        return;
+    }
+   cout<<"\n";
+   SingleLinkNode *next = node->next;
+    while (next)
+    {
+       cout<<next->data<<" ,";
+       next=next->next;
+    }
+    
+}
 /**
  结构如下：
-      1 
-    /   \    
+      1
+    /   \
    2      3
   /
  4
- * @return Node* 
+ * @return Node*
  */
-Node* getTestTree()
+Node *getTestTree()
 {
 
     Node *node = new Node();
@@ -41,9 +77,9 @@ Node* getTestTree()
     Node *nodeLeft = new Node();
     nodeLeft->data = 2;
 
-    Node *nodeLeft1 = new Node();
-    nodeLeft1->data = 4;
-    nodeLeft->left = nodeLeft1;
+    Node *nodeLeft4 = new Node();
+    nodeLeft4->data = 4;
+    nodeLeft->left = nodeLeft4;
 
     Node *nodeRight = new Node();
     nodeRight->data = 3;
@@ -53,12 +89,53 @@ Node* getTestTree()
 
     return node;
 }
-int get()
+/**
+ 结构如下：
+        1
+      /    \
+     2       3
+    / \     /  \
+   4   5   6    7
+  /
+ 8
+ * @return Node*
+ */
+Node *getTestTree2()
 {
 
-    /* 我的第一个 C 程序 */
-    printf("\n\n\n this is from list \n\n\n");
+    Node *node = new Node();
+    node->data = 1;
 
-    return 0;
+    Node *nodeLeft = new Node();
+    nodeLeft->data = 2;
+
+    Node *nodeLeft4 = new Node();
+    nodeLeft4->data = 4;
+    nodeLeft->left = nodeLeft4;
+
+    Node *nodeLeft8 = new Node();
+    nodeLeft8->data = 8;
+    nodeLeft4->left = nodeLeft8;
+
+    Node *nodeLeft25 = new Node();
+    nodeLeft25->data = 5;
+    nodeLeft->right = nodeLeft25;
+
+    Node *nodeRight = new Node();
+    nodeRight->data = 3;
+
+    Node *nodeRight6 = new Node();
+    nodeRight6->data = 6;
+
+    Node *nodeRight7 = new Node();
+    nodeRight7->data = 7;
+
+    nodeRight->left = nodeRight6;
+    nodeRight->right = nodeRight7;
+
+    node->left = nodeLeft;
+    node->right = nodeRight;
+
+    return node;
 }
 #endif
