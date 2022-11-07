@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-29 13:24:24
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-06 15:07:11
+ * @LastEditTime: 2022-11-07 22:07:11
  * @FilePath: \C_Study\3Test\Test833_2020.cpp
  * @Description:
  */
@@ -13,7 +13,7 @@ using namespace std;
 
 /*
 
-3. 给定一串数字序列，试用快速排序将其变成有序序列，试设计算法并写出代码。（15分）
+
 
 
 4. 栈操作有入栈和出栈，初始时栈为空，如果进行一系列进出栈操作后，栈仍然为空，
@@ -141,6 +141,19 @@ void addData(int key)
 
 	
 }
+
+/**
+ 3. 给定一串数字序列，试用快速排序将其变成有序序列，试设计算法并写出代码。（15分）
+ * 
+ */
+
+void quicklySort(){
+
+	
+}
+
+//3 end---------------------------------------------------------------------
+
 void createTree()
 {
 

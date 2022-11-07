@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-15 14:37:53
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-06 22:25:06
+ * @LastEditTime: 2022-11-07 22:56:53
  * @FilePath: \C_Study\chapter8_sort\ExchangeSort.cpp
  * 交换排序：
  * 1，冒泡
@@ -77,7 +77,7 @@ int getPartition(int list[], int low, int high)
         {
             high--;
         }
-        //直到找到中值小的。
+        //直到找到参考值小的。
         list[low] = list[high];
 
          cout << "  \n--------high----------\n";
@@ -89,7 +89,7 @@ int getPartition(int list[], int low, int high)
         {
             low++;
         }
-        //中值存放的位置。
+        //高低位交换位置。
         list[high] = list[low];
 
         if(list[high] == list[low]){
@@ -100,7 +100,7 @@ int getPartition(int list[], int low, int high)
 
        cout << "  \n------------------\n";
     }
-
+    //最后一个值和参考值P交换位置
     list[low] = partition;
 
     return low;
@@ -112,7 +112,7 @@ int getPartition(int list[], int low, int high)
  */
 void quickSort(int list[], int low, int high)
 {
-    //把数组分成两半。
+    //把数组分成两半。partition参考值下标
     int partition = getPartition(list, low, high);
 
     if (low < high)
