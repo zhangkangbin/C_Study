@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-15 14:37:53
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-08 22:17:45
+ * @LastEditTime: 2022-11-08 22:46:38
  * @FilePath: \C_Study\chapter8_sort\ExchangeSort.cpp
  * 交换排序：
  * 1，冒泡
@@ -104,7 +104,7 @@ int getPartition(int list[], int low, int high)
     list[low] = partition;
     
     printData(list, MAXSIZE);
-    cout << "  \n-------end-----------\n";
+   // cout << "  \n-------end-----------\n";
     return low;
 }
 
@@ -126,10 +126,19 @@ void quickSort(int list[], int low, int high)
         quickSort(list, partition + 1, high); //右子表递归排序
     }
 }
+/**
+ 四趟的结果 
+ 27 38 13 49 76 97 65 49
 
+ 13 27 38 49 76 97 65 49
+
+ 13 27 38 49 49 65 76 97
+
+ 13 27 38 49 49 65 76 97 
+ */
 void testQuickSort()
 {
-
+   
     //  int listData[MAXSIZE] = {5,3,9,8,4,2,1,7,6};
     int listData[MAXSIZE] = {49, 38, 65, 97, 76, 13, 27, 49};
 
