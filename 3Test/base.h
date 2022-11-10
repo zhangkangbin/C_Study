@@ -1,7 +1,7 @@
 /*
  * @Author: zhangkangbin
  * @Date: 2022-11-02 23:19:43
- * @LastEditTime: 2022-11-06 13:07:35
+ * @LastEditTime: 2022-11-10 19:39:19
  * @FilePath: \C_Study\3Test\base.h
  * 公共类。方便测试使用。
  */
@@ -137,5 +137,51 @@ Node *getTestTree2()
     node->right = nodeRight;
 
     return node;
+}
+
+/**
+ 结构如下：
+      1
+    /   \
+   2      3
+  / \
+ 4   5
+ * @return Node*
+ */
+Node *getTestTree3()
+{
+
+    Node *node = new Node();
+    node->data = 1;
+
+    Node *nodeLeft = new Node();
+    nodeLeft->data = 2;
+
+    Node *nodeLeft4 = new Node();
+    nodeLeft4->data = 4;
+    nodeLeft->left = nodeLeft4;
+
+    Node *nodeLeft5 = new Node();
+    nodeLeft5->data = 5;
+    nodeLeft->right = nodeLeft5;
+
+
+    Node *nodeRight = new Node();
+    nodeRight->data = 3;
+
+    node->left = nodeLeft;
+    node->right = nodeRight;
+
+    return node;
+}
+void printList(int list[],int length){
+
+	cout << " \n";
+    for (int i = 0; i < length; i++)
+	{
+
+		cout << list[i] << " ";
+	}
+    cout << " \n";
 }
 #endif

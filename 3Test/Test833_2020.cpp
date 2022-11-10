@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-29 13:24:24
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-07 22:07:11
+ * @LastEditTime: 2022-11-10 21:47:37
  * @FilePath: \C_Study\3Test\Test833_2020.cpp
  * @Description:
  */
@@ -29,11 +29,6 @@ D. IIIOOO，
 （1）给出算法的基本设计思想；
 （2）写出该算法，并在关键之处给出注释。
 
-5. 给定一颗二叉树，求出叶子个数，试设计算法并写出代码。（15分）
-
-			1
-	4	8	SSS
-	5	6
 
 
 
@@ -95,7 +90,6 @@ void testDeleteNode()
 
  */
 
-
 Node *mHead;
 void addData(int key)
 {
@@ -138,21 +132,64 @@ void addData(int key)
 			}
 		}
 	}
-
-	
 }
 
 /**
  3. 给定一串数字序列，试用快速排序将其变成有序序列，试设计算法并写出代码。（15分）
- * 
+ *
  */
 
-void quicklySort(){
+int getPartition(int list[], int low, int high)
+{
 
-	
+	//把low当参考值
+
+	int position = list[low];
+
+	while (low < high)
+	{
+
+		while (list[high] >= position && low < high)
+		{
+			high--;
+		}
+		list[low] = list[high];
+
+		while (list[low] <= position && low < high)
+		{
+			low++;
+		}
+		list[high] = list[low];
+	}
+
+	list[low] = position;
+
+	printList(list, 9);
+
+	return low;
 }
 
-//3 end---------------------------------------------------------------------
+void quickSort(int list[], int low, int high)
+{
+
+	if (low < high)
+	{
+		int position = getPartition(list, low, high);
+		quickSort(list, low, position - 1);
+		quickSort(list, position + 1, high);
+	}
+}
+
+void testQuickSort()
+{
+
+	int list[9] = {8, 2, 3, 10, 11, 7, 20, 9, 15};
+
+	quickSort(list, 0, 8);
+	printList(list, 9);
+	cout << "\n --------quick sort test-------\n ";
+}
+// 3 end---------------------------------------------------------------------
 
 void createTree()
 {
@@ -165,15 +202,65 @@ void createTree()
 
 		cout << list[i] << " ";
 
-		addData(list[i] );
+		addData(list[i]);
 	}
 
 	cout << "\n -------end------\n";
 }
+
+/**'
+ * 5. 给定一颗二叉树，求出叶子个数，试设计算法并写出代码。（15分）
+ * 
+ * 思路1:没有左右孩子的称为叶子结点。递归判断如果这个节点没有左右孩子，就加一。
+ * 
+ * 思路2：设置全局变量，遍历二叉树，判断如果这个节点没有左右孩子，就加一。
+ * 这个简单。
+ */
+
+int countTreeLeaf(Node *node)
+{
+
+	if (node == NULL)
+	{
+		return 0;
+	}
+
+	int result=0;
+    if(node->left==NULL&&node->right==NULL){
+
+		return 1;
+	}else{
+      
+
+	int left = countTreeLeaf(node->left);
+	int right = countTreeLeaf(node->right);
+
+	 result=left+right;
+	}
+
+
+	return result;
+}
+
+void testCountTreeLeaf()
+{
+
+	Node *node = getTestTree2();
+	int sum = countTreeLeaf(node);
+
+	Node *node2 = getTestTree();
+	int sum2 = countTreeLeaf(node2);
+     
+	int sum3 = countTreeLeaf(getTestTree3());
+
+	cout << sum << "  " << sum2<< "  " << sum3;
+}
+
 int main()
 {
 	// testDeleteNode();
-	createTree();
-
+	// createTree();
+	// testQuickSort();
+	testCountTreeLeaf();
 	return 0;
 }

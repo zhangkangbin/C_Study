@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-15 14:37:53
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-08 22:46:38
+ * @LastEditTime: 2022-11-10 19:59:55
  * @FilePath: \C_Study\chapter8_sort\ExchangeSort.cpp
  * 交换排序：
  * 1，冒泡
@@ -12,7 +12,7 @@
 #include <iostream>
 using namespace std;
 
-#define MAXSIZE 8
+#define MAXSIZE 9
 
 void printData(int list[], int length)
 
@@ -71,7 +71,7 @@ void bubbleSort()
 int getPartition(int list[], int low, int high)
 {
 
-    int partition = list[low]; //第一个值作为参考值
+    int partition = list[low]; //把low当参考值
 
     while (low < high)
     {
@@ -140,8 +140,8 @@ void testQuickSort()
 {
    
     //  int listData[MAXSIZE] = {5,3,9,8,4,2,1,7,6};
-    int listData[MAXSIZE] = {49, 38, 65, 97, 76, 13, 27, 49};
-
+   // int listData[MAXSIZE] = {49, 38, 65, 97, 76, 13, 27, 49};
+     int listData[MAXSIZE] = {8, 2, 3, 10, 11, 7, 20, 9,15};
     quickSort(listData, 0, (MAXSIZE - 1));
 
 /*     for (int i = 0; i < MAXSIZE; i++)
