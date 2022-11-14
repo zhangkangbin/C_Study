@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-29 13:24:24
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-10 21:47:37
+ * @LastEditTime: 2022-11-14 22:54:33
  * @FilePath: \C_Study\3Test\Test833_2020.cpp
  * @Description:
  */
@@ -186,7 +186,7 @@ void testQuickSort()
 	int list[9] = {8, 2, 3, 10, 11, 7, 20, 9, 15};
 
 	quickSort(list, 0, 8);
-	printList(list, 9);
+	//printList(list, 9);
 	cout << "\n --------quick sort test-------\n ";
 }
 // 3 end---------------------------------------------------------------------
@@ -260,7 +260,7 @@ int main()
 {
 	// testDeleteNode();
 	// createTree();
-	// testQuickSort();
-	testCountTreeLeaf();
+	 testQuickSort();
+	//testCountTreeLeaf();
 	return 0;
 }

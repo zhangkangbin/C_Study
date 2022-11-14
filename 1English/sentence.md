@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-25 10:56:10
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-23 12:35:35
+ * @LastEditTime: 2022-11-14 15:19:14
  * @FilePath: \C_Study\1English\sentence.md
  * @Description: 
 -->
@@ -36,6 +36,7 @@
 - Do you have any questions or concerns?  If you have, don't hesitate to let me know. 
 
 - It is my pleasure to.....
+- ​It is very meaningful to visit the museum.
 
 - I am looking forward to your reply and hope the advice is useful to you.
 
@@ -59,3 +60,5 @@ Here are the reasons why I like....
 - As a result, as far as I am concerned, I like..点题.......
 
 --------------------------------------------------------------
+
+一篇历史景点文章
