@@ -44,6 +44,11 @@
 1. Here are the reasons.
 2. Here are the reasons why I recommend the book.
 
+
+get into the habit of 有/养成…的习惯;习惯于
+
+you should get into the habit of reading, which will enrich your college life.
+
 --------------------------------------------------------------
 
 - It is well known that .......is very important( popular and trendy)
