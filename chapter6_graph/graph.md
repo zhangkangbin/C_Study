@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangkangbin
  * @Date: 2022-10-16 13:17:06
- * @LastEditTime: 2022-10-19 19:06:22
+ * @LastEditTime: 2022-11-16 22:58:58
  * @FilePath: \C_Study\chapter6_graph\graph.md
 -->
 ### 图
@@ -82,5 +82,12 @@ class Adjacency{
 
 
 1. Prim算法
+先选择一个结点，再去寻找这个结点连通的最小权值。把这个结点加到集合里面，再从集合里面查找最小的连接边。
 
-1. Kruskal算法
+
+
+<img src="res/prim.jpg" width="100%" >
+
+2. Kruskal算法
+
+先把最小权值的连接起来。
