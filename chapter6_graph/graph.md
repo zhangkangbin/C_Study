@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangkangbin
  * @Date: 2022-10-16 13:17:06
- * @LastEditTime: 2022-11-16 22:58:58
+ * @LastEditTime: 2022-11-17 09:29:52
  * @FilePath: \C_Study\chapter6_graph\graph.md
 -->
 ### 图
@@ -81,13 +81,15 @@ class Adjacency{
 ##### 最小生成树
 
 
-1. Prim算法
+1. Prim 普里姆 算法
 先选择一个结点，再去寻找这个结点连通的最小权值。把这个结点加到集合里面，再从集合里面查找最小的连接边。
 
 
 
 <img src="res/prim.jpg" width="100%" >
 
-2. Kruskal算法
+2. Kruskal克鲁斯卡尔 算法
 
 先把最小权值的连接起来。
+
+<img src="res/kruskal.jpg" width="100%" >

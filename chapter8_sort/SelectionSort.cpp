@@ -2,8 +2,8 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-17 08:01:30
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-19 22:36:22
- * @FilePath: \C_Study\chapter6_sort\SelectionSort.cpp
+ * @LastEditTime: 2022-11-17 10:04:11
+ * @FilePath: \C_Study\chapter8_sort\SelectionSort.cpp
  * 选择排序
  * 1，简单选择排序 ，不稳定。
  * 2，堆排序。 不稳定
@@ -114,6 +114,10 @@ void heapSort()
     printData(list,1, length);
 }
 
+/**
+ * 简单选择排序。
+ * 
+ */
 void simpleSelectionSort()
 {
 
