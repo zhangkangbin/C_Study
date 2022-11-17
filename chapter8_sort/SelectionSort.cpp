@@ -91,7 +91,7 @@ void heapSort()
     const int length = 9;
     //顺序表的存储结构  0用于存储位。
     int list[length] = {0, 53,17,78,32,45,65,87,9};
-
+   //1，建立堆
     for (int i = length / 2; i > 0; i--)
     {
         //反复调整堆。
@@ -99,9 +99,9 @@ void heapSort()
     }
 
    cout << "\n---------------- \n";
-   
+      //2，堆排序，在堆里面进行最终的排序。
     for(int i=length-1;i>1;i--){
-          //这一步是为了把最大的数，放到数组结尾。
+          //这一步是为了把最大的数，放到数组结尾。（元素下坠）
           int temp=list[1];
           list[1]=list[i];
           list[i]=temp;
