@@ -1,11 +1,11 @@
 <!--
  * @Author: zhangkangbin
  * @Date: 2022-10-16 13:17:06
- * @LastEditTime: 2022-11-17 09:29:52
+ * @LastEditTime: 2022-11-19 22:33:33
  * @FilePath: \C_Study\chapter6_graph\graph.md
 -->
 ### 图
-
+<img src="res/image_various.jpg" width="100%" >
 
 #### 图的定义
 
