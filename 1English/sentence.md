@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-25 10:56:10
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-14 15:19:14
+ * @LastEditTime: 2022-11-19 12:54:25
  * @FilePath: \C_Study\1English\sentence.md
  * @Description: 
 -->
@@ -50,6 +50,16 @@ get into the habit of 有/养成…的习惯;习惯于
 you should get into the habit of reading, which will enrich your college life.
 
 --------------------------------------------------------------
+
+
+
+I really love doing cardio exercise. Doing cardio is my daily routine, which helps me burn calories, 
+slim down and keep fit. If you prefer exercise too, we can exercise together.
+
+
+Those who have relevant experience will be preferred.  If you are interested in it, 
+please send your resume to "University.email.com".
+
 
 - It is well known that .......is very important( popular and trendy)
 in our live.As a matter of fact .....is good for us in many ways.
