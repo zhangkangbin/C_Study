@@ -174,6 +174,35 @@ Node *getTestTree3()
 
     return node;
 }
+
+/**
+     1
+    /   
+   2     
+   \
+     4
+ * 
+ * @return Node* 
+ */
+
+Node *getTestTree4()
+{
+
+    Node *node = new Node();
+    node->data = 1;
+
+    Node *nodeLeft = new Node();
+    nodeLeft->data = 2;
+
+    node->left=nodeLeft;
+
+    Node *nodeLeft4 = new Node();
+    nodeLeft4->data = 4;
+    nodeLeft->right = nodeLeft4;
+
+
+    return node;
+}
 void printList(int list[],int length){
 
 	cout << " \n";

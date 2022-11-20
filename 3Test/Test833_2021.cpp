@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-29 13:24:24
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-16 21:01:40
+ * @LastEditTime: 2022-11-20 23:54:00
  * @FilePath: \C_Study\3Test\Test833_2021.cpp
  * @Description:
  */
@@ -151,12 +151,63 @@ int rear=-1 ; //队尾
 
  */
 
+void visit(Node* node){
+
+  if(node==NULL) return;
+
+   cout<<node->data<<"  ";
+
+}
+
+/**
+ * 先序打印
+ * 
+ * @param node 
+ */
+void preTreePrint(Node* node){
+
+   if(node==NULL)return;
+
+    visit(node);
+    preTreePrint(node->left);
+    preTreePrint(node->right);
+
+}
+
+/**
+ * 后序
+ * 
+ * @param node 
+ */
+void afterTreePrint(Node* node){
+
+   if(node==NULL)return;
+
+  
+    afterTreePrint(node->left);
+    afterTreePrint(node->right);
+
+	visit(node);
+
+}
+
+
+void testTreePrint(){
+
+	preTreePrint(getTestTree4());
+	cout<<"\n";
+	afterTreePrint(getTestTree4());
+
+}
 
 
 int main()
 {
 	SingleLinkNode *node = getSingleLinkNode();
-	deleteHeadNode(node);
+	//deleteHeadNode(node);
+    
+   
+    testTreePrint();
 
 	return 0;
 }

@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-15 14:37:53
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-10 19:59:55
+ * @LastEditTime: 2022-11-20 23:37:05
  * @FilePath: \C_Study\chapter8_sort\ExchangeSort.cpp
  * 交换排序：
  * 1，冒泡
@@ -120,7 +120,7 @@ void quickSort(int list[], int low, int high)
         //把数组分成两半。partition参考值下标
         int partition = getPartition(list, low, high);
 
-        //递归
+        //递归，递归完成左边再右边。
         quickSort(list, low, partition - 1); //左子表递归排序。（low,partition-1）
 
         quickSort(list, partition + 1, high); //右子表递归排序
