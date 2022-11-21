@@ -2,13 +2,45 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-25 13:34:09
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-27 11:04:36
+ * @LastEditTime: 2022-11-21 15:00:57
  * @FilePath: \C_Study\3Test\Test833_2013.cpp
  * @Description:
  */
 
 #include <iostream>
 using namespace std;
+
+/**
+2.假设一个小球从 200 米高的空中落下，每次反弹一半高度，求第 5 次落下
+小球经过的路径是多少求第八次反弹高度是多少
+
+ *
+ */
+
+void getHigh()
+{
+
+  double maxHigh = 200;
+
+  double sumPath = 200; //计算前面五次回弹高度的和
+
+  for (int i = 1; i <= 8; i++)
+  {
+
+    maxHigh = maxHigh / 2.00;
+
+    if (i <= 5)
+    {
+      //计算前面五次回弹高度的和。
+      sumPath = maxHigh + sumPath;
+    }
+
+    // cout<<i<<":"<<maxHigh<<"米  ";
+  }
+  cout << "第八次回弹高度:" << maxHigh << "米  ";
+  cout << "\n五次回弹的高度:" << sumPath << "米  ";
+}
+
 /**
  * 2013，
 第五题
@@ -120,11 +152,11 @@ bool deleteData(int number)
     next = next->next;
   }
 
-  if(isFind){
-   StudentInfo *delNode = next; //待删除的结点 delNode
-   pre->next = delNode->next;
-   free(delNode);
-
+  if (isFind)
+  {
+    StudentInfo *delNode = next; //待删除的结点 delNode
+    pre->next = delNode->next;
+    free(delNode);
   }
   cout << "\n isFind :" << isFind;
   printAll();
@@ -140,8 +172,10 @@ int main()
   // sort();
   // printf();
 
-  initStudentInfo();
-  addData();
-  deleteData(22);
+  /*   initStudentInfo();
+    addData();
+    deleteData(22);
+   */
+  getHigh(); //第二题
   return 0;
 }
