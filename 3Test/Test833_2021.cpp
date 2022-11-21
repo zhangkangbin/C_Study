@@ -58,7 +58,6 @@
 */
 
 #include <stdio.h>
-#include <stdio.h>
 #include "base.h"
 using namespace std;
 
