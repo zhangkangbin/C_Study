@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-17 08:01:30
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-17 10:04:11
+ * @LastEditTime: 2022-11-21 15:43:44
  * @FilePath: \C_Study\chapter8_sort\SelectionSort.cpp
  * 选择排序
  * 1，简单选择排序 ，不稳定。
@@ -116,6 +116,9 @@ void heapSort()
 
 /**
  * 简单选择排序。
+​ 我们熟知的选择排序，其实采用的即为贪心策略。
+​ 它所采用的贪心策略即为每次从未排序的数据中选取最小值，
+ 并把最小值放在未排序数据的起始位置，直到未排序的数据为0，则结束排序。
  * 
  */
 void simpleSelectionSort()

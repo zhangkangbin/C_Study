@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-10-25 13:34:09
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-28 14:41:41
+ * @LastEditTime: 2022-11-21 15:28:14
  * @FilePath: \C_Study\3Test\Test833_2015.cpp
  * @Description:
  */
@@ -98,6 +98,15 @@ void deleteCommon()
  *
  */
 
+
+/**
+2. 从键盘上输入一个后缀表达式试编写算法计算表达式的值。规定∶逆波兰表达的长度不超过一行，
+以$符作为输入结束，操作数之间用空格分隔，操作符只可能有-+/*四种运算。
+例如∶23434+2+2*$
+
+ * 
+ * 
+ */
 struct Tree
 {
 
