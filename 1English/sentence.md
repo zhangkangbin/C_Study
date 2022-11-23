@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-25 10:56:10
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-19 12:54:25
+ * @LastEditTime: 2022-11-23 10:24:21
  * @FilePath: \C_Study\1English\sentence.md
  * @Description: 
 -->
@@ -34,6 +34,7 @@
 - I will cover all the expenses involved. 
 
 - Do you have any questions or concerns?  If you have, don't hesitate to let me know. 
+I will try my best to answer you.
 
 - It is my pleasure to.....
 - ​It is very meaningful to visit the museum.
@@ -56,6 +57,7 @@ you should get into the habit of reading, which will enrich your college life.
 I really love doing cardio exercise. Doing cardio is my daily routine, which helps me burn calories, 
 slim down and keep fit. If you prefer exercise too, we can exercise together.
 
+If you keep exercising, it will make you more efficient.
 
 Those who have relevant experience will be preferred.  If you are interested in it, 
 please send your resume to "University.email.com".

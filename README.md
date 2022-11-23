@@ -2,7 +2,7 @@
  * @Author: zhangkangbin 
  * @Date: 2022-08-18 18:31:13
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-10-30 23:49:04
+ * @LastEditTime: 2022-11-22 13:02:15
  * @FilePath: \C_Study\README.md
 -->
 # C_Study
@@ -54,7 +54,7 @@ Get start
 
 -  插入排序
 
-   -  直接插入排序 掌握 ✓ 9.12
+   - 直接插入排序 掌握 ✓ 9.12
    - 折半插入排序 掌握 
    - 希尔插入排序 掌握 ✓ 9.13
 
