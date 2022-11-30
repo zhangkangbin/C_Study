@@ -2,14 +2,13 @@
  * @Author: zhangkangbin 784908058@qq.com
  * @Date: 2022-08-23 13:58:39
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-20 23:42:20
+ * @LastEditTime: 2022-11-27 21:22:07
  * @FilePath: \C_Study\chapter6_graph\BinaryTree.cpp
  * 二叉树
  */
 #include <stdio.h>
 #include <iostream>
 using namespace std;
-#include "./3Test/base.h"
 class TreeNode
 {
 
@@ -30,6 +29,7 @@ public:
    void inOrder(TreeNode *node);
    void postOrder(TreeNode *node);
    int countNode(TreeNode *node);
+   int getHeigh(TreeNode *node);
    int countNode();
    void stackPrint(TreeNode *node); //层次遍历
    void printfAllData();
@@ -47,21 +47,32 @@ int BinaryTree::countNode(TreeNode *node)
 {
    if (node == NULL)
    {
-
       return 0;
    }
-   else
-   {
-
+   
       //统计左结点。
       int leftNode = countNode(node->mLeftChild);
       //  cout<<"  \nleftNode:"<<leftNode<<"\n";
       int rightNode = countNode(node->mRightChild);
-      // cout<<"  \nrightNode:"<<rightNode<<"\n";
+    // cout<<"  \nrightNode:"<<rightNode<<"\n";
       int sum = leftNode + rightNode + 1; // 1为根节点
-
       return sum;
-   }
+}
+
+/**
+ * @brief 二叉树高度计算
+ * 
+ * @param node 
+ * @return int 
+ */
+int  BinaryTree::getHeigh(TreeNode *node){
+  
+   if(node==NULL) return 0;
+
+   int left=getHeigh(node->mLeftChild);
+   int right=getHeigh(node->mRightChild);
+
+   return left>right?left+1:right+1;
 }
 /**
  * 递归方式
@@ -277,6 +288,8 @@ void BinaryTree::insertData()
    // mParentNode=node;
 }
 
+
+
 int main()
 {
 
@@ -285,6 +298,9 @@ int main()
   // tree.preOrder(tree.mRootNode);
 
    tree.stackPrint(tree.mRootNode);
+   int height=tree.getHeigh(tree.mRootNode);
+
+   cout<<"二叉树高度："<<height;
    //  int sum = tree.countNode();
    //  cout << "\n node count: " << sum << "\n";
 

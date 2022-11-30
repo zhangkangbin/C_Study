@@ -2,7 +2,7 @@
  * @Author: zhangkangbin 784908058@qq.com
  * @Date: 2022-08-18 18:38:29
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-17 20:38:18
+ * @LastEditTime: 2022-11-28 18:20:52
  * @FilePath: \C_Study\List.cpp
  */
 #include <stdio.h>
@@ -58,5 +58,13 @@ int main()
    Node *test=new Node();
   
      cout<<"c::\n" << test->dataNode;
+
+   int list[3]={6,7,8};
+   int i=0;
+
+   //list[++i]=i+1;
+   list[i]=i++;
+   cout<<"\n"<<list;
+
    return 0;
 }
