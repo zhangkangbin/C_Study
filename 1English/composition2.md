@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-11-23 12:01:18
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-23 15:20:04
+ * @LastEditTime: 2022-12-01 23:36:30
  * @FilePath: \C_Study\1English\composition2.md
  * @Description: 
 -->
@@ -190,3 +190,13 @@
 
 ------------------------------------------------------------
 ------------------------------------------------------------
+
+开头段
+
+The chart table shows ....
+
+如： The chart table shows the change in urban population and rural population.
+
+the change in
+
+the are growth
