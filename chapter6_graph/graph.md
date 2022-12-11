@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangkangbin
  * @Date: 2022-10-16 13:17:06
- * @LastEditTime: 2022-11-19 22:33:33
+ * @LastEditTime: 2022-12-11 12:02:30
  * @FilePath: \C_Study\chapter6_graph\graph.md
 -->
 ### 图
@@ -93,3 +93,11 @@ class Adjacency{
 先把最小权值的连接起来。
 
 <img src="res/kruskal.jpg" width="100%" >
+
+
+
+-----------------------------------------
+
+3.WPL 计算
+
+<img src="res/WPL.jpg" width="100%" >

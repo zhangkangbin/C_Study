@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-11-23 12:01:18
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-12-01 23:36:30
+ * @LastEditTime: 2022-12-05 12:25:15
  * @FilePath: \C_Study\1English\composition2.md
  * @Description: 
 -->
@@ -128,7 +128,7 @@
 
 统计
 
-就业 get a job.
+就业 get a job. employment
 
 升学 go to school.
 
@@ -191,12 +191,45 @@
 ------------------------------------------------------------
 ------------------------------------------------------------
 
-开头段
+### 开头段
 
 The chart table shows ....
 
 如： The chart table shows the change in urban population and rural population.
 
+
+
+The phenomenon is caused by the following factors.
+如：China's urbanization is caused by the following factors.
+
+
+### 中间段
 the change in
 
-the are growth
+the are growth in
+
+stayed unchanged  
+House prices stayed unchanged in the US.
+
+
+​There was a slight fall/rose in__描述对象__
+
+​There was a slight fall in house prices in China.
+
+
+
+house prices in China rose dramatically..
+
+_____by contrast___
+
+
+### 结尾段
+
+
+- As mentioned above, it is concluded that _____
+
+如：As mentioned above,it is concluded that job satisfaction is very important in today's workplace.
+
+- For some time in the future,it is expected that___描述对象___ will_______
+
+如  For some time in the future, it is expected that visiting museums will continue to slight  increase.
