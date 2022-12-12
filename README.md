@@ -2,7 +2,7 @@
  * @Author: zhangkangbin 
  * @Date: 2022-08-18 18:31:13
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-12-11 12:09:51
+ * @LastEditTime: 2022-12-12 23:35:19
  * @FilePath: \C_Study\README.md
 -->
 # C_Study
@@ -94,9 +94,13 @@ Get start
 
 | 排序算法 |     最优     |  平均复杂度  |     最差     |  空间复杂度  | 稳定性 |
 |:--------:|:------------:|:------------:|:------------:|:------------:|:------:|
-| 插入排序 |    O(n²)     |    O(n²)     |    O(n²)     |     O(1)     |  稳定  |
-|   快速   | $O(nlog_2n)$ | $O(nlog_2n)$ |    O(n²)     | $O(nlog_2n)$ | 不稳定 |
+|   冒泡   |    O(n²)     |    O(n²)     |    O(n²)     |     O(1)     |  稳定  |
 |   希尔   | $O(nlog_2n)$ | $O(nlog_2n)$ | $O(nlog_2n)$ |     O(1)     | 不稳定 |
+|   快速   | $O(nlog_2n)$ | $O(nlog_2n)$ |    O(n²)     | $O(nlog_2n)$ | 不稳定 |
+| 插入排序 |    O(n²)     |    O(n²)     |    O(n²)     |     O(1)     |  稳定  |
+| 简单选择 |    O(n²)     |    O(n²)     |    O(n²)     |     O(1)     | 不稳定 |
+|  堆排序  | $O(nlog_2n)$ | $O(nlog_2n)$ | $O(nlog_2n)$ |     O(1)     | 不稳定 |
+| 归并排序 | $O(nlog_2n)$ | $O(nlog_2n)$ | $O(nlog_2n)$ | O(n)辅助数组 |  稳定  |
 
 
  
