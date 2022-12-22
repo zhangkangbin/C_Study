@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-25 10:56:10
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-23 10:24:21
+ * @LastEditTime: 2022-12-18 00:43:32
  * @FilePath: \C_Study\1English\sentence.md
  * @Description: 
 -->
@@ -55,7 +55,7 @@ you should get into the habit of reading, which will enrich your college life.
 
 
 I really love doing cardio exercise. Doing cardio is my daily routine, which helps me burn calories, 
-slim down and keep fit. If you prefer exercise too, we can exercise together.
+slim down and keep fit，more efficient. If you prefer exercise too, we can exercise together.
 
 If you keep exercising, it will make you more efficient.
 

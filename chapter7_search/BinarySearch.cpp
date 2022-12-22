@@ -2,8 +2,8 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-08 17:42:53
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-09-08 18:48:32
- * @FilePath: \C_Study\chapter5_search\BinarySearch.cpp
+ * @LastEditTime: 2022-12-22 09:54:46
+ * @FilePath: \C_Study\chapter7_search\BinarySearch.cpp
  * @Description:  二分查找（折半查找）
  * 时间复杂度O(log2n)
  *
