@@ -95,10 +95,10 @@ int getPartition(int list[], int low, int high)
         //高低位交换位置。
         list[high] = list[low];
 
-        if (list[high] == list[low])
+    /*     if (list[high] == list[low])
         {
           //  cout << "  \n-----------<<" << list[low] << "-------\n";
-        }
+        } */
     }
     //最后一个值和参考值P交换位置
     list[low] = partition;
