@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-17 08:01:30
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-21 15:43:44
+ * @LastEditTime: 2022-12-22 19:00:36
  * @FilePath: \C_Study\chapter8_sort\SelectionSort.cpp
  * 选择排序
  * 1，简单选择排序 ，不稳定。
@@ -34,7 +34,7 @@ void printData(int list[], int start,int length)
  * 所在层次： log2(n+1)
  *
  * @param list
- * @param k
+ * @param k length / 2
  * @param length
  */
 void headAdjust(int list[], int k, int length)
@@ -45,29 +45,28 @@ void headAdjust(int list[], int k, int length)
     // k=4  ，2*4为他的左孩子。
     // k=1  ，2*1为他的左孩子。
 
-    for (int i = 2 * k; i <= length;)
+    for (int i = 2 * k; i <= length;i = i * 2)
     {
 
-        //左右二个孩子比较，取大的一个。
+        //第一步：先比较左右二个孩子比较，取大的一个。
         if (i < length && list[i] < list[i + 1])
         {
             i++;
         }
-        //如果根节点大于子节点。跳出循环。
+        //第二步：如果根节点大于最大的子节点。跳出循环。
         if (list[0] >= list[i])
         {
             break;
         }
-        else
-        {
-            //子节点赋值根节点。
-            list[k] = list[i];
+       
+         //第三步：把子节点赋值给根节点。
+         list[k] = list[i];
 
-            //继续往下筛选
-            k = i;
-        }
+         //继续往下筛选
+          k = i;
+        
 
-        i = i * 2;
+        
     }
     //根节点赋值。
     list[k] = list[0];
@@ -88,9 +87,10 @@ void headAdjust(int list[], int k, int length)
 void heapSort()
 {
 
-    const int length = 9;
+    const int length = 8;
     //顺序表的存储结构  0用于存储位。
-    int list[length] = {0, 53,17,78,32,45,65,87,9};
+    //int list[length] = {0, 53,17,78,32,45,65,87,9};
+    int list[length] = {0,2,1,6,4,7,5,3};
    //1，建立堆
     for (int i = length / 2; i > 0; i--)
     {

@@ -2,7 +2,7 @@
  * @Author: zhangkangbin
  * @Date: 2022-09-15 14:37:53
  * @LastEditors: zhangkangbin
- * @LastEditTime: 2022-11-20 23:37:05
+ * @LastEditTime: 2022-12-22 09:56:46
  * @FilePath: \C_Study\chapter8_sort\ExchangeSort.cpp
  * 交换排序：
  * 1，冒泡
@@ -83,11 +83,6 @@ int getPartition(int list[], int low, int high)
         //直到找到参考值小的。
         list[low] = list[high];
 
-      /*  cout << "  \n--------high----------\n";
-
-       printData(list, MAXSIZE);
-
-        cout << "  \n----------low--------\n"; */
         while (low < high && list[low] <= partition)
         {
             low++;
@@ -95,16 +90,11 @@ int getPartition(int list[], int low, int high)
         //高低位交换位置。
         list[high] = list[low];
 
-    /*     if (list[high] == list[low])
-        {
-          //  cout << "  \n-----------<<" << list[low] << "-------\n";
-        } */
     }
     //最后一个值和参考值P交换位置
     list[low] = partition;
     
-    printData(list, MAXSIZE);
-   // cout << "  \n-------end-----------\n";
+   // printData(list, MAXSIZE);
     return low;
 }
 
