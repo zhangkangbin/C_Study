@@ -92,7 +92,7 @@ class Adjacency{
 
 先把最小权值的连接起来。
 
-<img src="res/kruskal.jpg" width="100%" >
+<img src="res/Kruskal.jpg" width="100%" >
 
 
 
